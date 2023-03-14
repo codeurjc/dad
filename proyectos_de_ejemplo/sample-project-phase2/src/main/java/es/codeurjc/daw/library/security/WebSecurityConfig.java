@@ -8,14 +8,25 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import es.codeurjc.daw.library.repository.UserRepository;
 
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	RepositoryUserDetailsService userDetailsService;
+
+    @Autowired
+    private UserSession userSession;
+
+    @Autowired
+    private UserRepository userRepository;
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -48,6 +59,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.formLogin().passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/");
         http.formLogin().failureUrl("/loginerror");
+
+        http.addFilterAfter((req, res, chain)->{
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+            if(auth != null && auth.isAuthenticated()){
+                String username = auth.getName();
+                if(username != null){
+                    userSession.setLoggedUser(userRepository.findByName(username).get());
+                }
+            }
+            chain.doFilter(req, res);
+        }, UsernamePasswordAuthenticationFilter.class);
 
         // Logout
         http.logout().logoutUrl("/logout");

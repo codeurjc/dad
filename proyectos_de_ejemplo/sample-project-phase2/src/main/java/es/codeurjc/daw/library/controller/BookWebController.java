@@ -1,12 +1,9 @@
 package es.codeurjc.daw.library.controller;
 
 import java.io.IOException;
-import java.security.Principal;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +21,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.codeurjc.daw.library.model.Book;
+import es.codeurjc.daw.library.model.User;
+import es.codeurjc.daw.library.security.UserSession;
 import es.codeurjc.daw.library.service.BookService;
 import es.codeurjc.daw.library.service.ShopService;
 
@@ -36,16 +35,19 @@ public class BookWebController {
 	@Autowired
 	private ShopService shopService;
 
+	@Autowired
+	private UserSession userSession;
+
 	@ModelAttribute
-	public void addAttributes(Model model, HttpServletRequest request) {
+	public void addAttributes(Model model) {
 
-		Principal principal = request.getUserPrincipal();
+		if (userSession.isLoggedUser()) {
 
-		if (principal != null) {
+			User user = userSession.getLoggedUser();
 
 			model.addAttribute("logged", true);
-			model.addAttribute("userName", principal.getName());
-			model.addAttribute("admin", request.isUserInRole("ADMIN"));
+			model.addAttribute("userName", user.getName());
+			model.addAttribute("admin", user.getRoles().contains("ADMIN"));
 
 		} else {
 			model.addAttribute("logged", false);
