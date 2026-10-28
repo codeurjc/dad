@@ -66,7 +66,7 @@ public class PostController {
 		
 		imageService.saveImage(POSTS_FOLDER, post.getId(), image);
 		
-		userSession.setUser(post.getUser());
+		userSession.setUser(post.getAuthor());
 		userSession.incNumPosts();
 		
 		model.addAttribute("numPosts", userSession.getNumPosts());

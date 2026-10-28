@@ -15,7 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class User {
+public class AppUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,10 +28,10 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> roles;
 
-	public User() {
+	public AppUser() {
 	}
 
-	public User(String name, String password, String... roles) {
+	public AppUser(String name, String password, String... roles) {
 		this.name = name;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));

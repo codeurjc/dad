@@ -2,8 +2,8 @@ package es.urjc.code.security;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends CrudRepository<AppUser, Long> {
 
-    User findByName(String name);
+    AppUser findByName(String name);
 
 }

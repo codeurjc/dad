@@ -12,16 +12,16 @@ public class Post {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String user;
+	private String author;
 	private String title;
 	private String text;
 
 	public Post() {
 	}
 
-	public Post(String user, String title, String text) {
+	public Post(String author, String title, String text) {
 		super();
-		this.user = user;
+		this.author = author;
 		this.title = title;
 		this.text = text;
 	}
@@ -34,12 +34,12 @@ public class Post {
 		this.id = id;
 	}
 
-	public String getUser() {
-		return user;
+	public String getAuthor() {
+		return author;
 	}
 
-	public void setUser(String user) {
-		this.user = user;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
 	public String getTitle() {
@@ -60,7 +60,7 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", user=" + user + ", title=" + title + ", text=" + text + "]";
+		return "Post [id=" + id + ", author=" + author + ", title=" + title + ", text=" + text + "]";
 	}
 
 }
