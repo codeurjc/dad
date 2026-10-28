@@ -1,0 +1,57 @@
+include:
+  - docker-compose-monitoring.yml
+
+services:
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: post
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+
+  # Topología con balanceador y caché distribuida Redis. App ejem2-cache-redis
+  spring-app:
+    build: ./ejem-2-cache-redis
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/post
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_REDIS_HOST=redis_t3
+      - SPRING_REDIS_PORT=6379
+      - SPRING_DATASOURCE_HIKARI_MAXIMUM-POOL-SIZE=30
+    depends_on:
+      mysql-db:
+        condition: service_healthy
+    deploy:
+      replicas: 3 # Con LB
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512m
+
+  haproxy:
+    image: haproxy:latest
+    container_name: lb_demo
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "8090:80"     # Tráfico de la App
+      - "8404:8404" # Estadísticas
+    depends_on:
+      - spring-app    
+
+  redis:
+    image: redis:alpine
+    container_name: redis_t3

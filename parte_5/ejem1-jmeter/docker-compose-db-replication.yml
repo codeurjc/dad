@@ -1,0 +1,77 @@
+include:
+  - docker-compose-monitoring.yml
+
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: post
+    # Habilitamos el log binario y asignamos ID único
+    command: 
+      - --server-id=1
+      - --log-bin=mysql-bin
+      - --binlog-format=ROW
+    volumes:
+      - ./config-db-replica/master-init.sql:/docker-entrypoint-initdb.d/01-setup.sql
+      - ./config-db-replica/data_load.sql:/docker-entrypoint-initdb.d/02-data.sql
+      - ./mysql-master:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+
+  mysql-worker:
+    image: mysql:8.0
+    container_name: mysql-worker
+    depends_on:
+      mysql-master:
+        condition: service_healthy
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    command: 
+      - --server-id=2
+      - --log-bin=mysql-bin
+      - --read-only=1
+    volumes:
+      - ./config-db-replica/worker-init.sql:/docker-entrypoint-initdb.d/01-setup.sql
+
+  spring-app:
+    build: ./ejem-2-cache-redis
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql:replication://mysql-master:3306,mysql-worker:3306/post?autoReconnect=true&useSSL=false&allowPublicKeyRetrieval=true&connectTimeout=5000&socketTimeout=10000&readFromMasterWhenNoSlaves=true
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_HIKARI_MAXIMUM-POOL-SIZE=20
+      - SPRING_REDIS_HOST=redis_t3
+      - SPRING_REDIS_PORT=6379
+    depends_on:
+      mysql-master:
+        condition: service_healthy
+    deploy:
+      replicas: 3 # Con LB
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G
+
+  haproxy:
+    image: haproxy:latest
+    container_name: lb_demo
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    ports:
+      - "8090:80"     # Tráfico de la App
+      - "8404:8404" # Estadísticas
+    depends_on:
+      - spring-app    
+
+  redis:
+    image: redis:alpine
+    container_name: redis_t3

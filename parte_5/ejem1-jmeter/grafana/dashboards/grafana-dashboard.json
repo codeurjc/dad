@@ -1,0 +1,166 @@
+{
+  "title": "Full Stack System Health (App + Infra)",
+  "uid": "full-stack-infra-01",
+  "editable": true,
+  "panels": [
+    {
+      "title": "Infrastructure CPU Usage",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        { "expr": "container_cpu_usage_seconds_total{container_label_com_docker_compose_service=\"mysql-db\"}", "legendFormat": "MySQL DB", "refId": "A" },
+        { "expr": "container_cpu_usage_seconds_total{container_label_com_docker_compose_service=\"spring-app\"}", "legendFormat": "Spring App", "refId": "B" },
+        { "expr": "container_cpu_usage_seconds_total{container_label_com_docker_compose_service=\"prometheus\"}", "legendFormat": "Prometheus", "refId": "C" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "percentunit", "custom": { "drawStyle": "line", "fillOpacity": 10 } } }
+    },
+    {
+      "title": "Infrastructure Memory Usage",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        { "expr": "container_memory_usage_bytes{container_label_com_docker_compose_service=\"mysql-db\"}", "legendFormat": "MySQL DB", "refId": "A" },
+        { "expr": "container_memory_usage_bytes{container_label_com_docker_compose_service=\"spring-app\"}", "legendFormat": "Spring App", "refId": "B" },
+        { "expr": "container_memory_usage_bytes{container_label_com_docker_compose_service=\"prometheus\"}", "legendFormat": "Prometheus", "refId": "C" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "bytes" } }
+    },
+    {
+      "title": "Database Connection Contention",
+      "type": "timeseries",
+      "gridPos": { "h": 7, "w": 24, "x": 0, "y": 8 },
+      "targets": [{ "expr": "sum(hikaricp_connections_pending) by (pool)", "legendFormat": "Pending: {{pool}}", "refId": "A" }],
+      "fieldConfig": { "defaults": { "color": { "mode": "fixed", "fixedColor": "red" }, "custom": { "drawStyle": "area", "fillOpacity": 30 } } }
+    },
+    {
+      "title": "Database Connection Contention (Pending Threads)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 22 },
+      "targets": [
+        {
+          "expr": "sum(hikaricp_connections_pending{pool=~\"master|replica.*\"}) by (pool)",
+          "legendFormat": "Waiting: {{pool}}",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": { "mode": "fixed", "fixedColor": "red" },
+          "custom": {
+            "drawStyle": "area",
+            "fillOpacity": 40,
+            "gradientMode": "opacity"
+          }
+        }
+      },
+      "description": "Número de hilos de la aplicación bloqueados esperando una conexión del pool de base de datos."
+    },
+    {
+      "title": "Pool Usage: Active vs Idle",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 30 },
+      "targets": [
+        {
+          "expr": "hikaricp_connections_active{pool=~\"master|replica.*\"}",
+          "legendFormat": "Active: {{pool}}",
+          "refId": "A"
+        },
+        {
+          "expr": "hikaricp_connections_idle{pool=~\"master|replica.*\"}",
+          "legendFormat": "Idle: {{pool}}",
+          "refId": "B"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "none" }
+      }
+    },
+    {
+      "title": "CPU Usage",
+      "type": "gauge",
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
+      "targets": [{ "expr": "system_cpu_usage * 100", "refId": "A" }],
+      "fieldConfig": {
+        "defaults": { "unit": "percent", "min": 0, "max": 100, "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }, { "color": "orange", "value": 70 }, { "color": "red", "value": 90 }] } }
+      }
+    },
+    {
+      "title": "JVM Memory",
+      "type": "gauge",
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 0 },
+      "targets": [{ "expr": "jvm_memory_used_bytes / jvm_memory_max_bytes * 100", "refId": "A" }],
+      "fieldConfig": {
+        "defaults": { "unit": "percent", "min": 0, "max": 100, "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }, { "color": "red", "value": 85 }] } }
+      }
+    },
+    {
+      "title": "Failed Requests (5xx)",
+      "type": "gauge",
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 0 },
+      "targets": [{ "expr": "sum(rate(http_server_requests_seconds_count{status=~\"5..\"}[1m]))", "refId": "A" }],
+      "fieldConfig": {
+        "defaults": { "unit": "reqps", "thresholds": { "mode": "absolute", "steps": [{ "color": "green", "value": null }, { "color": "red", "value": 1 }] } }
+      }
+    },
+    {
+      "title": "Latency Percentiles (p50, p95, p99)",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 6 },
+      "targets": [
+        { "expr": "histogram_quantile(0.50, sum(rate(http_server_requests_seconds_bucket[5m])) by (le))", "legendFormat": "p50", "refId": "A" },
+        { "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket[5m])) by (le))", "legendFormat": "p95", "refId": "B" },
+        { "expr": "histogram_quantile(0.99, sum(rate(http_server_requests_seconds_bucket[5m])) by (le))", "legendFormat": "p99", "refId": "C" }
+      ],
+      "fieldConfig": { "defaults": { "unit": "s", "custom": { "drawStyle": "line", "lineWidth": 2 } } }
+    },
+    {
+      "title": "DB Requests Per Second",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 14 },
+      "targets": [{ "expr": "sum(rate(db_routing_requests_total[1m])) by (node)", "refId": "A" }],
+      "fieldConfig": { "defaults": { "unit": "reqps" } }
+    },
+    {
+      "title": "Latency Distribution (Histogram)",
+      "type": "barchart",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 14 },
+      "targets": [{ "expr": "sum(http_server_requests_seconds_bucket) by (le)", "refId": "A", "instant": true }],
+      "options": { "xTickLabelRotation": -45 }
+    },
+    {
+      "title": "Requests Per Second (RPS) by Status",
+      "type": "timeseries",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(rate(http_server_requests_seconds_count[1m])) by (status)",
+          "refId": "A"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": { "drawStyle": "line", "fillOpacity": 20 },
+          "unit": "rps"
+        }
+      }
+    },
+    {
+      "title": "Latency Heatmap",
+      "type": "heatmap",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [
+        {
+          "expr": "sum(rate(http_server_requests_seconds_bucket[5m])) by (le)",
+          "format": "heatmap",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "calculate": false,
+        "color": { "mode": "scheme", "scheme": "OrRd" },
+        "yAxis": { "unit": "s" }
+      }
+    }
+  ]
+}
