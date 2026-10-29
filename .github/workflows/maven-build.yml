@@ -57,15 +57,14 @@ jobs:
           echo "Proyectos detectados: $count" >> "$GITHUB_STEP_SUMMARY"
           printf '%s' "$projects" | jq -r '.[]' | sed 's/^/- /' >> "$GITHUB_STEP_SUMMARY"
 
-  build:
-    name: Build - ${{ matrix.project }}
+  # Los 86 jobs de build comparten el mismo ~/.m2, pero en la primera
+  # ejecucion de una rama la cache no existe todavia y los 86 se ponen a
+  # descargar de Maven Central a la vez, que responde con HTTP 429. Este job
+  # la rellena una sola vez; los de build la restauran y ya no descargan.
+  warm-cache:
+    name: Warm the Maven cache
     needs: discover
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        project: ${{ fromJson(needs.discover.outputs.projects) }}
 
     steps:
       - name: Checkout code
@@ -78,8 +77,54 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Resolve the dependencies of every project
+        env:
+          PROJECTS: ${{ needs.discover.outputs.projects }}
+        run: |
+          set -uo pipefail
+          fallos=0
+
+          while read -r p; do
+            echo "::group::$p"
+            if ! mvn -B -ntp -f "$p/pom.xml" \
+                -Dmaven.wagon.http.retryHandler.count=5 \
+                dependency:go-offline; then
+              echo "::warning title=Cache warming::No se pudieron resolver las dependencias de $p"
+              fallos=$((fallos + 1))
+            fi
+            echo "::endgroup::"
+          done < <(printf '%s' "$PROJECTS" | jq -r '.[]')
+
+          # Rellenar la cache es una optimizacion, no una comprobacion: el
+          # veredicto lo da la matriz. Un fallo aqui no corta el flujo.
+          echo "Proyectos sin resolver: $fallos" >> "$GITHUB_STEP_SUMMARY"
+
+  build:
+    name: Build - ${{ matrix.project }}
+    needs: [discover, warm-cache]
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.discover.outputs.projects) }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Restaura la cache que dejo warm-cache: la clave que usa setup-java
+      # sale del hash de los pom.xml, identico en los 86 jobs de la misma
+      # ejecucion, asi que aciertan y no vuelven a guardarla.
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          java-version: '25'
+          distribution: 'temurin'
+          cache: maven
+
       - name: Build with Maven
-        run: mvn -B -ntp clean verify
+        run: mvn -B -ntp -Dmaven.wagon.http.retryHandler.count=3 clean verify
         working-directory: ${{ matrix.project }}
 
   result:
