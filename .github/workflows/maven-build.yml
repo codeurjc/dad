@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Find every pom.xml
         id: find
@@ -68,10 +68,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up JDK 25
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           java-version: '25'
           distribution: 'temurin'
@@ -111,13 +111,14 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # Restaura la cache que dejo warm-cache: la clave que usa setup-java
-      # sale del hash de los pom.xml, identico en los 86 jobs de la misma
-      # ejecucion, asi que aciertan y no vuelven a guardarla.
+      # sale del hash de los ficheros de build (pom.xml y .mvn/extensions.xml),
+      # identico en los 86 jobs de la misma ejecucion, asi que aciertan y no
+      # vuelven a guardarla.
       - name: Set up JDK 25
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           java-version: '25'
           distribution: 'temurin'
