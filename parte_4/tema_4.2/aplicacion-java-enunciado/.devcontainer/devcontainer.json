@@ -3,13 +3,14 @@
 {
 	"name": "Java",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/java:0-17",
+	"image": "mcr.microsoft.com/devcontainers/java:3-25-bookworm",
 
+	// La imagen ya trae el JDK, asi que el feature solo aporta Maven.
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
 			"version": "none",
-			"installMaven": "true",
-			"installGradle": "false"
+			"installMaven": true,
+			"mavenVersion": "latest"
 		}
 	}
 
