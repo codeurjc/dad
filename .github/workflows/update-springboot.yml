@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       springboot_version:
-        description: 'Versión de Spring Boot (ej: 3.4.1)'
+        description: 'Versión de Spring Boot (ej: 4.0.5)'
         required: true
-        default: '3.4.1'
+        default: '4.0.5'
       java_version:
-        description: 'Versión de Java (ej: 17, 21)'
+        description: 'Versión de Java (ej: 21, 25)'
         required: true
-        default: '17'
+        default: '25'
 
 jobs:
   update-project-stack:

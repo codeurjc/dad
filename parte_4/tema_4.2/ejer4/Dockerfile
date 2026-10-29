@@ -1,5 +1,5 @@
 # Selecciona la imagen base
-FROM maven:3.9.0-eclipse-temurin-17
+FROM maven:3.9.11-eclipse-temurin-25
 
 # Define el directorio de trabajo donde ejecutar comandos
 WORKDIR /project
