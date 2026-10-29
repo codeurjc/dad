@@ -10,8 +10,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.AbstractWebSocketHandler;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 
 @Component
 public class WebSocketHandler extends AbstractWebSocketHandler {
@@ -50,7 +50,7 @@ public class WebSocketHandler extends AbstractWebSocketHandler {
 		try {
 			json = new ObjectMapper().writeValueAsString(data);
 			websocketSession.sendMessage(new TextMessage(json));
-		} catch (JsonProcessingException e) {
+		} catch (JacksonException e) {
 			logger.error("Cannot convert to json: " + data.getData());
 			throw new RuntimeException();
 		} catch (IOException e) {

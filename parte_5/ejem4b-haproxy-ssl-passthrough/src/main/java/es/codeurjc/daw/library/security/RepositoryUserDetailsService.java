@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import es.codeurjc.daw.library.model.User;
+import es.codeurjc.daw.library.model.AppUser;
 import es.codeurjc.daw.library.repository.UserRepository;
 
 @Service
@@ -23,8 +23,8 @@ public class RepositoryUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		User user = userRepository.findByName(username)
-				.orElseThrow(() -> new UsernameNotFoundException("User not found"));
+		AppUser user = userRepository.findByName(username)
+				.orElseThrow(() -> new UsernameNotFoundException("AppUser not found"));
 
 		List<GrantedAuthority> roles = new ArrayList<>();
 		for (String role : user.getRoles()) {

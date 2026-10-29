@@ -4,10 +4,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import es.codeurjc.daw.library.model.User;
+import es.codeurjc.daw.library.model.AppUser;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<AppUser, Long> {
 
-    Optional<User> findByName(String name);
+    Optional<AppUser> findByName(String name);
 
 }

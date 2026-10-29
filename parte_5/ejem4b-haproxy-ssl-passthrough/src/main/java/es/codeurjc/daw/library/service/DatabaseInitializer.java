@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import es.codeurjc.daw.library.model.Book;
-import es.codeurjc.daw.library.model.User;
+import es.codeurjc.daw.library.model.AppUser;
 import es.codeurjc.daw.library.repository.BookRepository;
 import es.codeurjc.daw.library.repository.UserRepository;
 import jakarta.annotation.PostConstruct;
@@ -40,8 +40,8 @@ public class DatabaseInitializer {
 
 		// Sample users
 
-		userRepository.save(new User("user", passwordEncoder.encode("pass"), "USER"));
-		userRepository.save(new User("admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
+		userRepository.save(new AppUser("user", passwordEncoder.encode("pass"), "USER"));
+		userRepository.save(new AppUser("admin", passwordEncoder.encode("adminpass"), "USER", "ADMIN"));
 	}
 
 }

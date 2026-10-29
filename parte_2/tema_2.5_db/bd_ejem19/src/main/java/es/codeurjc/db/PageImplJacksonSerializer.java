@@ -1,42 +1,42 @@
 package es.codeurjc.db;
 
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import org.springframework.boot.jackson.JsonComponent;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ValueSerializer;
+import org.springframework.boot.jackson.JacksonComponent;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Sort;
-import java.io.IOException;
 
-@JsonComponent
-public class PageImplJacksonSerializer extends JsonSerializer<PageImpl<?>> {
+@JacksonComponent
+public class PageImplJacksonSerializer extends ValueSerializer<PageImpl<?>> {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public void serialize(PageImpl page, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
-			throws IOException {
+	public void serialize(PageImpl page, JsonGenerator jsonGenerator, SerializationContext serializationContext)
+			throws JacksonException {
 
 		jsonGenerator.writeStartObject();
-		jsonGenerator.writeObjectField("content", page.getContent());
-		jsonGenerator.writeBooleanField("first", page.isFirst());
-		jsonGenerator.writeBooleanField("last", page.isLast());
-		jsonGenerator.writeNumberField("totalPages", page.getTotalPages());
-		jsonGenerator.writeNumberField("totalElements", page.getTotalElements());
-		jsonGenerator.writeNumberField("numberOfElements", page.getNumberOfElements());
+		jsonGenerator.writePOJOProperty("content", page.getContent());
+		jsonGenerator.writeBooleanProperty("first", page.isFirst());
+		jsonGenerator.writeBooleanProperty("last", page.isLast());
+		jsonGenerator.writeNumberProperty("totalPages", page.getTotalPages());
+		jsonGenerator.writeNumberProperty("totalElements", page.getTotalElements());
+		jsonGenerator.writeNumberProperty("numberOfElements", page.getNumberOfElements());
 
-		jsonGenerator.writeNumberField("size", page.getSize());
-		jsonGenerator.writeNumberField("number", page.getNumber());
+		jsonGenerator.writeNumberProperty("size", page.getSize());
+		jsonGenerator.writeNumberProperty("number", page.getNumber());
 
 		Sort sort = page.getSort();
 
-		jsonGenerator.writeArrayFieldStart("sort");
+		jsonGenerator.writeArrayPropertyStart("sort");
 
 		for (Sort.Order order : sort) {
 			jsonGenerator.writeStartObject();
-			jsonGenerator.writeStringField("property", order.getProperty());
-			jsonGenerator.writeStringField("direction", order.getDirection().name());
-			jsonGenerator.writeBooleanField("ignoreCase", order.isIgnoreCase());
-			jsonGenerator.writeStringField("nullHandling", order.getNullHandling().name());
+			jsonGenerator.writeStringProperty("property", order.getProperty());
+			jsonGenerator.writeStringProperty("direction", order.getDirection().name());
+			jsonGenerator.writeBooleanProperty("ignoreCase", order.isIgnoreCase());
+			jsonGenerator.writeStringProperty("nullHandling", order.getNullHandling().name());
 			jsonGenerator.writeEndObject();
 		}
 

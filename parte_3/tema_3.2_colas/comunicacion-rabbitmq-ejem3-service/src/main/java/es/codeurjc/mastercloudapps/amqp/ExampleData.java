@@ -1,6 +1,6 @@
 package es.codeurjc.mastercloudapps.amqp;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 
 public class ExampleData {
     private String data;

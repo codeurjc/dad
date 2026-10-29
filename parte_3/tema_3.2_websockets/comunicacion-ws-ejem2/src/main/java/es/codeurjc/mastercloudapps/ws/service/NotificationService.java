@@ -1,7 +1,7 @@
 package es.codeurjc.mastercloudapps.ws.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 
 import es.codeurjc.mastercloudapps.ws.model.Report;
 
@@ -90,7 +90,7 @@ public class NotificationService extends AbstractWebSocketHandler {
                 }
             }
 
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             throw new RuntimeException(e);
         }
     }

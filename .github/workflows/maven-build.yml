@@ -2,136 +2,95 @@ name: Maven Package Build
 
 on:
   push:
-    branches: '*'
+    branches: '**'
   pull_request:
-    branches: '*'
+    branches: '**'
   workflow_dispatch:
 
+# Cada push lanza un job por proyecto (86 ahora mismo), asi que se cancela
+# la ejecucion anterior de la misma rama cuando llega un commit nuevo.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  build:
+  discover:
+    name: Discover Maven projects
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        project:
-          # Parte 2 - Web Projects
-          - 'parte_2/tema_2.2_web/web_ejem1'
-          - 'parte_2/tema_2.2_web/web_ejem2'
-          - 'parte_2/tema_2.2_web/web_ejem3'
-          - 'parte_2/tema_2.2_web/web_ejem4'
-          - 'parte_2/tema_2.2_web/web_ejem5'
-          - 'parte_2/tema_2.2_web/web_ejem6'
-          - 'parte_2/tema_2.2_web/web_ejem7'
-          - 'parte_2/tema_2.2_web/web_ejem8'
-          - 'parte_2/tema_2.2_web/web_ejem8b'
-          - 'parte_2/tema_2.2_web/web_ejer1'
-          - 'parte_2/tema_2.2_web/web_ejer1b'
-          - 'parte_2/tema_2.2_web/web_ejer2'
-          - 'parte_2/tema_2.2_web/web_ejer3'
-          - 'parte_2/tema_2.2_web/web_ejer3_devtools'
-          - 'parte_2/tema_2.2_web/web_ejer4'
-          - 'parte_2/tema_2.2_web/web_ejer5'
-          - 'parte_2/tema_2.2_web/web_ejer6'
-          - 'parte_2/tema_2.2_web/web_ejer7'
-          
-          # Parte 2 - REST Projects
-          - 'parte_2/tema_2.3_rest/rest_ejem1'
-          - 'parte_2/tema_2.3_rest/rest_ejem2'
-          - 'parte_2/tema_2.3_rest/rest_ejem3'
-          - 'parte_2/tema_2.3_rest/rest_ejem4'
-          - 'parte_2/tema_2.3_rest/rest_ejem5'
-          - 'parte_2/tema_2.3_rest/rest_ejem6'
-          - 'parte_2/tema_2.3_rest/rest_ejem7'
-          - 'parte_2/tema_2.3_rest/rest_ejem8'
-          - 'parte_2/tema_2.3_rest/rest_ejem9'
-          - 'parte_2/tema_2.3_rest/rest_ejem10'
-          - 'parte_2/tema_2.3_rest/rest_ejem11'
-          - 'parte_2/tema_2.3_rest/rest_ejer1'
-          
-          # Parte 2 - Database Projects
-          - 'parte_2/tema_2.5_db/bd_ejem1'
-          - 'parte_2/tema_2.5_db/bd_ejem2'
-          - 'parte_2/tema_2.5_db/bd_ejem3'
-          - 'parte_2/tema_2.5_db/bd_ejem4'
-          - 'parte_2/tema_2.5_db/bd_ejem5'
-          - 'parte_2/tema_2.5_db/bd_ejem6'
-          - 'parte_2/tema_2.5_db/bd_ejem7'
-          - 'parte_2/tema_2.5_db/bd_ejem8'
-          - 'parte_2/tema_2.5_db/bd_ejem9'
-          - 'parte_2/tema_2.5_db/bd_ejem10'
-          - 'parte_2/tema_2.5_db/bd_ejem11'
-          - 'parte_2/tema_2.5_db/bd_ejem12'
-          - 'parte_2/tema_2.5_db/bd_ejem13'
-          - 'parte_2/tema_2.5_db/bd_ejem14'
-          - 'parte_2/tema_2.5_db/bd_ejem15'
-          - 'parte_2/tema_2.5_db/bd_ejem16'
-          - 'parte_2/tema_2.5_db/bd_ejem17'
-          - 'parte_2/tema_2.5_db/bd_ejem18'
-          - 'parte_2/tema_2.5_db/bd_ejem19'
-          - 'parte_2/tema_2.5_db/bd_ejem20'
-          - 'parte_2/tema_2.5_db/bd_ejem21'
-          - 'parte_2/tema_2.5_db/bd_ejem22'
-          - 'parte_2/tema_2.5_db/bd_ejer1'
-          - 'parte_2/tema_2.5_db/bd_ejer2'
-          
-          # Parte 2 - Deployment Examples
-          - 'parte_2/tema_2.6_despliegue/despliegue_ejem1'
-          - 'parte_2/tema_2.6_despliegue/despliegue_ejem2'
-          
-          # Parte 3 - RabbitMQ Projects
-          - 'parte_3/tema_3.2_colas/comunicacion-rabbitmq-ejem1-consumer'
-          - 'parte_3/tema_3.2_colas/comunicacion-rabbitmq-ejem1-producer'
-          - 'parte_3/tema_3.2_colas/comunicacion-rabbitmq-ejem2-consumer'
-          - 'parte_3/tema_3.2_colas/comunicacion-rabbitmq-ejem2-producer'
-          - 'parte_3/tema_3.2_colas/comunicacion-rabbitmq-ejem3-client'
-          - 'parte_3/tema_3.2_colas/comunicacion-rabbitmq-ejem3-service'
-          
-          # Parte 3 - WebSocket Projects
-          - 'parte_3/tema_3.2_websockets/comunicacion-ws-ejem1'
-          - 'parte_3/tema_3.2_websockets/comunicacion-ws-ejem2'
-          
-          # Parte 4 - Testing Projects
-          - 'parte_4/tema_4.2/aplicacion-java-enunciado'
-          - 'parte_4/tema_4.2/ejemplo-1'
-          - 'parte_4/tema_4.2/ejemplo-2'
-          - 'parte_4/tema_4.2/ejer4/aplicacion-java-enunciado'
-          - 'parte_4/tema_4.2/ejer5/aplicacion-java-enunciado'
-          - 'parte_4/tema_4.2/ejer6'
-          - 'parte_4/tema_4.2/ejer7'
-          - 'parte_4/tema_4.2/ejer8'
-          
-          # Parte 4 - Docker Projects
-          - 'parte_4/tema_4.3/ejemplo-1/comunicacion-rabbitmq-ejem2-consumer'
-          - 'parte_4/tema_4.3/ejemplo-1/comunicacion-rabbitmq-ejem2-producer'
-          - 'parte_4/tema_4.3/ejemplo-2'
-          - 'parte_4/tema_4.3/ejemplo-3'
-          - 'parte_4/tema_4.3/ejercicio-1-enunciado'
-          - 'parte_4/tema_4.3/ejercicio-1'
-          
-          # Parte 5 - Performance Projects
-          - 'parte_5/ejem0-jmeter'
-          - 'parte_5/ejem1-mysql'
-          - 'parte_5/ejem2-cache'
-          - 'parte_5/ejem3-cache-distribuida'
-          - 'parte_5/ejem3-cache-distribuida2'
-          - 'parte_5/ejem4-haproxy'
-          - 'parte_5/ejem4b-haproxy-ssl-passthrough'
-      
-      fail-fast: false
-    
-    name: Build - ${{ matrix.project }}
-    
+
+    outputs:
+      projects: ${{ steps.find.outputs.projects }}
+      count: ${{ steps.find.outputs.count }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
+      - name: Find every pom.xml
+        id: find
+        run: |
+          set -euo pipefail
+
+          # Un proyecto = un directorio con pom.xml versionado. Usar git ls-files
+          # en vez de find deja fuera cualquier pom generado (target/, etc.).
+          projects=$(git ls-files '*pom.xml' \
+            | sed -e 's|/pom.xml$||' -e 's|^pom.xml$|.|' \
+            | sort \
+            | jq -R -s -c 'split("\n") | map(select(length > 0))')
+
+          count=$(printf '%s' "$projects" | jq 'length')
+
+          if [ "$count" -eq 0 ]; then
+            echo "No se ha encontrado ningun pom.xml" >&2
+            exit 1
+          fi
+
+          # El limite de GitHub Actions es de 256 jobs por matriz.
+          if [ "$count" -gt 256 ]; then
+            echo "Hay $count proyectos y la matriz admite 256 como maximo" >&2
+            exit 1
+          fi
+
+          echo "projects=$projects" >> "$GITHUB_OUTPUT"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+          echo "Proyectos detectados: $count" >> "$GITHUB_STEP_SUMMARY"
+          printf '%s' "$projects" | jq -r '.[]' | sed 's/^/- /' >> "$GITHUB_STEP_SUMMARY"
+
+  build:
+    name: Build - ${{ matrix.project }}
+    needs: discover
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.discover.outputs.projects) }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-      
+
       - name: Build with Maven
-        run: mvn clean package -DskipTests
+        run: mvn -B -ntp clean verify
         working-directory: ${{ matrix.project }}
+
+  result:
+    name: All projects built
+    needs: [discover, build]
+    if: always()
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check the matrix result
+        run: |
+          echo "Proyectos: ${{ needs.discover.outputs.count }}"
+          echo "Resultado de la matriz: ${{ needs.build.result }}"
+          test "${{ needs.build.result }}" = "success"
