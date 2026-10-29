@@ -4,23 +4,23 @@ on:
   workflow_dispatch:
     inputs:
       springboot_version:
-        description: 'Versión de Spring Boot (ej: 3.4.1)'
+        description: 'Versión de Spring Boot (ej: 4.0.5)'
         required: true
-        default: '3.4.1'
+        default: '4.0.5'
       java_version:
-        description: 'Versión de Java (ej: 17, 21)'
+        description: 'Versión de Java (ej: 21, 25)'
         required: true
-        default: '17'
+        default: '25'
 
 jobs:
   update-project-stack:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up JDK
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v6
         with:
           java-version: ${{ github.event.inputs.java_version }}
           distribution: 'temurin'

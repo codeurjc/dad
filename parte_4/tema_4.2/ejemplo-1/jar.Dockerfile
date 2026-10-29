@@ -1,5 +1,5 @@
 # Selecciona la imagen base
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:25-jre
 
 # Define el directorio de trabajo para el comando
 WORKDIR /usr/src/app/

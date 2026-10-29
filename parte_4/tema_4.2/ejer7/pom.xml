@@ -16,7 +16,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>21</java.version>
+		<java.version>25</java.version>
 		<start-class>es.urjc.code.daw.tablonanuncios.Application</start-class>
 	</properties>
 
