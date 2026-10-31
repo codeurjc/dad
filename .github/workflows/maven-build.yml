@@ -86,7 +86,7 @@ jobs:
 
           while read -r p; do
             echo "::group::$p"
-            if ! mvn -B -ntp -f "$p/pom.xml" \
+            if ! mvn -B -ntp -U -f "$p/pom.xml" \
                 -Dmaven.wagon.http.retryHandler.count=5 \
                 dependency:go-offline; then
               echo "::warning title=Cache warming::No se pudieron resolver las dependencias de $p"
@@ -98,6 +98,36 @@ jobs:
           # Rellenar la cache es una optimizacion, no una comprobacion: el
           # veredicto lo da la matriz. Un fallo aqui no corta el flujo.
           echo "Proyectos sin resolver: $fallos" >> "$GITHUB_STEP_SUMMARY"
+
+      # go-offline no resuelve lo que surefire pide en tiempo de test: el
+      # proveedor de JUnit Platform y sus nueve artefactos lo bajaba cada job
+      # de build por su cuenta, y uno de ellos (common-java5) es el que fallo
+      # en el run 40870887229. Ejecutar los tests de un proyecto los deja en
+      # la cache, y a partir de ahi ningun job tiene que pedirlos.
+      #
+      # Se siembra con tema_4.2/ejemplo-2 porque es el unico proyecto sin
+      # Spring ni contenedores: un test, decimas de segundo. El proveedor que
+      # deja es el mismo que necesitan los otros 85.
+      - name: Seed the test-time artifacts
+        run: |
+          set -euo pipefail
+
+          mvn -B -ntp -U -f parte_4/tema_4.2/ejemplo-2/pom.xml \
+            -Dmaven.wagon.http.retryHandler.count=5 \
+            test
+
+          # A diferencia del paso anterior, aqui si hay una expectativa
+          # concreta que comprobar, asi que un fallo corta: si la siembra deja
+          # de sembrar en silencio, volvemos a tener 86 jobs pidiendo lo mismo
+          # a Central a la vez y nadie se entera hasta que falle.
+          proveedor=$HOME/.m2/repository/org/apache/maven/surefire
+          if ! find "$proveedor" -name 'surefire-junit-platform-*.jar' | grep -q .; then
+            echo "::error title=Cache seeding::La siembra no dejo el proveedor de surefire en la cache"
+            exit 1
+          fi
+
+          echo "Artefactos de surefire en la cache:" >> "$GITHUB_STEP_SUMMARY"
+          find "$proveedor" -name '*.jar' | sed "s|$proveedor/|- |" >> "$GITHUB_STEP_SUMMARY"
 
   build:
     name: Build - ${{ matrix.project }}
@@ -124,8 +154,12 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      # -U obliga a reintentar las resoluciones que fallaron antes. Sin el,
+      # una ausencia anotada en la cache compartida se convierte en un "no
+      # existe" permanente para los 86 jobs, aunque el artefacto este en
+      # Central. Con la cache completa no cuesta ninguna peticion extra.
       - name: Build with Maven
-        run: mvn -B -ntp -Dmaven.wagon.http.retryHandler.count=3 clean verify
+        run: mvn -B -ntp -U -Dmaven.wagon.http.retryHandler.count=3 clean verify
         working-directory: ${{ matrix.project }}
 
   result:
