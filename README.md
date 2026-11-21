@@ -28,8 +28,11 @@ Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 2](https://
 
 * Tema 1: Comunicación de aplicaciones: Mensajes
 * Tema 2: Comunicación de aplicaciones: Websockets
+* Tema 3: Arquitecturas dirigidas por eventos
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 3](https://github.com/codeurjc/dad2425/tree/main/parte_3)
+
+Las transparencias, ejemplos y ejercicios del tema de arquitecturas dirigidas por eventos están en [parte_3/tema_3.3_eventos](https://github.com/codeurjc/dad/tree/main/parte_3/tema_3.3_eventos)
 
 ### Tema 4. Despliegue y actualización de aplicaciones
 

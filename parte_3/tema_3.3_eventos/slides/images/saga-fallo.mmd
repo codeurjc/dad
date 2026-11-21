@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant C as Cliente
+    participant P as Pedidos
+    participant S as Stock
+    participant G as Pagos
+    C->>P: POST /orders
+    P-->>C: 202 Accepted (PENDING)
+    P-)S: pedido.creado
+    Note over S: reserva unidades
+    S-)G: stock.reservado
+    Note over G: saldo insuficiente
+    G-)P: pago.rechazado
+    G-)S: pago.rechazado
+    Note over S: COMPENSACIÓN:<br/>libera la reserva
+    Note over P: pedido REJECTED

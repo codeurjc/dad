@@ -1,0 +1,16 @@
+sequenceDiagram
+    participant O as Pedidos
+    participant DB as BD Pedidos
+    participant R as Relay
+    participant B as RabbitMQ
+    participant F as Facturación
+    O->>DB: INSERT order + INSERT outbox<br/>(una transacción)
+    loop cada segundo
+        R->>DB: SELECT pendientes
+        R->>B: publicar (message-id)
+        R->>DB: marcar publicado
+    end
+    B->>F: OrderPlaced (id=7f3a)
+    Note over F: no procesado:<br/>factura + guardar 7f3a
+    B->>F: OrderPlaced (id=7f3a) otra vez
+    Note over F: ya procesado:<br/>se ignora

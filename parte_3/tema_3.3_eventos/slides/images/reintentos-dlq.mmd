@@ -1,0 +1,9 @@
+flowchart LR
+    Q[Cola] --> C{Consumidor}
+    C -- ack --> OK([Procesado])
+    C -- "error transitorio:<br/>reintentar" --> Q
+    C -- "error permanente /<br/>N reintentos" --> DLX[Dead letter<br/>exchange]
+    DLX --> DLQ[Cola DLQ]
+    DLQ -.-> H([Revisión<br/>manual])
+    style DLQ fill:#fdecea,stroke:#c0392b
+    style OK fill:#e8f5e9,stroke:#2e7d32

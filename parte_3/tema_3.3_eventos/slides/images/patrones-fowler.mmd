@@ -1,0 +1,10 @@
+flowchart TB
+    EDA((Dirigido<br/>por eventos))
+    EDA --> N["<b>Event notification</b><br/>'ha pasado X, id=42'<br/>el consumidor pide detalles si los necesita"]
+    EDA --> T["<b>Event-carried state transfer</b><br/>el evento lleva todos los datos<br/>el consumidor no llama al productor"]
+    EDA --> S["<b>Event sourcing</b><br/>los eventos SON el estado<br/>el estado actual se deriva de ellos"]
+    EDA --> Q["<b>CQRS</b><br/>modelos separados para<br/>escritura y lectura"]
+    style N fill:#fff3e0,stroke:#e65100
+    style T fill:#fff3e0,stroke:#e65100
+    style S fill:#e3f2fd,stroke:#1565c0
+    style Q fill:#e3f2fd,stroke:#1565c0
