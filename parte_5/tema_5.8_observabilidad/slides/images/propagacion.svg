@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+  <style>.t{font-size:16px;font-weight:bold;text-anchor:middle}.c{font-family:monospace;font-size:12.5px}.n{font-size:12.5px;fill:#555}</style>
+  <rect x="20" y="40" width="200" height="110" rx="10" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2.5"/><text x="120" y="70" class="t">tienda</text>
+  <text x="35" y="98" class="c">trace = 4bf9…4736</text><text x="35" y="120" class="c">span  = 00f0…02b7</text>
+  <rect x="740" y="40" width="240" height="110" rx="10" fill="#eafaf1" stroke="#1e8449" stroke-width="2.5"/><text x="860" y="70" class="t">inventario</text>
+  <text x="755" y="98" class="c">trace  = 4bf9…4736 (el mismo)</text><text x="755" y="120" class="c">parent = 00f0…02b7</text><text x="755" y="142" class="c">span   = 53995c3f…</text>
+  <line x1="220" y1="95" x2="736" y2="95" stroke="#333" stroke-width="2.5" marker-end="url(#a)"/>
+  <rect x="226" y="110" width="510" height="56" rx="6" fill="#fef9e7" stroke="#b7950b"/>
+  <text x="234" y="132" class="c" font-size="11.5">GET /stock/portatil HTTP/1.1</text>
+  <text x="234" y="154" class="c" font-weight="bold" font-size="10.8">traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7-01</text>
+  <g class="n"><text x="234" y="190">versión · trace-id (16 bytes) · span-id del padre (8 bytes) · flags (01 = muestreada)</text>
+  <text x="20" y="230">• Estándar <tspan font-weight="bold">W3C Trace Context</tspan>: cualquier lenguaje o producto que lo entienda continúa la traza</text>
+  <text x="20" y="252">• Lo hace la instrumentación (el RestClient.Builder de Spring Boot, el servidor HTTP...), no el programador</text>
+  <text x="20" y="274">• En mensajería (RabbitMQ, Kafka) viaja igual, en las cabeceras del mensaje</text></g>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.t{font-size:15px;font-weight:bold;text-anchor:middle}.n{font-size:12px;text-anchor:middle;fill:#555}</style>
+  <g>
+    <rect x="20" y="40" width="170" height="70" rx="10" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text x="105" y="70" class="t">tienda</text><text x="105" y="92" class="n">Spring Boot + Micrometer</text>
+    <rect x="20" y="140" width="170" height="70" rx="10" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text x="105" y="170" class="t">inventario</text><text x="105" y="192" class="n">Spring Boot + Micrometer</text>
+    <rect x="20" y="240" width="170" height="70" rx="10" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text x="105" y="270" class="t">otro servicio</text><text x="105" y="292" class="n">Go / Node / Python + SDK</text>
+  </g>
+  <rect x="330" y="110" width="220" height="130" rx="14" fill="#fef5e7" stroke="#ca6f1e" stroke-width="3"/>
+  <text x="440" y="145" class="t" fill="#ca6f1e">OpenTelemetry</text><text x="440" y="165" class="t" fill="#ca6f1e">Collector</text>
+  <text x="440" y="192" class="n">recibe · procesa (muestreo,</text><text x="440" y="208" class="n">filtrado, enriquecido) · reenvía</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="190" y1="75" x2="326" y2="140"/><line x1="190" y1="175" x2="326" y2="175"/><line x1="190" y1="275" x2="326" y2="210"/></g>
+  <text x="258" y="100" class="n" font-weight="bold">OTLP</text>
+  <g>
+    <rect x="640" y="30" width="150" height="60" rx="10" fill="#fef5e7" stroke="#ca6f1e" stroke-width="2"/><text x="715" y="57" class="t">Tempo</text><text x="715" y="77" class="n">trazas</text>
+    <rect x="640" y="145" width="150" height="60" rx="10" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text x="715" y="172" class="t">Prometheus</text><text x="715" y="192" class="n">métricas</text>
+    <rect x="640" y="260" width="150" height="60" rx="10" fill="#f4ecf7" stroke="#7d3c98" stroke-width="2"/><text x="715" y="287" class="t">Loki</text><text x="715" y="307" class="n">logs</text>
+  </g>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="550" y1="140" x2="636" y2="65"/><line x1="550" y1="175" x2="636" y2="175"/><line x1="550" y1="210" x2="636" y2="285"/></g>
+  <rect x="860" y="130" width="120" height="90" rx="10" fill="#fff" stroke="#333" stroke-width="2.5"/><text x="920" y="170" class="t">Grafana</text><text x="920" y="192" class="n">paneles, alertas,</text><text x="920" y="207" class="n">exploración</text>
+  <g stroke="#999" stroke-width="2" marker-end="url(#a)"><line x1="790" y1="60" x2="856" y2="150"/><line x1="790" y1="175" x2="856" y2="175"/><line x1="790" y1="290" x2="856" y2="200"/></g>
+  <text x="500" y="345" text-anchor="middle" font-size="13" fill="#333">grafana/otel-lgtm (ejemplos 3 y ejercicio) reúne todo esto en un contenedor para desarrollo</text>
+</svg>

@@ -48,5 +48,6 @@ Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 4](https://
 * Tema 5.5: Balanceadores de carga: múltiples servidores
 * Tema 5.6: Replicación de bases de datos
 * Tema 5.7: Otras soluciones arquitectónicas
+* Tema 5.8: Observabilidad en sistemas distribuidos ([transparencias, ejemplos y ejercicios](https://github.com/codeurjc/dad/tree/main/parte_5/tema_5.8_observabilidad))
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 5](https://github.com/codeurjc/dad2425/tree/main/parte_5)
