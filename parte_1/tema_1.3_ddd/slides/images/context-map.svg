@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  </defs>
+  <style>
+    .bc{stroke-width:3;rx:40}
+    .t{font-size:22px;font-weight:bold;text-anchor:middle}
+    .s{font-size:14px;text-anchor:middle;fill:#444}
+    .tag{font-size:13px;font-weight:bold;fill:#fff;text-anchor:middle}
+    .rel{font-size:15px;fill:#222;text-anchor:middle;font-style:italic}
+  </style>
+  <!-- Catálogo -->
+  <rect x="40" y="40" width="230" height="120" class="bc" fill="#eaf4fb" stroke="#1f4e79"/>
+  <text x="155" y="95" class="t" fill="#1f4e79">Catálogo</text><text x="155" y="120" class="s">supporting</text>
+  <!-- Ventas -->
+  <rect x="40" y="300" width="230" height="130" class="bc" fill="#fdf2e9" stroke="#ca6f1e"/>
+  <text x="155" y="360" class="t" fill="#ca6f1e">Ventas</text><text x="155" y="385" class="s">core</text>
+  <rect x="210" y="300" width="60" height="26" rx="6" fill="#ca6f1e"/><text x="240" y="318" class="tag">U</text>
+  <rect x="200" y="404" width="70" height="26" rx="6" fill="#555"/><text x="235" y="422" class="tag">OHS/PL</text>
+  <!-- Logística -->
+  <rect x="440" y="300" width="230" height="130" class="bc" fill="#eafaf1" stroke="#1e8449"/>
+  <text x="555" y="360" class="t" fill="#1e8449">Logística</text><text x="555" y="385" class="s">supporting</text>
+  <rect x="440" y="300" width="50" height="26" rx="6" fill="#1e8449"/><text x="465" y="318" class="tag">D</text>
+  <rect x="610" y="300" width="60" height="26" rx="6" fill="#922b21"/><text x="640" y="318" class="tag">ACL</text>
+  <!-- PaqueExpress -->
+  <rect x="760" y="300" width="210" height="130" rx="10" fill="#f2f3f4" stroke="#7f8c8d" stroke-width="3" stroke-dasharray="8 5"/>
+  <text x="865" y="358" class="t" fill="#566573">PaqueExpress</text><text x="865" y="383" class="s">transportista (legado)</text>
+  <!-- Facturación -->
+  <rect x="440" y="40" width="230" height="120" class="bc" fill="#f4ecf7" stroke="#7d3c98"/>
+  <text x="555" y="95" class="t" fill="#7d3c98">Facturación</text><text x="555" y="120" class="s">generic</text>
+  <rect x="440" y="40" width="50" height="26" rx="6" fill="#7d3c98"/><text x="465" y="58" class="tag">CF</text>
+  <!-- Pasarela -->
+  <rect x="760" y="40" width="210" height="120" rx="10" fill="#f2f3f4" stroke="#7f8c8d" stroke-width="3" stroke-dasharray="8 5"/>
+  <text x="865" y="95" class="t" fill="#566573">Pasarela pago</text><text x="865" y="120" class="s">servicio externo</text>
+
+  <!-- relaciones -->
+  <line x1="155" y1="160" x2="155" y2="300" stroke="#333" stroke-width="3"/>
+  <text x="250" y="225" class="rel">Shared Kernel</text><text x="250" y="245" class="s">(comparten el código de ISBN)</text>
+  <line x1="270" y1="365" x2="436" y2="365" stroke="#333" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="355" y="352" class="rel">Customer/</text><text x="355" y="392" class="rel">Supplier</text>
+  <line x1="670" y1="365" x2="756" y2="365" stroke="#333" stroke-width="3" marker-end="url(#ar)"/>
+  <line x1="270" y1="330" x2="440" y2="150" stroke="#333" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="400" y="255" class="rel">eventos</text>
+  <line x1="756" y1="100" x2="674" y2="100" stroke="#333" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="715" y="88" class="rel">Conformist</text>
+  <text x="500" y="470" class="s">U = upstream · D = downstream · OHS/PL = Open Host Service / Published Language · ACL = Anti-Corruption Layer · CF = Conformist</text>
+</svg>

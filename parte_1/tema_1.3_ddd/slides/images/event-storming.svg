@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <filter id="sh" x="-10%" y="-10%" width="130%" height="130%"><feDropShadow dx="2" dy="3" stdDeviation="2" flood-opacity="0.25"/></filter>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#777"/></marker>
+  </defs>
+  <style>.n{filter:url(#sh)} .l{font-size:14px;text-anchor:middle} .k{font-size:12px}</style>
+  <!-- línea temporal -->
+  <line x1="20" y1="30" x2="980" y2="30" stroke="#777" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="25" y="22" font-size="13" fill="#777">tiempo →</text>
+  <!-- flujo 1 -->
+  <rect class="n" x="20"  y="70" width="70" height="55" fill="#fff59d"/><text class="l" x="55" y="102">Cliente</text>
+  <rect class="n" x="100" y="60" width="120" height="100" fill="#81d4fa"/><text class="l" x="160" y="105">Confirmar</text><text class="l" x="160" y="123">pedido</text>
+  <rect class="n" x="230" y="60" width="120" height="100" fill="#fff9c4"/><text class="l" x="290" y="114">Pedido</text>
+  <rect class="n" x="360" y="60" width="120" height="100" fill="#ffb74d"/><text class="l" x="420" y="105">Pedido</text><text class="l" x="420" y="123">confirmado</text>
+  <rect class="n" x="490" y="60" width="140" height="100" fill="#ce93d8"/><text class="l" x="560" y="96">Cuando pedido</text><text class="l" x="560" y="114">confirmado →</text><text class="l" x="560" y="132">reservar envío</text>
+  <rect class="n" x="640" y="60" width="110" height="100" fill="#81d4fa"/><text class="l" x="695" y="105">Reservar</text><text class="l" x="695" y="123">envío</text>
+  <rect class="n" x="760" y="60" width="100" height="100" fill="#fff9c4"/><text class="l" x="810" y="114">Envío</text>
+  <rect class="n" x="870" y="60" width="110" height="100" fill="#ffb74d"/><text class="l" x="925" y="105">Envío</text><text class="l" x="925" y="123">reservado</text>
+  <rect class="n" x="760" y="175" width="100" height="70" fill="#f48fb1"/><text class="l" x="810" y="207">Paque</text><text class="l" x="810" y="225">Express</text>
+  <!-- flujo 2 -->
+  <rect class="n" x="20"  y="270" width="70" height="55" fill="#fff59d"/><text class="l" x="55" y="302">Cliente</text>
+  <rect class="n" x="100" y="260" width="120" height="100" fill="#a5d6a7"/><text class="l" x="160" y="305">Resumen</text><text class="l" x="160" y="323">del pedido</text>
+  <rect class="n" x="230" y="260" width="120" height="100" fill="#81d4fa"/><text class="l" x="290" y="305">Cancelar</text><text class="l" x="290" y="323">pedido</text>
+  <rect class="n" x="360" y="260" width="120" height="100" fill="#fff9c4"/><text class="l" x="420" y="314">Pedido</text>
+  <rect class="n" x="490" y="260" width="120" height="100" fill="#ffb74d"/><text class="l" x="550" y="305">Pedido</text><text class="l" x="550" y="323">cancelado</text>
+  <rect class="n" x="620" y="260" width="60" height="60" fill="#ef5350" transform="rotate(8 650 290)"/><text x="650" y="296" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle" transform="rotate(8 650 290)">?</text>
+  <text x="700" y="285" font-size="13" fill="#c62828">¿Y si el envío ya salió?</text><text x="700" y="303" font-size="13" fill="#c62828">(hotspot: preguntar a negocio)</text>
+  <!-- leyenda -->
+  <g class="k">
+    <rect x="20" y="385" width="18" height="18" fill="#ffb74d"/><text x="44" y="399">Evento</text>
+    <rect x="110" y="385" width="18" height="18" fill="#81d4fa"/><text x="134" y="399">Comando</text>
+    <rect x="215" y="385" width="18" height="18" fill="#fff9c4" stroke="#ccc"/><text x="239" y="399">Agregado</text>
+    <rect x="320" y="385" width="18" height="18" fill="#fff59d"/><text x="344" y="399">Actor</text>
+    <rect x="395" y="385" width="18" height="18" fill="#ce93d8"/><text x="419" y="399">Política</text>
+    <rect x="485" y="385" width="18" height="18" fill="#a5d6a7"/><text x="509" y="399">Modelo de lectura</text>
+    <rect x="630" y="385" width="18" height="18" fill="#f48fb1"/><text x="654" y="399">Sistema externo</text>
+    <rect x="770" y="385" width="18" height="18" fill="#ef5350"/><text x="794" y="399">Hotspot (duda)</text>
+  </g>
+</svg>

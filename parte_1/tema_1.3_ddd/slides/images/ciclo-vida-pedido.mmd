@@ -1,0 +1,9 @@
+stateDiagram-v2
+    direction LR
+    [*] --> DRAFT: Order.create()
+    DRAFT --> DRAFT: addProduct() / removeProduct()
+    DRAFT --> PLACED: place()<br/>[al menos una línea]
+    DRAFT --> CANCELLED: cancel()
+    PLACED --> CANCELLED: cancel()
+    PLACED --> [*]
+    CANCELLED --> [*]

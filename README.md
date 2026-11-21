@@ -10,8 +10,9 @@ El contenido del repositorio se distribuye bajo licencia [Apache-2.0](https://gi
 
 * Tema 1.1: Introducción a las aplicaciones distribuidas
 * Tema 1.2: Patrones arquitectónicos de aplicaciones distribuidas
+* Tema 1.3: Domain-Driven Design
 
-Este tema no dispone de ejemplos o ejercicios en código.
+Las transparencias, ejemplos y ejercicios del tema 1.3 pueden encontrarse en [Parte 1](https://github.com/codeurjc/dad/tree/main/parte_1/tema_1.3_ddd)
 
 ### Tema 2. Desarrollo de aplicaciones y servicios web
 
