@@ -1,0 +1,16 @@
+# Pedidos llama a un catálogo al que podemos inyectarle fallos.
+#   docker compose up --build
+#   curl -X POST localhost:8082/orders -H 'Content-Type: application/json' -d '{"productId":1,"quantity":1}'
+#   curl -X PUT localhost:8081/chaos -H 'Content-Type: application/json' -d '{"latencyMs":3000,"failureRate":0}'
+#   curl localhost:8082/resilience
+services:
+  catalogo:
+    build: ./catalogo
+    ports:
+      - "8081:8081"
+  pedidos:
+    build: ./pedidos
+    ports:
+      - "8082:8082"
+    environment:
+      - CATALOGO_URL=http://catalogo:8081

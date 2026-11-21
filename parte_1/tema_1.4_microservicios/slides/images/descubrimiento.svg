@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.h{font-size:18px;font-weight:bold;text-anchor:middle}.t{font-size:14px;font-weight:bold;text-anchor:middle}.n{font-size:12px;fill:#444}</style>
+  <text x="240" y="28" class="h" fill="#1f4e79">Descubrimiento en el cliente</text>
+  <rect x="30" y="60" width="130" height="50" rx="8" fill="#fff" stroke="#333" stroke-width="2"/><text x="95" y="90" class="t">Pedidos</text>
+  <path d="M290,55 a70,14 0 0,0 140,0 a70,14 0 0,0 -140,0 v55 a70,14 0 0,0 140,0 v-55" fill="#f4ecf7" stroke="#7d3c98" stroke-width="2"/><text x="360" y="95" class="t">Registro</text><text x="360" y="113" class="n" text-anchor="middle">Eureka, Consul</text>
+  <rect x="300" y="250" width="140" height="50" rx="8" fill="#eafaf1" stroke="#1e8449" stroke-width="2"/><text x="370" y="272" class="t">Catálogo</text><text x="370" y="290" class="n" text-anchor="middle">10.0.0.6</text>
+  <rect x="140" y="250" width="140" height="50" rx="8" fill="#eafaf1" stroke="#1e8449" stroke-width="2"/><text x="210" y="272" class="t">Catálogo</text><text x="210" y="290" class="n" text-anchor="middle">10.0.0.5</text>
+  <g stroke="#555" stroke-width="2" fill="none" marker-end="url(#a)"><line x1="160" y1="75" x2="286" y2="70"/><line x1="286" y1="100" x2="164" y2="100"/><line x1="110" y1="110" x2="190" y2="246"/></g>
+  <g stroke="#7d3c98" stroke-width="1.5" fill="none" stroke-dasharray="5 4" marker-end="url(#a)"><line x1="380" y1="246" x2="370" y2="130"/><line x1="240" y1="246" x2="330" y2="130"/></g>
+  <text x="170" y="60" class="n">1. ¿dónde está catálogo?</text><text x="170" y="125" class="n">2. en .5 y .6</text><text x="40" y="190" class="n">3. elige una instancia</text><text x="40" y="206" class="n">(balanceo en el cliente)</text>
+  <text x="390" y="200" class="n" fill="#7d3c98">se registran al arrancar</text><text x="390" y="216" class="n" fill="#7d3c98">y envían latidos</text>
+  <text x="240" y="340" class="n" text-anchor="middle">Spring Cloud Netflix Eureka + Spring Cloud LoadBalancer</text>
+  <line x1="530" y1="40" x2="530" y2="340" stroke="#ccc" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="770" y="28" class="h" fill="#ca6f1e">Descubrimiento en el servidor</text>
+  <rect x="560" y="60" width="130" height="50" rx="8" fill="#fff" stroke="#333" stroke-width="2"/><text x="625" y="90" class="t">Pedidos</text>
+  <rect x="740" y="140" width="210" height="60" rx="10" fill="#fef5e7" stroke="#ca6f1e" stroke-width="2.5"/><text x="845" y="166" class="t">DNS + balanceador</text><text x="845" y="186" class="n" text-anchor="middle">Service de Kubernetes, Compose</text>
+  <rect x="690" y="250" width="140" height="50" rx="8" fill="#eafaf1" stroke="#1e8449" stroke-width="2"/><text x="760" y="272" class="t">Catálogo</text><text x="760" y="290" class="n" text-anchor="middle">10.0.0.5</text>
+  <rect x="850" y="250" width="140" height="50" rx="8" fill="#eafaf1" stroke="#1e8449" stroke-width="2"/><text x="920" y="272" class="t">Catálogo</text><text x="920" y="290" class="n" text-anchor="middle">10.0.0.6</text>
+  <g stroke="#555" stroke-width="2" fill="none" marker-end="url(#a)"><line x1="690" y1="95" x2="770" y2="137"/><line x1="820" y1="200" x2="780" y2="246"/><line x1="870" y1="200" x2="905" y2="246"/></g>
+  <text x="720" y="125" class="n">http://catalogo</text>
+  <text x="770" y="340" class="n" text-anchor="middle">el cliente no sabe cuántas instancias hay</text>
+</svg>
