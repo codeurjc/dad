@@ -1,0 +1,6 @@
+flowchart LR
+    M["1. Medir<br/>CPU, peticiones/s,<br/>latencia, cola"] --> D["2. Decidir<br/>¿cuántas réplicas?<br/>(umbral, tolerancia,<br/>ventana)"]
+    D --> E["3. Actuar<br/>crear o destruir<br/>instancias"]
+    E --> R["4. Registrar<br/>readiness OK →<br/>el balanceador<br/>las descubre"]
+    R --> M
+    style D fill:#e3f2fd,stroke:#1565c0

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 470" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  </defs>
+  <style>.t{font-size:15px;font-weight:bold;text-anchor:middle}.h{font-size:19px;font-weight:bold}.n{font-size:13px;fill:#444}.lock{font-size:18px}</style>
+  <!-- leyenda -->
+  <line x1="600" y1="20" x2="650" y2="20" stroke="#1e8449" stroke-width="6"/><text x="658" y="25" class="n">cifrado (TLS)</text>
+  <line x1="770" y1="20" x2="820" y2="20" stroke="#c0392b" stroke-width="6" stroke-dasharray="8 6"/><text x="828" y="25" class="n">en claro (HTTP)</text>
+  <!-- filas -->
+  <g id="fila">
+  </g>
+  <!-- 1 passthrough -->
+  <text x="20" y="75" class="h" fill="#1f4e79">1. SSL passthrough</text>
+  <rect x="20" y="90" width="110" height="50" rx="8" fill="#fff" stroke="#333" stroke-width="2"/><text class="t" x="75" y="120">Cliente</text>
+  <rect x="380" y="90" width="150" height="50" rx="8" fill="#fdf2e9" stroke="#ca6f1e" stroke-width="2"/><text class="t" x="455" y="113">Balanceador</text><text x="455" y="131" font-size="12" text-anchor="middle">capa 4 (TCP)</text>
+  <rect x="780" y="90" width="150" height="50" rx="8" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text class="t" x="855" y="113">Instancia</text><text x="855" y="131" font-size="12" text-anchor="middle">🔑 certificado</text>
+  <line x1="130" y1="115" x2="376" y2="115" stroke="#1e8449" stroke-width="6"/>
+  <line x1="530" y1="115" x2="776" y2="115" stroke="#1e8449" stroke-width="6"/>
+  <text x="250" y="160" class="n" text-anchor="middle">mismo túnel TLS de extremo a extremo</text>
+  <text x="655" y="160" class="n" text-anchor="middle">el balanceador solo ve el SNI</text>
+  <!-- 2 terminacion -->
+  <text x="20" y="215" class="h" fill="#1f4e79">2. Terminación SSL (offloading)</text>
+  <rect x="20" y="230" width="110" height="50" rx="8" fill="#fff" stroke="#333" stroke-width="2"/><text class="t" x="75" y="260">Cliente</text>
+  <rect x="380" y="230" width="150" height="50" rx="8" fill="#fdf2e9" stroke="#ca6f1e" stroke-width="2"/><text class="t" x="455" y="253">Balanceador</text><text x="455" y="271" font-size="12" text-anchor="middle">🔑 capa 7 (HTTP)</text>
+  <rect x="780" y="230" width="150" height="50" rx="8" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text class="t" x="855" y="260">Instancia</text>
+  <line x1="130" y1="255" x2="376" y2="255" stroke="#1e8449" stroke-width="6"/>
+  <line x1="530" y1="255" x2="776" y2="255" stroke="#c0392b" stroke-width="6" stroke-dasharray="8 6"/>
+  <text x="250" y="300" class="n" text-anchor="middle">TLS hasta el balanceador</text>
+  <text x="655" y="300" class="n" text-anchor="middle">HTTP + X-Forwarded-For/Proto</text>
+  <!-- 3 recifrado -->
+  <text x="20" y="355" class="h" fill="#1f4e79">3. Re-cifrado (SSL bridging)</text>
+  <rect x="20" y="370" width="110" height="50" rx="8" fill="#fff" stroke="#333" stroke-width="2"/><text class="t" x="75" y="400">Cliente</text>
+  <rect x="380" y="370" width="150" height="50" rx="8" fill="#fdf2e9" stroke="#ca6f1e" stroke-width="2"/><text class="t" x="455" y="393">Balanceador</text><text x="455" y="411" font-size="12" text-anchor="middle">🔑 capa 7 (HTTP)</text>
+  <rect x="780" y="370" width="150" height="50" rx="8" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text class="t" x="855" y="393">Instancia</text><text x="855" y="411" font-size="12" text-anchor="middle">🔑 certificado</text>
+  <line x1="130" y1="395" x2="376" y2="395" stroke="#1e8449" stroke-width="6"/>
+  <line x1="530" y1="395" x2="776" y2="395" stroke="#1e8449" stroke-width="6"/>
+  <text x="250" y="440" class="n" text-anchor="middle">TLS (certificado público)</text>
+  <text x="655" y="440" class="n" text-anchor="middle">otro TLS (certificado interno)</text>
+</svg>

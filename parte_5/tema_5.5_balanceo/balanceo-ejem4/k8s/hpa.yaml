@@ -1,0 +1,33 @@
+# HorizontalPodAutoscaler: ajusta el número de réplicas del Deployment para
+# mantener la CPU media al 60 % de lo solicitado.
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: work
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: work
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Percent
+          value: 100          # como mucho duplicar...
+          periodSeconds: 15   # ...cada 15 segundos
+    scaleDown:
+      stabilizationWindowSeconds: 120   # bajar solo si lleva 2 minutos sobrando
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: 30

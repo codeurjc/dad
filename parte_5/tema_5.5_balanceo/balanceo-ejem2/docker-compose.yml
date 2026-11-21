@@ -1,0 +1,25 @@
+# Round robin SIN sticky sessions: la sesión está en Redis.
+#   docker compose up --build
+#   curl -c c.txt -b c.txt localhost:8080   (repite varias veces: cambia la instancia, el contador sigue)
+services:
+  redis:
+    image: redis:7-alpine
+  web:
+    build: .
+    expose:
+      - "8080"
+    environment:
+      - SPRING_DATA_REDIS_HOST=redis
+    deploy:
+      replicas: 3
+    depends_on:
+      - redis
+  lb:
+    image: haproxy:3.1
+    ports:
+      - "8080:80"
+      - "8404:8404"
+    volumes:
+      - "./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro"
+    depends_on:
+      - web

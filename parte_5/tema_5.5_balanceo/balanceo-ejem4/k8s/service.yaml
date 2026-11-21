@@ -1,0 +1,13 @@
+# El Service es el balanceador interno de Kubernetes: reparte las conexiones
+# entre los pods "ready" con la etiqueta app=work, sean cuantos sean.
+apiVersion: v1
+kind: Service
+metadata:
+  name: work
+spec:
+  selector:
+    app: work
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: ClusterIP

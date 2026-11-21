@@ -50,3 +50,5 @@ Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 4](https://
 * Tema 5.7: Otras soluciones arquitectónicas
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 5](https://github.com/codeurjc/dad2425/tree/main/parte_5)
+
+Las transparencias, ejemplos y ejercicios ampliados del tema 5.5 (balanceo de carga, *sticky sessions*, *SSL passthrough* y elasticidad) están en [parte_5/tema_5.5_balanceo](https://github.com/codeurjc/dad/tree/main/parte_5/tema_5.5_balanceo)
