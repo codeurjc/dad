@@ -1,0 +1,46 @@
+{
+  "realm": "dad",
+  "enabled": true,
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      { "name": "user", "description": "Usuario de la tienda" },
+      { "name": "admin", "description": "Administrador de la tienda" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "tienda-web",
+      "name": "Frontend de la tienda",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [ "http://localhost:*" ],
+      "webOrigins": [ "+" ],
+      "attributes": { "pkce.code.challenge.method": "S256" }
+    }
+  ],
+  "users": [
+    {
+      "username": "ana",
+      "enabled": true,
+      "email": "ana@example.com",
+      "emailVerified": true,
+      "firstName": "Ana",
+      "lastName": "García",
+      "credentials": [ { "type": "password", "value": "ana", "temporary": false } ],
+      "realmRoles": [ "user" ]
+    },
+    {
+      "username": "admin",
+      "enabled": true,
+      "email": "admin@example.com",
+      "emailVerified": true,
+      "firstName": "Admin",
+      "lastName": "Tienda",
+      "credentials": [ { "type": "password", "value": "admin", "temporary": false } ],
+      "realmRoles": [ "user", "admin" ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+# Comunicación entre servicios con OAuth2 client credentials
+#   docker compose up --build
+#   curl -i -X POST localhost:8080/api/pedidos -H 'Content-Type: application/json' -d '{"producto":"teclado","unidades":2}'
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_HOSTNAME: http://localhost:8180
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+    ports:
+      - "8180:8080"
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import:ro
+
+  inventario:
+    build: ./inventario
+    # Sin "ports": solo es accesible desde la red interna
+    environment:
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: http://keycloak:8080/realms/dad/protocol/openid-connect/certs
+    depends_on:
+      - keycloak
+
+  pedidos:
+    build: ./pedidos
+    ports:
+      - "8080:8080"
+    environment:
+      INVENTARIO_URL: http://inventario:8081
+      SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_KEYCLOAK_TOKEN_URI: http://keycloak:8080/realms/dad/protocol/openid-connect/token
+      PEDIDOS_CLIENT_SECRET: pedidos-secret
+    depends_on:
+      - inventario

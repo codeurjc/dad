@@ -1,0 +1,93 @@
+{
+  "realm": "dad",
+  "enabled": true,
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      {
+        "name": "user",
+        "description": "Cliente"
+      },
+      {
+        "name": "soporte",
+        "description": "Atención al cliente: ve todos los pedidos"
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "pedidos-web",
+      "name": "Frontend de pedidos",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "redirectUris": [
+        "http://localhost:*"
+      ],
+      "webOrigins": [
+        "+"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      }
+    }
+  ],
+  "users": [
+    {
+      "username": "ana",
+      "enabled": true,
+      "email": "ana@example.com",
+      "emailVerified": true,
+      "firstName": "Ana",
+      "lastName": "DAD",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "ana",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "user"
+      ]
+    },
+    {
+      "username": "luis",
+      "enabled": true,
+      "email": "luis@example.com",
+      "emailVerified": true,
+      "firstName": "Luis",
+      "lastName": "DAD",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "luis",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "user"
+      ]
+    },
+    {
+      "username": "soporte",
+      "enabled": true,
+      "email": "soporte@example.com",
+      "emailVerified": true,
+      "firstName": "Soporte",
+      "lastName": "DAD",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "soporte",
+          "temporary": false
+        }
+      ],
+      "realmRoles": [
+        "user",
+        "soporte"
+      ]
+    }
+  ]
+}

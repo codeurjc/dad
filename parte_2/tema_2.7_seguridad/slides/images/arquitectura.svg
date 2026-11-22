@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.b{font-size:15px;font-weight:bold;text-anchor:middle}.c{font-size:13px;text-anchor:middle;fill:#444}.l{font-size:13px;fill:#1e8449;font-weight:bold}</style>
+  <rect x="300" y="15" width="680" height="390" rx="12" fill="#fbfcfc" stroke="#aaa" stroke-dasharray="6,5"/>
+  <text x="970" y="38" text-anchor="end" font-size="14" fill="#777">red interna (que NO es de confianza: zero trust)</text>
+  <rect x="20" y="150" width="120" height="60" rx="8" fill="#eee" stroke="#555"/><text x="80" y="177" class="b">Cliente</text><text x="80" y="196" class="c">web / móvil</text>
+  <rect x="330" y="140" width="150" height="80" rx="8" fill="#d6eaf8" stroke="#1f4e79" stroke-width="2"/><text x="405" y="170" class="b">API Gateway</text><text x="405" y="190" class="c">TLS, rate limiting,</text><text x="405" y="206" class="c">valida el token</text>
+  <rect x="610" y="70" width="150" height="60" rx="8" fill="#e8daef" stroke="#7d3c98" stroke-width="2"/><text x="685" y="97" class="b">pedidos</text><text x="685" y="115" class="c">valida token + roles</text>
+  <rect x="610" y="230" width="150" height="60" rx="8" fill="#e8daef" stroke="#7d3c98" stroke-width="2"/><text x="685" y="257" class="b">catálogo</text><text x="685" y="275" class="c">valida token + roles</text>
+  <rect x="830" y="70" width="130" height="60" rx="8" fill="#e8daef" stroke="#7d3c98" stroke-width="2"/><text x="895" y="97" class="b">inventario</text><text x="895" y="115" class="c">rol de servicio</text>
+  <rect x="610" y="335" width="150" height="55" rx="8" fill="#fdebd0" stroke="#ca6f1e" stroke-width="2"/><text x="685" y="360" class="b">Keycloak</text><text x="685" y="378" class="c">servidor de autorización</text>
+  <rect x="830" y="230" width="130" height="60" rx="8" fill="#eee" stroke="#555"/><text x="895" y="257" class="b">Vault</text><text x="895" y="275" class="c">secretos</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)">
+    <line x1="140" y1="180" x2="326" y2="180"/>
+    <line x1="480" y1="165" x2="606" y2="105"/>
+    <line x1="480" y1="195" x2="606" y2="255"/>
+    <line x1="760" y1="92" x2="826" y2="92"/>
+  </g>
+  <g stroke="#ca6f1e" stroke-width="1.5" stroke-dasharray="5,4" marker-end="url(#a)">
+    <line x1="80" y1="210" x2="606" y2="360"/>
+    <polyline fill="none" points="760,118 795,118 795,362 764,362"/>
+  </g>
+  <text x="233" y="170" class="c">HTTPS + token</text>
+  <text x="300" y="300" class="c" fill="#ca6f1e">login (code + PKCE)</text>
+  <text x="802" y="205" font-size="13" fill="#ca6f1e">client</text><text x="802" y="221" font-size="13" fill="#ca6f1e">credentials</text>
+  <text x="520" y="125" class="l">mTLS</text><text x="520" y="250" class="l">mTLS</text><text x="775" y="84" class="l">mTLS</text>
+</svg>

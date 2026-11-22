@@ -21,6 +21,7 @@ Este tema no dispone de ejemplos o ejercicios en código.
 * Tema 2.4: Introducción a las Bases de datos
 * Tema 2.5: Bases de datos SQL en Spring
 * Tema 2.6: Construcción y despliegue
+* Tema 2.7: Seguridad en aplicaciones distribuidas ([transparencias, ejemplos y ejercicios](https://github.com/codeurjc/dad/tree/main/parte_2/tema_2.7_seguridad))
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 2](https://github.com/codeurjc/dad2425/tree/main/parte_2)
 
