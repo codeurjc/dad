@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: calculo
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: calculo.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: calculo
+                port:
+                  number: 80

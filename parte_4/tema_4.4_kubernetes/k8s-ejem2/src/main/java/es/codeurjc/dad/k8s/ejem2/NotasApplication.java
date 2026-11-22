@@ -1,0 +1,12 @@
+package es.codeurjc.dad.k8s.ejem2;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class NotasApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(NotasApplication.class, args);
+	}
+}

@@ -36,6 +36,7 @@ Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 3](https://
 * Tema 4.1: Introducción
 * Tema 4.2: Docker
 * Tema 4.2.1: Docker Compose
+* Tema 4.4: Kubernetes ([transparencias, ejemplos y ejercicios](https://github.com/codeurjc/dad/tree/main/parte_4/tema_4.4_kubernetes))
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 4](https://github.com/codeurjc/dad2425/tree/main/parte_4)
 

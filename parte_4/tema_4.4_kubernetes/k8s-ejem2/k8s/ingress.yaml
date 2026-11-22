@@ -1,0 +1,18 @@
+# Entrada HTTP al clúster: el controlador de Ingress (NGINX, Traefik...) enruta por host y ruta
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: notas
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: notas.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: notas
+                port:
+                  number: 80

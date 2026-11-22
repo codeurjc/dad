@@ -1,0 +1,8 @@
+flowchart LR
+    A[git push] --> B[Tests<br/>mvn verify]
+    B --> C[Imagen<br/>docker build]
+    C --> D[(Registro<br/>ghcr.io/...:sha)]
+    D --> E[kubectl apply -k<br/>overlays/prod]
+    E --> F{rollout status}
+    F -->|OK| G[Nueva versión]
+    F -->|falla| H[rollout undo]

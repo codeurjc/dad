@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notas
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notas
+  template:
+    metadata:
+      labels:
+        app: notas
+    spec:
+      containers:
+        - name: notas
+          image: codeurjc/k8s-ejem2:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            # "mysql" es el nombre del Service: el DNS del clúster lo resuelve
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql:3306/notas
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-credenciales
+                  key: MYSQL_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-credenciales
+                  key: MYSQL_PASSWORD
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              memory: 512Mi
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 2
+            failureThreshold: 60
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: notas
+spec:
+  selector:
+    app: notas
+  ports:
+    - port: 80
+      targetPort: 8080

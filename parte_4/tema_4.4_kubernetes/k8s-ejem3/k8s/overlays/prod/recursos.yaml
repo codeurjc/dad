@@ -1,0 +1,16 @@
+# Parche estratégico: solo se escribe lo que cambia respecto a la base
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculo
+spec:
+  template:
+    spec:
+      containers:
+        - name: calculo
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              memory: 1Gi
