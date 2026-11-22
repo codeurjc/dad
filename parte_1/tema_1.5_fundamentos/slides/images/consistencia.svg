@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" font-family="Helvetica, Arial, sans-serif">
+  <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#1f4e79"/><stop offset="1" stop-color="#ca6f1e"/></linearGradient>
+  <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.t{font-size:15px;font-weight:bold;text-anchor:middle}.n{font-size:12.5px;text-anchor:middle}</style>
+  <rect x="40" y="40" width="920" height="16" rx="8" fill="url(#g)"/>
+  <text x="40" y="30" font-size="14" fill="#1f4e79" font-weight="bold">más fuerte: más fácil de programar, más lento, menos disponible</text>
+  <text x="960" y="80" font-size="14" fill="#ca6f1e" font-weight="bold" text-anchor="end">más débil: más rápido y disponible, más difícil de programar</text>
+  <g>
+    <rect x="40" y="110" width="200" height="200" rx="12" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/>
+    <text x="140" y="138" class="t">Linealizable</text>
+    <text x="140" y="165" class="n">Como si hubiera una sola copia</text><text x="140" y="183" class="n">y cada operación ocurriera en</text><text x="140" y="201" class="n">un instante entre su inicio y fin</text>
+    <text x="140" y="235" class="n" font-style="italic">"Si ya se ha confirmado,</text><text x="140" y="253" class="n" font-style="italic">todos lo ven"</text>
+    <text x="140" y="290" class="n" fill="#555">etcd, ZooKeeper, Spanner</text>
+    <rect x="270" y="110" width="200" height="200" rx="12" fill="#eaf2f8" stroke="#2e86c1" stroke-width="2"/>
+    <text x="370" y="138" class="t">Secuencial</text>
+    <text x="370" y="165" class="n">Todos ven las operaciones</text><text x="370" y="183" class="n">en el MISMO orden, que respeta</text><text x="370" y="201" class="n">el orden de cada cliente</text>
+    <text x="370" y="235" class="n" font-style="italic">"Mismo orden para todos,</text><text x="370" y="253" class="n" font-style="italic">aunque vaya con retraso"</text>
+    <rect x="500" y="110" width="200" height="200" rx="12" fill="#fef9e7" stroke="#b7950b" stroke-width="2"/>
+    <text x="600" y="138" class="t">Causal</text>
+    <text x="600" y="165" class="n">Si a pudo influir en b, todos</text><text x="600" y="183" class="n">ven a antes que b. Lo concurrente,</text><text x="600" y="201" class="n">en cualquier orden</text>
+    <text x="600" y="235" class="n" font-style="italic">"Nadie ve la respuesta</text><text x="600" y="253" class="n" font-style="italic">antes que la pregunta"</text>
+    <text x="600" y="290" class="n" fill="#555">ejercicio del tema</text>
+    <rect x="730" y="110" width="230" height="200" rx="12" fill="#fef5e7" stroke="#ca6f1e" stroke-width="2"/>
+    <text x="845" y="138" class="t">Eventual</text>
+    <text x="845" y="165" class="n">Si dejan de llegar escrituras,</text><text x="845" y="183" class="n">al final todas las réplicas</text><text x="845" y="201" class="n">convergen al mismo valor</text>
+    <text x="845" y="235" class="n" font-style="italic">"Tarde o temprano"</text>
+    <text x="845" y="290" class="n" fill="#555">DNS, Cassandra (W=R=1), cachés</text>
+  </g>
+  <text x="500" y="345" font-size="13" text-anchor="middle" fill="#333">Garantías de sesión, útiles con consistencia eventual: leer lo que uno mismo escribió (read-your-writes), lecturas monótonas</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker></defs>
+  <style>.t{font-size:15px;font-weight:bold;text-anchor:middle}.n{font-size:13px;text-anchor:middle}.c{font-family:monospace;font-size:13px;text-anchor:middle}</style>
+  <!-- escenario -->
+  <rect x="60" y="40" width="160" height="80" rx="10" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2.5"/><text x="140" y="70" class="t">Réplica 1</text><text x="140" y="95" class="c">saldo = 40</text>
+  <rect x="380" y="40" width="160" height="80" rx="10" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2.5"/><text x="460" y="70" class="t">Réplica 2</text><text x="460" y="95" class="c">saldo = 100</text>
+  <line x1="220" y1="80" x2="380" y2="80" stroke="#999" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="300" y="70" font-size="28" text-anchor="middle" fill="#c0392b">✂</text><text x="300" y="108" class="n" fill="#c0392b">partición de red</text>
+  <rect x="60" y="180" width="160" height="50" rx="10" fill="#fff" stroke="#333" stroke-width="2"/><text x="140" y="210" class="t">Cliente 1</text>
+  <rect x="380" y="180" width="160" height="50" rx="10" fill="#fff" stroke="#333" stroke-width="2"/><text x="460" y="210" class="t">Cliente 2</text>
+  <line x1="140" y1="180" x2="140" y2="124" stroke="#333" stroke-width="2" marker-end="url(#a)"/><text x="80" y="155" class="c" text-anchor="start">saldo=40</text>
+  <line x1="460" y1="180" x2="460" y2="124" stroke="#333" stroke-width="2" marker-end="url(#a)"/><text x="470" y="155" class="c" text-anchor="start">¿saldo?</text>
+  <text x="300" y="280" class="t" font-size="17">¿Qué responde la réplica 2?</text>
+  <!-- opciones -->
+  <rect x="600" y="30" width="380" height="155" rx="12" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/>
+  <text x="790" y="58" class="t" fill="#1f4e79">Elegir CONSISTENCIA (CP)</text>
+  <text x="615" y="85" font-size="13">Responde error o espera: no puede saber</text><text x="615" y="103" font-size="13">si su dato es el último.</text>
+  <text x="615" y="130" font-size="13">✔ Nadie lee un saldo incorrecto</text><text x="615" y="150" font-size="13">✘ El cliente 2 se queda sin servicio</text>
+  <text x="615" y="172" font-size="12" fill="#555">Bases de datos con consenso, ZooKeeper, etcd</text>
+  <rect x="600" y="205" width="380" height="155" rx="12" fill="#fef5e7" stroke="#ca6f1e" stroke-width="2"/>
+  <text x="790" y="233" class="t" fill="#ca6f1e">Elegir DISPONIBILIDAD (AP)</text>
+  <text x="615" y="260" font-size="13">Responde "100" con lo que tiene.</text>
+  <text x="615" y="287" font-size="13">✔ El servicio sigue funcionando</text><text x="615" y="307" font-size="13">✘ Dato obsoleto; conflictos que resolver</text><text x="615" y="327" font-size="13">   cuando se cure la partición</text>
+  <text x="615" y="349" font-size="12" fill="#555">Cassandra, DynamoDB, DNS, cachés</text>
+  <text x="300" y="330" class="n" fill="#555">Las particiones de red PASAN: no se puede</text><text x="300" y="350" class="n" fill="#555">elegir "sin P". La elección real es C o A</text><text x="300" y="370" class="n" fill="#555">mientras dura la partición.</text>
+</svg>
