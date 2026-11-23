@@ -1,0 +1,14 @@
+flowchart TB
+    DDD((DDD))
+    DDD --> E[Diseño estratégico<br/><i>el problema, a lo grande</i>]
+    DDD --> T[Diseño táctico<br/><i>la solución, dentro de un contexto</i>]
+    E --> E1[Lenguaje<br/>ubicuo]
+    E --> E2[Subdominios]
+    E --> E3[Bounded<br/>contexts]
+    E --> E4[Context<br/>map]
+    T --> T1[Entidades y<br/>value objects]
+    T --> T2[Agregados]
+    T --> T3[Eventos de<br/>dominio]
+    T --> T4[Repositorios,<br/>servicios, factorías]
+    style E fill:#eaf4fb,stroke:#1f4e79
+    style T fill:#fdf2e9,stroke:#ca6f1e

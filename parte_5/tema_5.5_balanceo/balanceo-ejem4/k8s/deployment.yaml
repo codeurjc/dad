@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: work
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: work
+  template:
+    metadata:
+      labels:
+        app: work
+    spec:
+      # Tiempo que Kubernetes espera entre SIGTERM y SIGKILL (> apagado ordenado de Spring)
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: work
+          image: dad/balanceo-ejem4:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          # El HPA calcula el % de CPU respecto a lo SOLICITADO (requests):
+          # sin requests no hay autoescalado por CPU.
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 512Mi
+          # No recibe tráfico hasta que la aplicación está lista
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          # Si deja de responder, se reinicia
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          # Da tiempo a que el balanceador deje de enviarle tráfico antes de parar
+          lifecycle:
+            preStop:
+              sleep:
+                seconds: 5

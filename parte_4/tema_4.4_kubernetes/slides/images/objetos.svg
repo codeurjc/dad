@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.b{font-size:15px;font-weight:bold;text-anchor:middle}.c{font-size:12.5px;text-anchor:middle;fill:#444}</style>
+  <rect x="10" y="175" width="110" height="55" rx="8" fill="#eee" stroke="#555"/><text x="65" y="200" class="b">Usuario</text><text x="65" y="218" class="c">notas.localhost</text>
+  <rect x="160" y="165" width="130" height="75" rx="8" fill="#fdebd0" stroke="#ca6f1e" stroke-width="2"/><text x="225" y="193" class="b">Ingress</text><text x="225" y="211" class="c">reglas HTTP por</text><text x="225" y="227" class="c">host y ruta</text>
+  <rect x="330" y="165" width="130" height="75" rx="8" fill="#d6eaf8" stroke="#1f4e79" stroke-width="2"/><text x="395" y="193" class="b">Service</text><text x="395" y="211" class="c">notas: nombre DNS</text><text x="395" y="227" class="c">+ IP virtual estable</text>
+  <rect x="500" y="20" width="330" height="290" rx="10" fill="#f4ecf7" stroke="#7d3c98" stroke-width="2"/>
+  <text x="665" y="45" class="b" fill="#7d3c98">Deployment notas (replicas: 2)</text>
+  <rect x="520" y="60" width="290" height="235" rx="8" fill="#fff" stroke="#7d3c98" stroke-dasharray="5,4"/>
+  <text x="665" y="82" class="c" fill="#7d3c98">ReplicaSet notas-7c9f (una por versión)</text>
+  <rect x="540" y="100" width="120" height="90" rx="8" fill="#d5f5e3" stroke="#1e8449" stroke-width="2"/><text x="600" y="125" class="b">Pod</text><text x="600" y="145" class="c">app=notas</text><text x="600" y="162" class="c">10.244.1.7</text><text x="600" y="179" class="c">contenedor(es)</text>
+  <rect x="675" y="100" width="120" height="90" rx="8" fill="#d5f5e3" stroke="#1e8449" stroke-width="2"/><text x="735" y="125" class="b">Pod</text><text x="735" y="145" class="c">app=notas</text><text x="735" y="162" class="c">10.244.2.4</text><text x="735" y="179" class="c">contenedor(es)</text>
+  <text x="665" y="220" class="c">si un pod muere o un nodo cae,</text><text x="665" y="237" class="c">el ReplicaSet crea otro: siempre 2</text>
+  <text x="665" y="270" class="c">los pods son efímeros: IP y nombre cambian</text>
+  <rect x="540" y="340" width="130" height="80" rx="8" fill="#fef9e7" stroke="#b7950b" stroke-width="2"/><text x="605" y="368" class="b">ConfigMap</text><text x="605" y="386" class="c">configuración</text><text x="605" y="402" class="c">(variables, ficheros)</text>
+  <rect x="690" y="340" width="130" height="80" rx="8" fill="#fdedec" stroke="#c0392b" stroke-width="2"/><text x="755" y="368" class="b">Secret</text><text x="755" y="386" class="c">contraseñas,</text><text x="755" y="402" class="c">claves, certificados</text>
+  <rect x="860" y="60" width="130" height="90" rx="8" fill="#d6eaf8" stroke="#1f4e79" stroke-width="2"/><text x="925" y="87" class="b">StatefulSet</text><text x="925" y="105" class="c">mysql-0</text><text x="925" y="121" class="c">identidad y</text><text x="925" y="137" class="c">volumen estables</text>
+  <rect x="860" y="190" width="130" height="80" rx="8" fill="#eee" stroke="#555" stroke-width="2"/><text x="925" y="217" class="b">PVC → PV</text><text x="925" y="235" class="c">disco que sobrevive</text><text x="925" y="251" class="c">al pod</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)">
+    <line x1="120" y1="202" x2="156" y2="202"/><line x1="290" y1="202" x2="326" y2="202"/>
+    <line x1="460" y1="190" x2="536" y2="150"/>
+    <line x1="925" y1="150" x2="925" y2="186"/>
+  </g>
+  <g stroke="#999" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#a)">
+    <line x1="605" y1="338" x2="605" y2="313"/><line x1="755" y1="338" x2="755" y2="313"/>
+    <line x1="797" y1="140" x2="856" y2="110"/>
+  </g>
+  <text x="395" y="265" class="c">selector: app=notas</text><text x="395" y="282" class="c">reparte entre los pods Ready</text>
+  <text x="826" y="102" class="c" style="fill:#777">mysql:3306</text>
+  <text x="225" y="330" class="c" style="fill:#777">Namespace: agrupa y aísla</text><text x="225" y="346" class="c" style="fill:#777">objetos (dev, prod...)</text>
+</svg>

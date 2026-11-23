@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.h{font-size:21px;font-weight:bold;text-anchor:middle}.m{font-size:14px;text-anchor:middle;font-weight:bold}.n{font-size:12px;text-anchor:middle;fill:#555}</style>
+  <text x="230" y="32" class="h" fill="#1f4e79">Monolito</text>
+  <rect x="40" y="55" width="380" height="230" rx="14" fill="#eaf4fb" stroke="#1f4e79" stroke-width="3"/>
+  <text x="230" y="80" class="n">un proceso · un despliegue · una tecnología</text>
+  <g>
+    <rect x="65" y="95" width="105" height="70" rx="8" fill="#fff" stroke="#1f4e79"/><text x="117" y="135" class="m">Catálogo</text>
+    <rect x="178" y="95" width="105" height="70" rx="8" fill="#fff" stroke="#1f4e79"/><text x="230" y="135" class="m">Pedidos</text>
+    <rect x="291" y="95" width="105" height="70" rx="8" fill="#fff" stroke="#1f4e79"/><text x="343" y="135" class="m">Pagos</text>
+    <rect x="65" y="180" width="105" height="70" rx="8" fill="#fff" stroke="#1f4e79"/><text x="117" y="220" class="m">Usuarios</text>
+    <rect x="178" y="180" width="105" height="70" rx="8" fill="#fff" stroke="#1f4e79"/><text x="230" y="220" class="m">Envíos</text>
+    <rect x="291" y="180" width="105" height="70" rx="8" fill="#fff" stroke="#1f4e79"/><text x="343" y="220" class="m">Avisos</text>
+  </g>
+  <path d="M180,320 a50,14 0 0,0 100,0 a50,14 0 0,0 -100,0 v50 a50,14 0 0,0 100,0 v-50" fill="#fdf2e9" stroke="#ca6f1e" stroke-width="2.5"/>
+  <text x="230" y="360" class="m">una BD</text>
+  <line x1="230" y1="285" x2="230" y2="304" stroke="#555" stroke-width="2" marker-end="url(#a)"/>
+  <text x="230" y="415" class="n">llamadas a métodos en memoria · transacciones ACID</text>
+  <line x1="470" y1="40" x2="470" y2="420" stroke="#ccc" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="740" y="32" class="h" fill="#1e8449">Microservicios</text>
+  <g id="s">
+    <rect x="510" y="70" width="130" height="60" rx="10" fill="#eafaf1" stroke="#1e8449" stroke-width="2.5"/><text x="575" y="105" class="m">Catálogo</text>
+    <rect x="675" y="70" width="130" height="60" rx="10" fill="#eafaf1" stroke="#1e8449" stroke-width="2.5"/><text x="740" y="105" class="m">Pedidos</text>
+    <rect x="840" y="70" width="130" height="60" rx="10" fill="#eafaf1" stroke="#1e8449" stroke-width="2.5"/><text x="905" y="105" class="m">Pagos</text>
+    <rect x="510" y="250" width="130" height="60" rx="10" fill="#eafaf1" stroke="#1e8449" stroke-width="2.5"/><text x="575" y="285" class="m">Usuarios</text>
+    <rect x="675" y="250" width="130" height="60" rx="10" fill="#eafaf1" stroke="#1e8449" stroke-width="2.5"/><text x="740" y="285" class="m">Envíos</text>
+    <rect x="840" y="250" width="130" height="60" rx="10" fill="#eafaf1" stroke="#1e8449" stroke-width="2.5"/><text x="905" y="285" class="m">Avisos</text>
+  </g>
+  <g fill="#fdf2e9" stroke="#ca6f1e" stroke-width="1.5">
+    <path d="M555,145 a20,6 0 0,0 40,0 a20,6 0 0,0 -40,0 v20 a20,6 0 0,0 40,0 v-20"/>
+    <path d="M720,145 a20,6 0 0,0 40,0 a20,6 0 0,0 -40,0 v20 a20,6 0 0,0 40,0 v-20"/>
+    <path d="M885,145 a20,6 0 0,0 40,0 a20,6 0 0,0 -40,0 v20 a20,6 0 0,0 40,0 v-20"/>
+    <path d="M555,325 a20,6 0 0,0 40,0 a20,6 0 0,0 -40,0 v20 a20,6 0 0,0 40,0 v-20"/>
+    <path d="M720,325 a20,6 0 0,0 40,0 a20,6 0 0,0 -40,0 v20 a20,6 0 0,0 40,0 v-20"/>
+    <path d="M885,325 a20,6 0 0,0 40,0 a20,6 0 0,0 -40,0 v20 a20,6 0 0,0 40,0 v-20"/>
+  </g>
+  <g stroke="#555" stroke-width="2" fill="none" marker-end="url(#a)">
+    <line x1="675" y1="100" x2="644" y2="100"/>
+    <line x1="805" y1="100" x2="836" y2="100"/>
+    <path d="M740,130 L740,200 L740,246"/>
+  </g>
+  <g stroke="#ca6f1e" stroke-width="2" fill="none" stroke-dasharray="6 4" marker-end="url(#a)">
+    <path d="M905,175 C905,220 905,220 905,246"/>
+  </g>
+  <text x="790" y="215" class="n" text-anchor="start">REST</text><text x="912" y="215" class="n" text-anchor="start" fill="#ca6f1e">evento</text>
+  <text x="740" y="395" class="n">un proceso y una BD por servicio · despliegue independiente</text>
+  <text x="740" y="415" class="n">llamadas por RED · consistencia eventual</text>
+</svg>

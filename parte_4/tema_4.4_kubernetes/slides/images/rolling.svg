@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" font-family="Helvetica, Arial, sans-serif">
+  <style>.t{font-size:15px;font-weight:bold}.c{font-size:13px;fill:#444}.v1{fill:#d6eaf8;stroke:#1f4e79;stroke-width:2}.v2{fill:#d5f5e3;stroke:#1e8449;stroke-width:2}.nr{fill:#fff;stroke:#1e8449;stroke-width:2;stroke-dasharray:5,3}.x{fill:#eee;stroke:#aaa;stroke-width:2;stroke-dasharray:3,3}.p{font-size:13px;font-weight:bold;text-anchor:middle}</style>
+  <text x="20" y="25" class="c">replicas: 3 · maxSurge: 1 (como mucho 4 pods) · maxUnavailable: 0 (nunca menos de 3 listos)</text>
+  <g font-size="14">
+  <text x="20" y="70" class="t">1</text>
+  <rect x="50" y="50" width="70" height="34" rx="6" class="v1"/><text x="85" y="72" class="p">v1</text>
+  <rect x="130" y="50" width="70" height="34" rx="6" class="v1"/><text x="165" y="72" class="p">v1</text>
+  <rect x="210" y="50" width="70" height="34" rx="6" class="v1"/><text x="245" y="72" class="p">v1</text>
+  <rect x="290" y="50" width="70" height="34" rx="6" class="nr"/><text x="325" y="72" class="p">v2</text>
+  <text x="380" y="72" class="c">se crea un pod v2; aún no está Ready (readiness) → no recibe tráfico</text>
+  <text x="20" y="125" class="t">2</text>
+  <rect x="50" y="105" width="70" height="34" rx="6" class="x"/><text x="85" y="127" class="p" fill="#999">v1</text>
+  <rect x="130" y="105" width="70" height="34" rx="6" class="v1"/><text x="165" y="127" class="p">v1</text>
+  <rect x="210" y="105" width="70" height="34" rx="6" class="v1"/><text x="245" y="127" class="p">v1</text>
+  <rect x="290" y="105" width="70" height="34" rx="6" class="v2"/><text x="325" y="127" class="p">v2</text>
+  <text x="380" y="127" class="c">v2 está Ready → entra en el Service; un v1 sale del Service y se para (SIGTERM)</text>
+  <text x="20" y="180" class="t">3</text>
+  <rect x="130" y="160" width="70" height="34" rx="6" class="x"/><text x="165" y="182" class="p" fill="#999">v1</text>
+  <rect x="210" y="160" width="70" height="34" rx="6" class="v1"/><text x="245" y="182" class="p">v1</text>
+  <rect x="290" y="160" width="70" height="34" rx="6" class="v2"/><text x="325" y="182" class="p">v2</text>
+  <rect x="50" y="160" width="70" height="34" rx="6" class="v2"/><text x="85" y="182" class="p">v2</text>
+  <text x="380" y="182" class="c">se repite, de uno en uno...</text>
+  <text x="20" y="235" class="t">4</text>
+  <rect x="50" y="215" width="70" height="34" rx="6" class="v2"/><text x="85" y="237" class="p">v2</text>
+  <rect x="130" y="215" width="70" height="34" rx="6" class="v2"/><text x="165" y="237" class="p">v2</text>
+  <rect x="290" y="215" width="70" height="34" rx="6" class="v2"/><text x="325" y="237" class="p">v2</text>
+  <text x="380" y="237" class="c">todas en v2. El ReplicaSet de v1 se conserva (con 0 réplicas) para el rollback</text>
+  </g>
+  <text x="20" y="285" class="c">Si v2 nunca llega a estar Ready, el despliegue se queda parado y v1 sigue atendiendo: <tspan font-weight="bold">kubectl rollout undo</tspan></text>
+</svg>

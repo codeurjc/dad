@@ -1,0 +1,9 @@
+flowchart LR
+    subgraph Apps
+      T1["tienda #1<br/>/actuator/prometheus"]
+      T2["tienda #2<br/>/actuator/prometheus"]
+    end
+    P[("Prometheus<br/>base de datos<br/>de series temporales")] -- "GET cada 5 s (pull / scrape)" --> T1
+    P -- "GET cada 5 s" --> T2
+    P -- "reglas de alerta" --> AM[Alertmanager] --> N([correo, Slack,<br/>PagerDuty])
+    G[Grafana] -- "PromQL" --> P

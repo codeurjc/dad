@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.b{font-size:15px;font-weight:bold;text-anchor:middle}.m{font-family:Menlo,Consolas,monospace;font-size:13px}.c{font-size:13px;text-anchor:middle;fill:#444}</style>
+  <rect x="20" y="90" width="250" height="160" rx="10" fill="#d6eaf8" stroke="#1f4e79" stroke-width="2"/>
+  <text x="145" y="115" class="b" fill="#1f4e79">base/</text>
+  <text x="40" y="145" class="m">deployment.yaml</text><text x="40" y="168" class="m">service.yaml</text><text x="40" y="191" class="m">hpa.yaml · pdb.yaml</text><text x="40" y="214" class="m">kustomization.yaml</text>
+  <text x="145" y="240" class="c">lo común a todos los entornos</text>
+  <rect x="370" y="20" width="270" height="120" rx="10" fill="#d5f5e3" stroke="#1e8449" stroke-width="2"/>
+  <text x="505" y="45" class="b" fill="#1e8449">overlays/dev/</text>
+  <text x="390" y="72" class="m">namespace: calculo-dev</text><text x="390" y="95" class="m">minReplicas: 1</text><text x="390" y="118" class="m">credenciales de desarrollo</text>
+  <rect x="370" y="160" width="270" height="130" rx="10" fill="#fdebd0" stroke="#ca6f1e" stroke-width="2"/>
+  <text x="505" y="185" class="b" fill="#ca6f1e">overlays/prod/</text>
+  <text x="390" y="212" class="m">namespace: calculo-prod</text><text x="390" y="235" class="m">image: ...:3f9a2c1</text><text x="390" y="258" class="m">más CPU y memoria</text><text x="390" y="281" class="m">+ ingress.yaml</text>
+  <rect x="740" y="20" width="240" height="120" rx="10" fill="#fff" stroke="#1e8449" stroke-width="2"/><text x="860" y="70" class="b">YAML para desarrollo</text><text x="860" y="95" class="c">kubectl apply -k overlays/dev</text>
+  <rect x="740" y="160" width="240" height="130" rx="10" fill="#fff" stroke="#ca6f1e" stroke-width="2"/><text x="860" y="215" class="b">YAML para producción</text><text x="860" y="240" class="c">kubectl apply -k overlays/prod</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="270" y1="140" x2="366" y2="85"/><line x1="270" y1="200" x2="366" y2="225"/><line x1="640" y1="80" x2="736" y2="80"/><line x1="640" y1="225" x2="736" y2="225"/></g>
+  <text x="145" y="280" class="c">sin plantillas: parches sobre YAML válido</text>
+</svg>

@@ -1,0 +1,31 @@
+{
+  "realm": "dad",
+  "enabled": true,
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      { "name": "inventario-lector", "description": "Puede consultar el stock del inventario" }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "pedidos-service",
+      "name": "Servicio de pedidos",
+      "enabled": true,
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "pedidos-secret",
+      "serviceAccountsEnabled": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": false
+    }
+  ],
+  "users": [
+    {
+      "username": "service-account-pedidos-service",
+      "enabled": true,
+      "serviceAccountClientId": "pedidos-service",
+      "realmRoles": [ "inventario-lector" ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# Uso:
+#   docker compose up --build                          -> round robin
+#   HAPROXY_CFG=haproxy-sticky.cfg docker compose up   -> sticky sessions
+#   docker compose up --scale web=5                    -> más instancias (HAProxy las descubre)
+#
+# Aplicación: http://localhost:8080   Estadísticas de HAProxy: http://localhost:8404
+services:
+  web:
+    build: .
+    expose:
+      - "8080"
+    deploy:
+      replicas: 3
+  lb:
+    image: haproxy:3.1
+    ports:
+      - "8080:80"
+      - "8404:8404"
+    volumes:
+      - "./${HAPROXY_CFG:-haproxy-roundrobin.cfg}:/usr/local/etc/haproxy/haproxy.cfg:ro"
+    depends_on:
+      - web

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hola
+  labels:
+    app: hola
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hola            # gestiona los pods con esta etiqueta...
+  template:
+    metadata:
+      labels:
+        app: hola          # ...que son los que crea a partir de esta plantilla
+    spec:
+      containers:
+        - name: hola
+          image: codeurjc/k8s-ejem1:v1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: hola-config
+            - secretRef:
+                name: hola-secret
+          resources:
+            requests:            # lo que el scheduler reserva en el nodo
+              cpu: 100m
+              memory: 256Mi
+            limits:              # lo máximo que puede usar
+              memory: 512Mi
+          # ¿Puede recibir tráfico? Si no, se saca del Service (no se reinicia)
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            periodSeconds: 5
+          # ¿Está vivo? Si falla varias veces seguidas, se reinicia el contenedor
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
+          # Mientras arranca, no se aplica la liveness (Spring tarda unos segundos)
+          startupProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 2
+            failureThreshold: 30

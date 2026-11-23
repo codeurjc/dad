@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 430" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.h{font-size:18px;font-weight:bold}.b{font-size:15px;font-weight:bold;text-anchor:middle}.c{font-size:13px;text-anchor:middle;fill:#444}</style>
+  <rect x="10" y="10" width="330" height="410" rx="12" fill="#eaf2f8" stroke="#1f4e79" stroke-width="2"/>
+  <text x="175" y="40" text-anchor="middle" class="h" fill="#1f4e79">Plano de control</text>
+  <rect x="35" y="60" width="280" height="60" rx="8" fill="#1f4e79"/><text x="175" y="87" class="b" fill="#fff">kube-apiserver</text><text x="175" y="106" class="c" style="fill:#d6eaf8">única puerta de entrada (REST)</text>
+  <rect x="35" y="140" width="130" height="70" rx="8" fill="#fff" stroke="#1f4e79" stroke-width="2"/><text x="100" y="168" class="b">etcd</text><text x="100" y="187" class="c">estado del clúster</text><text x="100" y="203" class="c">(Raft, 3 o 5 nodos)</text>
+  <rect x="185" y="140" width="130" height="70" rx="8" fill="#fff" stroke="#1f4e79" stroke-width="2"/><text x="250" y="168" class="b">scheduler</text><text x="250" y="187" class="c">decide en qué</text><text x="250" y="203" class="c">nodo va cada pod</text>
+  <rect x="35" y="230" width="280" height="70" rx="8" fill="#fff" stroke="#1f4e79" stroke-width="2"/><text x="175" y="258" class="b">controller-manager</text><text x="175" y="277" class="c">bucles de control: Deployment, ReplicaSet,</text><text x="175" y="293" class="c">nodos, endpoints...</text>
+  <rect x="35" y="320" width="280" height="80" rx="8" fill="#fff" stroke="#999" stroke-dasharray="5,4"/><text x="175" y="350" class="b" fill="#555">kubectl / CI/CD</text><text x="175" y="370" class="c">kubectl apply -f deployment.yaml</text><text x="175" y="388" class="c">"quiero 3 réplicas de esta imagen"</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="100" y1="122" x2="100" y2="137"/><line x1="250" y1="122" x2="250" y2="137"/><line x1="175" y1="318" x2="175" y2="303"/></g>
+  <line x1="175" y1="300" x2="175" y2="122" stroke="#555" stroke-width="0"/>
+  <rect x="380" y="10" width="610" height="410" rx="12" fill="#f4f6f6" stroke="#555" stroke-width="2"/>
+  <text x="685" y="40" text-anchor="middle" class="h" fill="#333">Nodos de trabajo</text>
+  <g>
+    <rect x="400" y="60" width="285" height="345" rx="10" fill="#fff" stroke="#7d3c98" stroke-width="2"/>
+    <text x="542" y="85" class="b" fill="#7d3c98">nodo 1</text>
+    <rect x="420" y="100" width="245" height="45" rx="6" fill="#e8daef"/><text x="542" y="120" class="b">kubelet</text><text x="542" y="137" class="c">arranca y vigila los pods del nodo</text>
+    <rect x="420" y="155" width="245" height="45" rx="6" fill="#e8daef"/><text x="542" y="175" class="b">kube-proxy</text><text x="542" y="192" class="c">reglas de red de los Services</text>
+    <rect x="420" y="210" width="245" height="35" rx="6" fill="#f2f3f4"/><text x="542" y="233" class="c">runtime de contenedores (containerd)</text>
+    <rect x="420" y="260" width="115" height="60" rx="8" fill="#d5f5e3" stroke="#1e8449" stroke-width="2"/><text x="477" y="287" class="b">pod</text><text x="477" y="305" class="c">web-7c9f-a</text>
+    <rect x="550" y="260" width="115" height="60" rx="8" fill="#d5f5e3" stroke="#1e8449" stroke-width="2"/><text x="607" y="287" class="b">pod</text><text x="607" y="305" class="c">mysql-0</text>
+    <rect x="420" y="335" width="245" height="55" rx="8" fill="#fdebd0" stroke="#ca6f1e"/><text x="542" y="360" class="c">contenedores, volúmenes,</text><text x="542" y="377" class="c">una IP por pod</text>
+  </g>
+  <g>
+    <rect x="700" y="60" width="275" height="345" rx="10" fill="#fff" stroke="#7d3c98" stroke-width="2"/>
+    <text x="837" y="85" class="b" fill="#7d3c98">nodo 2</text>
+    <rect x="720" y="100" width="235" height="45" rx="6" fill="#e8daef"/><text x="837" y="128" class="b">kubelet</text>
+    <rect x="720" y="155" width="235" height="45" rx="6" fill="#e8daef"/><text x="837" y="183" class="b">kube-proxy</text>
+    <rect x="720" y="210" width="235" height="35" rx="6" fill="#f2f3f4"/><text x="837" y="233" class="c">containerd</text>
+    <rect x="720" y="260" width="110" height="60" rx="8" fill="#d5f5e3" stroke="#1e8449" stroke-width="2"/><text x="775" y="287" class="b">pod</text><text x="775" y="305" class="c">web-7c9f-b</text>
+    <rect x="845" y="260" width="110" height="60" rx="8" fill="#d5f5e3" stroke="#1e8449" stroke-width="2"/><text x="900" y="287" class="b">pod</text><text x="900" y="305" class="c">web-7c9f-c</text>
+    <text x="837" y="365" class="c">... hasta miles de nodos</text>
+  </g>
+  <g stroke="#1f4e79" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#a)"><line x1="315" y1="85" x2="417" y2="118"/></g>
+  <text x="360" y="80" class="c" fill="#1f4e79">vigila</text>
+</svg>

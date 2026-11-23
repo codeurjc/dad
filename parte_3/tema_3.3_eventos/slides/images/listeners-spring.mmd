@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant S as OrderService<br/>(@Transactional)
+    participant DB as Base de datos
+    participant F as InvoiceListener<br/>@EventListener
+    participant E as EmailListener<br/>@TransactionalEventListener
+    participant P as LoyaltyPointsListener<br/>@Async + @TransactionalEventListener
+    S->>DB: INSERT pedido
+    S->>F: publishEvent(OrderPlaced)
+    Note over F: mismo hilo,<br/>DENTRO de la transacción
+    F-->>S: 
+    S->>DB: COMMIT
+    alt commit correcto
+        DB-->>E: OrderPlaced (mismo hilo)
+        DB--)P: OrderPlaced (otro hilo)
+    else rollback
+        Note over E,P: no reciben nada
+    end

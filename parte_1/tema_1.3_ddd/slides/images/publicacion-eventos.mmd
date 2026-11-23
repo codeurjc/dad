@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant C as OrderController
+    participant S as OrderService
+    participant R as OrderRepository
+    participant O as Order
+    participant P as DomainEventPublisher
+    participant L as OrderEventsListener
+    C->>S: placeOrder(orderId)
+    S->>R: findById(orderId)
+    R-->>S: order
+    S->>O: place()
+    Note right of O: comprueba invariantes<br/>registra OrderPlaced
+    S->>R: save(order)
+    S->>O: pullDomainEvents()
+    O-->>S: [OrderPlaced]
+    S->>P: publish(events)
+    P-)L: OrderPlaced
+    Note right of L: "Enviando email..."

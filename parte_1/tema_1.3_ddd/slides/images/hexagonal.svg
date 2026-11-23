@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  </defs>
+  <!-- hexágono exterior: aplicación -->
+  <polygon points="500,30 740,145 740,375 500,490 260,375 260,145" fill="#eaf2f8" stroke="#2e86c1" stroke-width="3"/>
+  <text x="500" y="75" text-anchor="middle" font-size="18" font-weight="bold" fill="#2e86c1">Aplicación</text>
+  <text x="500" y="97" text-anchor="middle" font-size="13" fill="#2e86c1" font-family="monospace">OrderService</text>
+  <!-- hexágono interior: dominio -->
+  <polygon points="500,130 640,195 640,325 500,390 360,325 360,195" fill="#fef5e7" stroke="#ca6f1e" stroke-width="3"/>
+  <text x="500" y="205" text-anchor="middle" font-size="20" font-weight="bold" fill="#ca6f1e">Dominio</text>
+  <g font-family="monospace" font-size="13" text-anchor="middle" fill="#444">
+    <text x="500" y="235">Order, OrderLine</text><text x="500" y="255">Money, OrderId</text><text x="500" y="275">OrderPlaced</text>
+    <text x="500" y="305" fill="#ca6f1e">«puerto» OrderRepository</text>
+  </g>
+  <text x="365" y="400" font-size="13" fill="#2e86c1" font-family="monospace">«puerto» DomainEventPublisher</text>
+  <!-- adaptadores de entrada -->
+  <g font-size="15">
+    <rect x="20" y="180" width="180" height="70" rx="10" fill="#e8f8f5" stroke="#148f77" stroke-width="2.5"/>
+    <text x="110" y="210" text-anchor="middle" font-weight="bold" fill="#148f77">REST</text><text x="110" y="232" text-anchor="middle" font-size="12" font-family="monospace">OrderController</text>
+    <rect x="20" y="290" width="180" height="70" rx="10" fill="#e8f8f5" stroke="#148f77" stroke-width="2.5"/>
+    <text x="110" y="320" text-anchor="middle" font-weight="bold" fill="#148f77">Tests</text><text x="110" y="342" text-anchor="middle" font-size="12" font-family="monospace">OrderTest, SmokeTest</text>
+  </g>
+  <g stroke="#148f77" stroke-width="3" marker-end="url(#ar)"><line x1="200" y1="215" x2="300" y2="215"/><line x1="200" y1="325" x2="300" y2="325"/></g>
+  <text x="110" y="160" text-anchor="middle" font-size="16" font-weight="bold" fill="#148f77">Adaptadores de entrada</text>
+  <!-- adaptadores de salida -->
+  <g font-size="15">
+    <rect x="800" y="180" width="180" height="70" rx="10" fill="#f5eef8" stroke="#7d3c98" stroke-width="2.5"/>
+    <text x="890" y="210" text-anchor="middle" font-weight="bold" fill="#7d3c98">JPA + H2</text><text x="890" y="232" text-anchor="middle" font-size="12" font-family="monospace">JpaOrderRepository</text>
+    <rect x="800" y="290" width="180" height="70" rx="10" fill="#f5eef8" stroke="#7d3c98" stroke-width="2.5"/>
+    <text x="890" y="320" text-anchor="middle" font-weight="bold" fill="#7d3c98">Eventos Spring</text><text x="890" y="342" text-anchor="middle" font-size="11" font-family="monospace">SpringDomainEventPublisher</text>
+  </g>
+  <g stroke="#7d3c98" stroke-width="3" marker-end="url(#ar)"><line x1="796" y1="215" x2="700" y2="215"/><line x1="796" y1="325" x2="700" y2="325"/></g>
+  <text x="890" y="160" text-anchor="middle" font-size="16" font-weight="bold" fill="#7d3c98">Adaptadores de salida</text>
+  <text x="500" y="515" text-anchor="middle" font-size="14" fill="#555">Las dependencias apuntan siempre hacia dentro: el dominio no conoce Spring, JPA ni HTTP</text>
+</svg>

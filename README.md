@@ -10,8 +10,9 @@ El contenido del repositorio se distribuye bajo licencia [Apache-2.0](https://gi
 
 * Tema 1.1: Introducción a las aplicaciones distribuidas
 * Tema 1.2: Patrones arquitectónicos de aplicaciones distribuidas
+* Tema 1.3: Domain-Driven Design
 
-Este tema no dispone de ejemplos o ejercicios en código.
+Las transparencias, ejemplos y ejercicios del tema 1.3 pueden encontrarse en [Parte 1](https://github.com/codeurjc/dad/tree/main/parte_1/tema_1.3_ddd)
 
 ### Tema 2. Desarrollo de aplicaciones y servicios web
 
@@ -21,6 +22,7 @@ Este tema no dispone de ejemplos o ejercicios en código.
 * Tema 2.4: Introducción a las Bases de datos
 * Tema 2.5: Bases de datos SQL en Spring
 * Tema 2.6: Construcción y despliegue
+* Tema 2.7: Seguridad en aplicaciones distribuidas ([transparencias, ejemplos y ejercicios](https://github.com/codeurjc/dad/tree/main/parte_2/tema_2.7_seguridad))
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 2](https://github.com/codeurjc/dad2425/tree/main/parte_2)
 
@@ -28,14 +30,18 @@ Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 2](https://
 
 * Tema 1: Comunicación de aplicaciones: Mensajes
 * Tema 2: Comunicación de aplicaciones: Websockets
+* Tema 3: Arquitecturas dirigidas por eventos
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 3](https://github.com/codeurjc/dad2425/tree/main/parte_3)
+
+Las transparencias, ejemplos y ejercicios del tema de arquitecturas dirigidas por eventos están en [parte_3/tema_3.3_eventos](https://github.com/codeurjc/dad/tree/main/parte_3/tema_3.3_eventos)
 
 ### Tema 4. Despliegue y actualización de aplicaciones
 
 * Tema 4.1: Introducción
 * Tema 4.2: Docker
 * Tema 4.2.1: Docker Compose
+* Tema 4.4: Kubernetes ([transparencias, ejemplos y ejercicios](https://github.com/codeurjc/dad/tree/main/parte_4/tema_4.4_kubernetes))
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 4](https://github.com/codeurjc/dad2425/tree/main/parte_4)
 
@@ -48,5 +54,8 @@ Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 4](https://
 * Tema 5.5: Balanceadores de carga: múltiples servidores
 * Tema 5.6: Replicación de bases de datos
 * Tema 5.7: Otras soluciones arquitectónicas
+* Tema 5.8: Observabilidad en sistemas distribuidos ([transparencias, ejemplos y ejercicios](https://github.com/codeurjc/dad/tree/main/parte_5/tema_5.8_observabilidad))
 
 Los ejemplos y ejercicios de esta parte pueden encontrarse en [Parte 5](https://github.com/codeurjc/dad2425/tree/main/parte_5)
+
+Las transparencias, ejemplos y ejercicios ampliados del tema 5.5 (balanceo de carga, *sticky sessions*, *SSL passthrough* y elasticidad) están en [parte_5/tema_5.5_balanceo](https://github.com/codeurjc/dad/tree/main/parte_5/tema_5.5_balanceo)

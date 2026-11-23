@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.h{font-size:16px;font-weight:bold;text-anchor:middle}.t{font-size:13px;font-weight:bold;text-anchor:middle}.n{font-size:12px;text-anchor:middle;fill:#444}</style>
+  <text x="165" y="25" class="h" fill="#1f4e79">Líder único</text>
+  <circle cx="165" cy="80" r="32" fill="#1f4e79"/><text x="165" y="85" class="t" fill="#fff">líder</text>
+  <circle cx="85" cy="175" r="26" fill="#d6eaf8" stroke="#1f4e79" stroke-width="2"/><text x="85" y="180" class="n">seguidor</text>
+  <circle cx="245" cy="175" r="26" fill="#d6eaf8" stroke="#1f4e79" stroke-width="2"/><text x="245" y="180" class="n">seguidor</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="148" y1="106" x2="100" y2="150"/><line x1="182" y1="106" x2="230" y2="150"/></g>
+  <text x="165" y="35" class="n" dy="10">escrituras ↓</text>
+  <text x="165" y="235" class="n">Todas las escrituras van al líder.</text><text x="165" y="253" class="n">Si cae, se elige otro (consenso).</text><text x="165" y="280" class="n" fill="#1e8449">✔ sin conflictos</text><text x="165" y="300" class="n" fill="#555">MySQL, PostgreSQL, Kafka, Raft</text>
+  <line x1="333" y1="20" x2="333" y2="310" stroke="#ddd" stroke-width="2"/>
+  <text x="500" y="25" class="h" fill="#7d3c98">Varios líderes</text>
+  <circle cx="420" cy="100" r="32" fill="#7d3c98"/><text x="420" y="105" class="t" fill="#fff">Madrid</text>
+  <circle cx="580" cy="100" r="32" fill="#7d3c98"/><text x="580" y="105" class="t" fill="#fff">Dublín</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="452" y1="92" x2="546" y2="92"/><line x1="548" y1="110" x2="454" y2="110"/></g>
+  <text x="500" y="235" class="n">Cada centro de datos acepta escrituras</text><text x="500" y="253" class="n">y las replica al otro (asíncrono).</text><text x="500" y="280" class="n" fill="#c0392b">✘ escrituras en conflicto</text><text x="500" y="300" class="n" fill="#555">CouchDB, BD multirregión</text>
+  <line x1="667" y1="20" x2="667" y2="310" stroke="#ddd" stroke-width="2"/>
+  <text x="835" y="25" class="h" fill="#ca6f1e">Sin líder</text>
+  <circle cx="760" cy="150" r="26" fill="#fdebd0" stroke="#ca6f1e" stroke-width="2"/><text x="760" y="155" class="n">r1</text>
+  <circle cx="835" cy="190" r="26" fill="#fdebd0" stroke="#ca6f1e" stroke-width="2"/><text x="835" y="195" class="n">r2</text>
+  <circle cx="910" cy="150" r="26" fill="#fdebd0" stroke="#ca6f1e" stroke-width="2"/><text x="910" y="155" class="n">r3</text>
+  <rect x="790" y="55" width="90" height="34" rx="6" fill="#fff" stroke="#333"/><text x="835" y="77" class="t">cliente</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="815" y1="89" x2="772" y2="126"/><line x1="835" y1="89" x2="835" y2="162"/><line x1="855" y1="89" x2="898" y2="126"/></g>
+  <text x="835" y="235" class="n">El cliente escribe en W réplicas</text><text x="835" y="253" class="n">y lee de R (quórums).</text><text x="835" y="280" class="n" fill="#1e8449">✔ muy disponible</text><text x="835" y="300" class="n" fill="#555">Cassandra, DynamoDB, Riak</text>
+</svg>

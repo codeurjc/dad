@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.t{font-size:16px;font-weight:bold;text-anchor:middle}.n{font-size:13px;text-anchor:middle}</style>
+  <rect x="20" y="90" width="120" height="70" rx="10" fill="#fff" stroke="#333" stroke-width="2"/><text class="t" x="80" y="130">Usuarios</text>
+  <rect x="220" y="80" width="170" height="90" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="3"/><text class="t" x="305" y="110">Gateway</text><text class="n" x="305" y="133" fill="#c0392b">200/200 hilos</text><text class="n" x="305" y="152" fill="#c0392b">esperando</text>
+  <rect x="470" y="80" width="170" height="90" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="3"/><text class="t" x="555" y="110">Pedidos</text><text class="n" x="555" y="133" fill="#c0392b">200/200 hilos</text><text class="n" x="555" y="152" fill="#c0392b">esperando</text>
+  <rect x="720" y="80" width="170" height="90" rx="10" fill="#f2f3f4" stroke="#7f8c8d" stroke-width="3" stroke-dasharray="8 5"/><text class="t" x="805" y="115">Catálogo</text><text class="n" x="805" y="140">lento: 30 s</text><text class="n" x="805" y="158">por respuesta</text>
+  <g stroke="#555" stroke-width="2.5" marker-end="url(#a)"><line x1="140" y1="125" x2="216" y2="125"/><line x1="390" y1="125" x2="466" y2="125"/><line x1="640" y1="125" x2="716" y2="125"/></g>
+  <text x="805" y="60" class="n" font-weight="bold">1. un servicio se vuelve lento</text>
+  <text x="555" y="60" class="n" font-weight="bold" fill="#c0392b">2. sus clientes agotan los hilos</text>
+  <text x="305" y="60" class="n" font-weight="bold" fill="#c0392b">3. ...y los clientes de sus clientes</text>
+  <g font-size="14" fill="#333"><text x="20" y="215">Sin protección, el fallo de UN servicio tumba el sistema entero, incluidas funciones que no usan el catálogo.</text>
+  <text x="20" y="245">Defensas: <tspan font-weight="bold">timeouts</tspan> · <tspan font-weight="bold">circuit breaker</tspan> · <tspan font-weight="bold">bulkhead</tspan> · <tspan font-weight="bold">fallback</tspan> · reintentos con cuidado</text>
+  <text x="20" y="275" fill="#555">"Release It!" (M. Nygard): un servicio lento es peor que uno caído, porque retiene los recursos de quien lo llama.</text></g>
+</svg>

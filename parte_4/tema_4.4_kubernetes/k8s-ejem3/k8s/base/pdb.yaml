@@ -1,0 +1,10 @@
+# Durante operaciones "voluntarias" (vaciar un nodo para actualizarlo...) debe quedar al menos 1 pod
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: calculo
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: calculo

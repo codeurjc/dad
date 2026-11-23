@@ -1,0 +1,13 @@
+flowchart TB
+    P{{"¿Dónde vive el estado<br/>de la sesión?"}}
+    P --> A["<b>Memoria de cada instancia</b><br/>+ sticky sessions"]
+    P --> B["<b>Replicado entre instancias</b><br/>(clúster de sesiones)"]
+    P --> C["<b>Almacén externo</b><br/>Redis, BD (Spring Session)"]
+    P --> D["<b>En el cliente</b><br/>token firmado (JWT)"]
+    A --> A1["✔ Sencillo, rápido<br/>✘ Reparto desigual<br/>✘ Si cae la instancia, se pierde<br/>✘ Escalar hacia abajo = cortar sesiones"]
+    B --> B1["✔ Tolera caídas<br/>✘ Tráfico entre nodos<br/>✘ No escala a muchos nodos"]
+    C --> C1["✔ Instancias sin estado<br/>✔ Cualquier reparto, elasticidad<br/>✘ Un salto de red más<br/>✘ El almacén debe ser HA"]
+    D --> D1["✔ Servidor sin estado<br/>✘ Tamaño limitado<br/>✘ Difícil revocar"]
+    style C fill:#e8f5e9,stroke:#2e7d32
+    style D fill:#e8f5e9,stroke:#2e7d32
+    style A fill:#fdf2e9,stroke:#ca6f1e

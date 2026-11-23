@@ -1,0 +1,30 @@
+# Trazas distribuidas: tienda -> inventario, exportando a grafana/otel-lgtm
+# (una imagen de desarrollo con el colector de OpenTelemetry, Tempo para
+# trazas, Prometheus para métricas, Loki para logs y Grafana).
+#   docker compose up --build
+#   curl -X POST localhost:8080/purchase -H 'Content-Type: application/json' -d '["libro-ddd","portatil","taza"]'
+#   Grafana: http://localhost:3000  -> Explore -> Tempo -> servicio "tienda"
+services:
+  lgtm:
+    image: grafana/otel-lgtm:latest
+    ports:
+      - "3000:3000"   # Grafana
+      - "4318:4318"   # OTLP por HTTP
+  tienda:
+    build: ./tienda
+    ports:
+      - "8080:8080"
+    environment:
+      - INVENTARIO_URL=http://inventario:8081
+      - MANAGEMENT_OPENTELEMETRY_TRACING_EXPORT_OTLP_ENDPOINT=http://lgtm:4318/v1/traces
+      - MANAGEMENT_OTLP_METRICS_EXPORT_URL=http://lgtm:4318/v1/metrics
+    depends_on:
+      - lgtm
+      - inventario
+  inventario:
+    build: ./inventario
+    environment:
+      - MANAGEMENT_OPENTELEMETRY_TRACING_EXPORT_OTLP_ENDPOINT=http://lgtm:4318/v1/traces
+      - MANAGEMENT_OTLP_METRICS_EXPORT_URL=http://lgtm:4318/v1/metrics
+    depends_on:
+      - lgtm

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#888"/></marker>
+  </defs>
+  <!-- Izquierda: modelo único -->
+  <text x="230" y="34" text-anchor="middle" font-size="24" font-weight="bold" fill="#b03a2e">Un modelo para todo</text>
+  <g stroke="#888" stroke-width="2" fill="none" marker-end="url(#a)">
+    <path d="M90,110 C150,150 160,190 185,215"/>
+    <path d="M380,110 C320,150 300,190 280,215"/>
+    <path d="M90,390 C150,350 160,320 185,300"/>
+    <path d="M380,390 C320,350 300,320 280,300"/>
+  </g>
+  <g font-size="18" fill="#333" text-anchor="middle">
+    <text x="80" y="95">Catálogo</text><text x="390" y="95">Ventas</text>
+    <text x="80" y="415">Logística</text><text x="390" y="415">Facturación</text>
+  </g>
+  <rect x="90" y="200" width="280" height="124" rx="14" fill="#fdecea" stroke="#b03a2e" stroke-width="3"/>
+  <text x="230" y="228" text-anchor="middle" font-size="19" font-weight="bold" fill="#b03a2e">Producto</text>
+  <g font-size="13" fill="#555" font-family="monospace">
+    <text x="105" y="252">nombre, descripción, fotos,</text>
+    <text x="105" y="270">precio, descuentos, iva,</text>
+    <text x="105" y="288">peso, dimensiones, almacén,</text>
+    <text x="105" y="306">proveedor, stock, ...  (50 campos)</text>
+  </g>
+  <text x="230" y="370" text-anchor="middle" font-size="15" fill="#b03a2e" font-style="italic">todos dependen de todo</text>
+  <!-- separador -->
+  <line x1="480" y1="60" x2="480" y2="430" stroke="#ccc" stroke-width="2" stroke-dasharray="8 6"/>
+  <!-- Derecha: un modelo por contexto -->
+  <text x="745" y="34" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e6b3a">Un modelo por contexto</text>
+  <g font-size="15">
+    <rect x="520" y="70" width="210" height="160" rx="16" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2.5" stroke-dasharray="10 5"/>
+    <text x="625" y="96" text-anchor="middle" font-weight="bold" fill="#1f4e79">Catálogo</text>
+    <rect x="545" y="110" width="160" height="100" rx="8" fill="#fff" stroke="#1f4e79"/>
+    <text x="625" y="132" text-anchor="middle" font-weight="bold">Producto</text>
+    <g font-family="monospace" font-size="13" fill="#555"><text x="560" y="156">nombre</text><text x="560" y="176">descripción</text><text x="560" y="196">fotos</text></g>
+
+    <rect x="760" y="70" width="210" height="160" rx="16" fill="#fef5e7" stroke="#b9770e" stroke-width="2.5" stroke-dasharray="10 5"/>
+    <text x="865" y="96" text-anchor="middle" font-weight="bold" fill="#b9770e">Ventas</text>
+    <rect x="785" y="110" width="160" height="100" rx="8" fill="#fff" stroke="#b9770e"/>
+    <text x="865" y="132" text-anchor="middle" font-weight="bold">Producto</text>
+    <g font-family="monospace" font-size="13" fill="#555"><text x="800" y="156">precio</text><text x="800" y="176">descuentos</text><text x="800" y="196">iva</text></g>
+
+    <rect x="520" y="260" width="210" height="160" rx="16" fill="#eafaf1" stroke="#1e6b3a" stroke-width="2.5" stroke-dasharray="10 5"/>
+    <text x="625" y="286" text-anchor="middle" font-weight="bold" fill="#1e6b3a">Logística</text>
+    <rect x="545" y="300" width="160" height="100" rx="8" fill="#fff" stroke="#1e6b3a"/>
+    <text x="625" y="322" text-anchor="middle" font-weight="bold">Artículo</text>
+    <g font-family="monospace" font-size="13" fill="#555"><text x="560" y="346">peso</text><text x="560" y="366">dimensiones</text><text x="560" y="386">ubicación</text></g>
+
+    <rect x="760" y="260" width="210" height="160" rx="16" fill="#f4ecf7" stroke="#6c3483" stroke-width="2.5" stroke-dasharray="10 5"/>
+    <text x="865" y="286" text-anchor="middle" font-weight="bold" fill="#6c3483">Facturación</text>
+    <rect x="785" y="300" width="160" height="100" rx="8" fill="#fff" stroke="#6c3483"/>
+    <text x="865" y="322" text-anchor="middle" font-weight="bold">Concepto</text>
+    <g font-family="monospace" font-size="13" fill="#555"><text x="800" y="346">importe</text><text x="800" y="366">tipo de iva</text><text x="800" y="386">cuenta contable</text></g>
+  </g>
+</svg>

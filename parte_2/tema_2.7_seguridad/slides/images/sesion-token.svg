@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 380" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.h{font-size:19px;font-weight:bold;text-anchor:middle}.b{font-size:15px;font-weight:bold;text-anchor:middle}.n{font-size:14px;fill:#444}.c{font-size:14px;text-anchor:middle;fill:#444}</style>
+  <text x="245" y="30" class="h" fill="#1f4e79">Sesión en el servidor</text>
+  <rect x="30" y="60" width="120" height="50" rx="8" fill="#eee" stroke="#555"/><text x="90" y="91" class="b">Navegador</text>
+  <rect x="290" y="45" width="140" height="40" rx="8" fill="#d6eaf8" stroke="#1f4e79" stroke-width="2"/><text x="360" y="70" class="b">Servidor 1</text>
+  <rect x="290" y="95" width="140" height="40" rx="8" fill="#d6eaf8" stroke="#1f4e79" stroke-width="2"/><text x="360" y="120" class="b">Servidor 2</text>
+  <rect x="290" y="170" width="140" height="44" rx="8" fill="#fdebd0" stroke="#ca6f1e" stroke-width="2"/><text x="360" y="190" class="b">Sesiones</text><text x="360" y="207" class="c">(Redis, BD...)</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="150" y1="80" x2="286" y2="68"/><line x1="150" y1="90" x2="286" y2="112"/><line x1="360" y1="137" x2="360" y2="166"/></g>
+  <text x="200" y="135" class="c">Cookie: JSESSIONID=8F3A</text>
+  <text x="30" y="250" class="n">✔ Revocar es inmediato (borrar la sesión)</text>
+  <text x="30" y="275" class="n">✔ La cookie no lleva información</text>
+  <text x="30" y="300" class="n">✘ Estado compartido o sticky sessions (tema 5.5)</text>
+  <text x="30" y="325" class="n">✘ Un acceso al almacén en cada petición</text>
+  <text x="30" y="350" class="n">✘ Cookies → hay que protegerse del CSRF</text>
+  <line x1="500" y1="20" x2="500" y2="360" stroke="#ddd" stroke-width="2"/>
+  <text x="755" y="30" class="h" fill="#7d3c98">Token autocontenido (JWT)</text>
+  <rect x="530" y="60" width="120" height="50" rx="8" fill="#eee" stroke="#555"/><text x="590" y="91" class="b">Cliente</text>
+  <rect x="820" y="45" width="140" height="40" rx="8" fill="#e8daef" stroke="#7d3c98" stroke-width="2"/><text x="890" y="70" class="b">Servicio A</text>
+  <rect x="820" y="95" width="140" height="40" rx="8" fill="#e8daef" stroke="#7d3c98" stroke-width="2"/><text x="890" y="120" class="b">Servicio B</text>
+  <rect x="820" y="170" width="140" height="44" rx="8" fill="#eee" stroke="#999" stroke-dasharray="5,4"/><text x="890" y="190" class="b" fill="#777">Claves públicas</text><text x="890" y="207" class="c">(se cachean)</text>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)"><line x1="650" y1="80" x2="816" y2="68"/><line x1="650" y1="90" x2="816" y2="112"/></g>
+  <g stroke="#999" stroke-width="2" stroke-dasharray="4,4"><line x1="890" y1="137" x2="890" y2="168"/></g>
+  <text x="715" y="135" class="c">Bearer eyJhbGci...</text>
+  <text x="530" y="250" class="n">✔ Sin estado: cualquier réplica lo valida</text>
+  <text x="530" y="275" class="n">✔ Sirve entre servicios y para apps móviles</text>
+  <text x="530" y="300" class="n">✘ No se puede revocar antes de que caduque</text>
+  <text x="545" y="320" class="n">→ vida corta (minutos) + refresh token</text>
+  <text x="530" y="350" class="n">✘ Más grande; si se roba, es válido hasta exp</text>
+</svg>

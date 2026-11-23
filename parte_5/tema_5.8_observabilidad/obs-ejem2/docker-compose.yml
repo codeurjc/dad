@@ -1,0 +1,35 @@
+# Métricas: aplicación (2 réplicas) + Prometheus + Grafana + generador de carga
+#   docker compose up --build
+#   Prometheus: http://localhost:9090   (prueba: rate(shop_orders_total[1m]))
+#   Grafana:    http://localhost:3000   (admin/admin) -> panel "DAD / Tienda (RED y negocio)"
+services:
+  tienda:
+    build: .
+    expose:
+      - "8080"
+    deploy:
+      replicas: 2
+
+  carga:
+    image: busybox:1.36
+    command: ["/bin/sh", "-c", "while true; do for p in card card card paypal transfer; do wget -q -O- --post-data '' \"http://tienda:8080/orders?payment=$$p&amount=$$((RANDOM % 200 + 5))\" > /dev/null 2>&1; done; sleep 0.2; done"]
+    depends_on:
+      - tienda
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus:ro
+    command: ["--config.file=/etc/prometheus/prometheus.yml"]
+
+  grafana:
+    image: grafana/grafana:12.1.0
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus

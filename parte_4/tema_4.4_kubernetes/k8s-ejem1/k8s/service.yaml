@@ -1,0 +1,13 @@
+# Nombre DNS estable (hola) e IP virtual que reparte el tráfico entre los pods "Ready"
+apiVersion: v1
+kind: Service
+metadata:
+  name: hola
+spec:
+  type: NodePort          # accesible desde fuera del clúster en el puerto 30080 de los nodos
+  selector:
+    app: hola
+  ports:
+    - port: 80            # puerto del Service
+      targetPort: 8080    # puerto del contenedor
+      nodePort: 30080

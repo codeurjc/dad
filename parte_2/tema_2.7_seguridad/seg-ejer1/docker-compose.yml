@@ -1,0 +1,28 @@
+# Keycloak (servidor de autorización) + pedidos (resource server)
+#   docker compose up --build
+#   Consola de Keycloak: http://localhost:8180 (admin/admin) -> realm "dad"
+services:
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      # El emisor ("iss") de los tokens es siempre http://localhost:8180/realms/dad,
+      # tanto si el token se pide desde el host como desde otro contenedor
+      KC_HOSTNAME: http://localhost:8180
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+    ports:
+      - "8180:8080"
+    volumes:
+      - ./keycloak:/opt/keycloak/data/import:ro
+
+  pedidos:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # El emisor esperado sigue siendo localhost:8180, pero las claves se descargan por la red interna
+      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK_SET_URI: http://keycloak:8080/realms/dad/protocol/openid-connect/certs
+    depends_on:
+      - keycloak
