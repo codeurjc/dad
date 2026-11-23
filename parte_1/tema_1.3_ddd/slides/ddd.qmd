@@ -3,15 +3,15 @@ title: "Domain-Driven Design"
 subtitle: "Tema 1.3 · Desarrollo de Aplicaciones Distribuidas"
 institute: "ETSII · Universidad Rey Juan Carlos"
 lang: es
+# Trae su propia diapositiva de contenidos: sin indice automatico.
+show-index: false
 format:
   revealjs:
-    theme: [default, estilo.scss]
     slide-number: true
-    hash-type: number
-    transition: fade
     code-line-numbers: false
     code-overflow: wrap
-    footer: "DAD · Tema 1.3 · Domain-Driven Design"
+    # reveal.js ignora `code-overflow`: esto es lo que de verdad parte las lineas.
+    include-in-header: ../../../_slides/codigo-envuelto.html
     toc: false
 ---
 
@@ -31,7 +31,7 @@ format:
 **Código de los ejemplos**: carpeta [`parte_1/tema_1.3_ddd`](https://github.com/codeurjc/dad/tree/main/parte_1/tema_1.3_ddd) del repositorio de la asignatura.
 :::
 
-# ¿Por qué Domain-Driven Design? {background-color="#1f4e79"}
+# ¿Por qué Domain-Driven Design?
 
 ## El problema: la complejidad está en el dominio
 
@@ -63,7 +63,7 @@ format:
 * El **estratégico** es el más importante (y el que más se olvida)
 * El **táctico** son patrones de código para implementar un modelo rico
 
-# Diseño estratégico {background-color="#1f4e79"}
+# Diseño estratégico
 
 ## Lenguaje ubicuo (*Ubiquitous Language*)
 
@@ -216,7 +216,7 @@ public class PaqueExpressCarrierAdapter implements CarrierGateway {
 
 * Cambiar de transportista = escribir otro adaptador. **El dominio no se entera**
 
-# Diseño táctico {background-color="#ca6f1e"}
+# Diseño táctico
 
 ## Bloques de construcción
 
@@ -473,7 +473,7 @@ public static Order rehydrate(OrderId id, CustomerId customerId,  // desde la BD
 
 * El constructor es privado: **no hay forma** de crear un `Order` sin pasar por la factoría
 
-# Arquitectura {background-color="#148f77"}
+# Arquitectura
 
 ## Arquitectura en capas
 
@@ -539,7 +539,7 @@ void confirmarGeneraElEventoOrderPlaced() {
 
 * Los tests son rápidos, deterministas y **documentan las reglas de negocio**
 
-# Descubrir el dominio {background-color="#7d3c98"}
+# Descubrir el dominio
 
 ## *Event Storming*
 
@@ -562,7 +562,7 @@ void confirmarGeneraElEventoOrderPlaced() {
 Los eventos que descubres en el taller acaban siendo **eventos de dominio en el código** y, muchas veces, **mensajes entre servicios** (tema 3).
 :::
 
-# DDD y aplicaciones distribuidas {background-color="#1f4e79"}
+# DDD y aplicaciones distribuidas
 
 ## Bounded contexts y microservicios
 
@@ -619,7 +619,7 @@ cd parte_1/tema_1.3_ddd/ddd-ejem2
 mvn spring-boot:run      # o: mvn test para ejecutar solo las pruebas
 ```
 
-# Ejercicio {background-color="#ca6f1e"}
+# Ejercicio
 
 ## Ejercicio 1: préstamos de una biblioteca (I)
 

@@ -3,15 +3,15 @@ title: "Balanceo de carga y elasticidad"
 subtitle: "Tema 5.5 · Desarrollo de Aplicaciones Distribuidas"
 institute: "ETSII · Universidad Rey Juan Carlos"
 lang: es
+# Trae su propia diapositiva de contenidos: sin indice automatico.
+show-index: false
 format:
   revealjs:
-    theme: [default, estilo.scss]
     slide-number: true
-    hash-type: number
-    transition: fade
     code-line-numbers: false
     code-overflow: wrap
-    footer: "DAD · Tema 5.5 · Balanceo de carga y elasticidad"
+    # reveal.js ignora `code-overflow`: esto es lo que de verdad parte las lineas.
+    include-in-header: ../../../_slides/codigo-envuelto.html
 ---
 
 ## Contenidos
@@ -30,7 +30,7 @@ format:
 **Código de los ejemplos**: carpeta [`parte_5/tema_5.5_balanceo`](https://github.com/codeurjc/dad/tree/main/parte_5/tema_5.5_balanceo) del repositorio de la asignatura.
 :::
 
-# ¿Por qué balancear? {background-color="#1f4e79"}
+# ¿Por qué balancear?
 
 ## Escalar hacia arriba o hacia fuera
 
@@ -71,7 +71,7 @@ Un **balanceador de carga** recibe las peticiones de los clientes y las reparte 
 En el tema 5 ya montamos HAProxy delante de varias instancias (`ejem4-haproxy`). Aquí profundizamos en cómo funciona y en sus problemas.
 :::
 
-# Dónde se balancea {background-color="#1f4e79"}
+# Dónde se balancea
 
 ## Niveles de balanceo
 
@@ -85,7 +85,7 @@ En el tema 5 ya montamos HAProxy delante de varias instancias (`ejem4-haproxy`).
 
 ![](images/l4-l7.svg){fig-align="center" width="95%"}
 
-# Algoritmos de balanceo {background-color="#ca6f1e"}
+# Algoritmos de balanceo
 
 ## Algoritmos más comunes
 
@@ -131,7 +131,7 @@ Este código forma parte de la solución del ejercicio del tema ([balanceo-ejer1
 
 ![](images/hash-consistente.svg){fig-align="center" width="95%"}
 
-# Comprobaciones de salud {background-color="#148f77"}
+# Comprobaciones de salud
 
 ## *Health checks*
 
@@ -167,7 +167,7 @@ management.endpoint.health.probes.enabled=true
 Sin apagado ordenado, **cada vez que el autoescalado quita una instancia** algunos usuarios ven errores.
 :::
 
-# El problema del estado {background-color="#b03a2e"}
+# El problema del estado
 
 ## Ejemplo 1: round robin con sesión en memoria
 
@@ -268,7 +268,7 @@ $ for i in 1 2 3 4; do curl -s -b c.txt -c c.txt localhost:8080; echo; done
 
 * Las instancias son **intercambiables** (*stateless*): requisito para la **elasticidad**
 
-# TLS en el balanceador {background-color="#7d3c98"}
+# TLS en el balanceador
 
 ## Tres formas de manejar HTTPS
 
@@ -361,7 +361,7 @@ $ curl -k https://localhost:8443/          # compara la respuesta en cada modo
  "remoteAddr":"172.18.0.1","xForwardedFor":"172.18.0.1", …}          ← terminación
 ```
 
-# Alta disponibilidad del balanceador {background-color="#555"}
+# Alta disponibilidad del balanceador
 
 ## El balanceador no puede ser el punto único de fallo
 
@@ -370,7 +370,7 @@ $ curl -k https://localhost:8443/          # compara la respuesta en cada modo
 * En la nube: balanceadores gestionados (AWS ELB, Google Cloud Load Balancing...) ya replicados
 * Varios balanceadores **activos** a la vez: DNS con varias IPs o *anycast*
 
-# Elasticidad {background-color="#1e8449"}
+# Elasticidad
 
 ## Escalabilidad vs elasticidad
 
@@ -546,7 +546,7 @@ La elasticidad no es gratis: **instancias sin estado**, buenas **métricas** (te
 
 : {tbl-colwidths="[22,78]"}
 
-# Ejercicio {background-color="#ca6f1e"}
+# Ejercicio
 
 ## Ejercicio 1: tu propio balanceador (I)
 

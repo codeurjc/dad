@@ -1,0 +1,12 @@
+<style>
+/* Parte las lineas largas de los listados en vez de dejar que se salgan por
+   la derecha. Es lo que piden con `code-overflow: wrap` los mazos escritos
+   directamente en Quarto, pero reveal.js ignora esa opcion. Solo la cargan
+   esos mazos: los convertidos de Impress dependen del ajuste automatico. */
+.reveal .slides pre code,
+.reveal .slides pre.sourceCode code {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.reveal .slides pre code > span { white-space: pre-wrap; }
+</style>

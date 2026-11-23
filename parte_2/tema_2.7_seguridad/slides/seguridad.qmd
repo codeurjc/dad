@@ -3,15 +3,15 @@ title: "Seguridad en aplicaciones distribuidas"
 subtitle: "Tema 2.7 · Desarrollo de Aplicaciones Distribuidas"
 institute: "ETSII · Universidad Rey Juan Carlos"
 lang: es
+# Trae su propia diapositiva de contenidos: sin indice automatico.
+show-index: false
 format:
   revealjs:
-    theme: [default, estilo.scss]
     slide-number: true
-    hash-type: number
-    transition: fade
     code-line-numbers: false
     code-overflow: wrap
-    footer: "DAD · Tema 2.7 · Seguridad en aplicaciones distribuidas"
+    # reveal.js ignora `code-overflow`: esto es lo que de verdad parte las lineas.
+    include-in-header: ../../../_slides/codigo-envuelto.html
 ---
 
 ## Contenidos
@@ -30,7 +30,7 @@ format:
 **Código de los ejemplos**: carpeta [`parte_2/tema_2.7_seguridad`](https://github.com/codeurjc/dad/tree/main/parte_2/tema_2.7_seguridad)
 :::
 
-# Seguridad en sistemas distribuidos {background-color="#1f4e79"}
+# Seguridad en sistemas distribuidos
 
 ## ¿Por qué es más difícil?
 
@@ -76,7 +76,7 @@ La seguridad no se "añade al final": condiciona la arquitectura (gateway, servi
 : {tbl-colwidths="[9,44,47]"}
 :::
 
-# Autenticación {background-color="#7d3c98"}
+# Autenticación
 
 ## Autenticación y autorización
 
@@ -123,7 +123,7 @@ Misma contraseña, otro hash (otra sal): pbkdf2$600000$sg5EulxddSaz7HN20QVW8A==$
 
 ![](images/sesion-token.svg){fig-align="center" width="95%"}
 
-# JSON Web Tokens {background-color="#ca6f1e"}
+# JSON Web Tokens
 
 ## Anatomía de un JWT
 
@@ -194,7 +194,7 @@ Token manipulado: firma incorrecta
 * **Información sensible**: el payload es legible
 * **Usarlo como sesión** para todo: no siempre es la mejor opción (una web monolítica va bien con sesiones)
 
-# OAuth 2 y OpenID Connect {background-color="#1e8449"}
+# OAuth 2 y OpenID Connect
 
 ## OAuth 2: roles
 
@@ -251,7 +251,7 @@ Token manipulado: firma incorrecta
 * **Roles** de realm y de cliente, grupos, federación (LDAP, Google, GitHub...), 2FA, *passkeys*
 * Se importa la configuración desde un JSON → entornos reproducibles
 
-# APIs protegidas con Spring {background-color="#555"}
+# APIs protegidas con Spring
 
 ## Ejemplo 2: un *resource server*
 
@@ -379,7 +379,7 @@ void unUsuarioNormalNoPuedeCrear403() throws Exception {
 }
 ```
 
-# Seguridad entre servicios {background-color="#b03a2e"}
+# Seguridad entre servicios
 
 ## ¿Cómo se identifica un servicio?
 
@@ -447,7 +447,7 @@ return inventario.get().uri("/api/stock/{producto}", producto)
 El **gateway** centraliza TLS, límites de peticiones y un primer filtro de tokens, pero cada servicio **vuelve a validar** el token y aplica su autorización (defensa en profundidad, *zero trust*).
 :::
 
-# Secretos y otras defensas {background-color="#1f4e79"}
+# Secretos y otras defensas
 
 ## Gestión de secretos
 
@@ -473,7 +473,7 @@ Contraseñas de BD, secretos de clientes OAuth, claves de APIs, certificados...
 * **Dependencias** actualizadas: Dependabot, `mvn dependency-check:check`, escaneo de imágenes Docker (Trivy)
 * **Logs y auditoría**: quién hizo qué (sin contraseñas ni tokens en los logs) y alertas ante patrones raros (tema 5.8)
 
-# Autorización a nivel de objeto {background-color="#7d3c98"}
+# Autorización a nivel de objeto
 
 ## BOLA: el fallo más común en APIs
 
@@ -524,7 +524,7 @@ mvn test                     # sin Keycloak
 docker compose up --build    # Keycloak en :8180 (admin/admin) y la API en :8080
 ```
 
-# Ejercicio {background-color="#ca6f1e"}
+# Ejercicio
 
 ## Ejercicio 1: cada uno sus pedidos (I)
 

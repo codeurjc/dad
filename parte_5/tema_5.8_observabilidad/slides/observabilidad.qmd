@@ -3,15 +3,15 @@ title: "Observabilidad en sistemas distribuidos"
 subtitle: "Tema 5.8 · Desarrollo de Aplicaciones Distribuidas"
 institute: "ETSII · Universidad Rey Juan Carlos"
 lang: es
+# Trae su propia diapositiva de contenidos: sin indice automatico.
+show-index: false
 format:
   revealjs:
-    theme: [default, estilo.scss]
     slide-number: true
-    hash-type: number
-    transition: fade
     code-line-numbers: false
     code-overflow: wrap
-    footer: "DAD · Tema 5.8 · Observabilidad en sistemas distribuidos"
+    # reveal.js ignora `code-overflow`: esto es lo que de verdad parte las lineas.
+    include-in-header: ../../../_slides/codigo-envuelto.html
 ---
 
 ## Contenidos
@@ -30,7 +30,7 @@ format:
 **Código de los ejemplos**: carpeta [`parte_5/tema_5.8_observabilidad`](https://github.com/codeurjc/dad/tree/main/parte_5/tema_5.8_observabilidad) del repositorio de la asignatura.
 :::
 
-# Monitorización y observabilidad {background-color="#1f4e79"}
+# Monitorización y observabilidad
 
 ## El problema
 
@@ -74,7 +74,7 @@ En un sistema distribuido:
 
 ![](images/tres-pilares.svg){fig-align="center" width="95%"}
 
-# Logs {background-color="#7d3c98"}
+# Logs
 
 ## Logs estructurados
 
@@ -175,7 +175,7 @@ contenedor ──stdout──▶ agente (Promtail, Fluent Bit, OTel Collector)
                           ──▶ Loki / Elasticsearch ──▶ Grafana / Kibana
 ```
 
-# Métricas {background-color="#1f4e79"}
+# Métricas
 
 ## Métricas con Micrometer
 
@@ -299,7 +299,7 @@ Panel y fuente de datos **como código** (ficheros en el repositorio): se revisa
 * Empezar por **RED en cada servicio** y **USE en cada recurso compartido**
 * Añadir métricas de **negocio**: pedidos por minuto, importe, registros... A veces la primera señal de un fallo técnico es una caída en las ventas
 
-# Trazas distribuidas {background-color="#ca6f1e"}
+# Trazas distribuidas
 
 ## Trazas y *spans*
 
@@ -390,7 +390,7 @@ Línea de log de inventario: con el `traceId` se encuentra la traza, y desde la 
 management.tracing.sampling.probability=0.1
 ```
 
-# SLO y alertas {background-color="#b03a2e"}
+# SLO y alertas
 
 ## SLI, SLO y SLA
 
@@ -432,7 +432,7 @@ management.tracing.sampling.probability=0.1
 * Mejor aún: alertar por **tasa de consumo del presupuesto** (*burn rate*): "a este ritmo, agotamos el presupuesto del mes en 2 días"
 * Demasiadas alertas → **fatiga**: se acaban ignorando todas
 
-# De la alerta a la causa {background-color="#1e8449"}
+# De la alerta a la causa
 
 ## Flujo de diagnóstico
 
@@ -472,7 +472,7 @@ management.tracing.sampling.probability=0.1
 
 : {tbl-colwidths="[20,80]"}
 
-# Ejercicio {background-color="#ca6f1e"}
+# Ejercicio
 
 ## Ejercicio 1: el misterio de los pagos lentos (I)
 

@@ -3,15 +3,15 @@ title: "Arquitectura de microservicios"
 subtitle: "Tema 1.4 · Desarrollo de Aplicaciones Distribuidas"
 institute: "ETSII · Universidad Rey Juan Carlos"
 lang: es
+# Trae su propia diapositiva de contenidos: sin indice automatico.
+show-index: false
 format:
   revealjs:
-    theme: [default, estilo.scss]
     slide-number: true
-    hash-type: number
-    transition: fade
     code-line-numbers: false
     code-overflow: wrap
-    footer: "DAD · Tema 1.4 · Arquitectura de microservicios"
+    # reveal.js ignora `code-overflow`: esto es lo que de verdad parte las lineas.
+    include-in-header: ../../../_slides/codigo-envuelto.html
 ---
 
 ## Contenidos
@@ -31,7 +31,7 @@ format:
 **Código de los ejemplos**: carpeta [`parte_1/tema_1.4_microservicios`](https://github.com/codeurjc/dad/tree/main/parte_1/tema_1.4_microservicios) del repositorio de la asignatura.
 :::
 
-# Del monolito a los microservicios {background-color="#1f4e79"}
+# Del monolito a los microservicios
 
 ## Monolito vs microservicios
 
@@ -105,7 +105,7 @@ Las **falacias de la computación distribuida**: la red es fiable, la latencia e
 * Sin automatización de despliegue (CI/CD) ni monitorización
 * "Porque lo hace Netflix"
 
-# Cómo dividir {background-color="#ca6f1e"}
+# Cómo dividir
 
 ## Descomposición
 
@@ -135,7 +135,7 @@ Si para cada funcionalidad nueva hay que desplegar cinco servicios a la vez, tie
     - Equipos **pequeños** ("*two-pizza teams*") y **multidisciplinares**
     - Cada equipo es dueño de uno o varios servicios: "*you build it, you run it*"
 
-# Datos {background-color="#b03a2e"}
+# Datos
 
 ## Una base de datos por servicio
 
@@ -226,7 +226,7 @@ public record ProductInfo(Long id, String name, BigDecimal price, int stock) { }
 Si dos servicios necesitan una transacción ACID común **muy a menudo**, quizá la frontera está mal puesta y deberían ser uno.
 :::
 
-# Comunicación {background-color="#148f77"}
+# Comunicación
 
 ## Síncrona vs asíncrona
 
@@ -260,7 +260,7 @@ Regla práctica: **consultas síncronas, cambios de estado asíncronos**. Y cuid
 * Documentar: OpenAPI (REST), AsyncAPI (mensajes), `.proto` (gRPC)
 * **Pruebas de contrato** (*consumer-driven contracts*, Spring Cloud Contract, Pact): el consumidor publica lo que espera; el proveedor lo verifica en su CI
 
-# API Gateway y descubrimiento {background-color="#7d3c98"}
+# API Gateway y descubrimiento
 
 ## API Gateway
 
@@ -339,7 +339,7 @@ pedidos:
     - CATALOGO_URL=http://catalogo:8081    # sobrescribe catalogo.url de application.properties
 ```
 
-# Resiliencia {background-color="#b03a2e"}
+# Resiliencia
 
 ## Fallos en cascada
 
@@ -467,7 +467,7 @@ curl localhost:8082/resilience      # tras varios fallos: {"circuitBreaker":"OPE
 *Chaos engineering*: provocar fallos a propósito (latencia, caídas, red) para comprobar que el sistema los tolera. Netflix Chaos Monkey, Chaos Mesh, Toxiproxy.
 :::
 
-# Migrar un monolito {background-color="#555"}
+# Migrar un monolito
 
 ## *Strangler fig*
 
@@ -478,7 +478,7 @@ curl localhost:8082/resilience      # tras varios fallos: {"circuitBreaker":"OPE
 * Se repite hasta que el monolito desaparece (o queda pequeño y estable)
 * Empezar por algo con **fronteras claras** y **valor** de independizar
 
-# Despliegue, pruebas y organización {background-color="#1e8449"}
+# Despliegue, pruebas y organización
 
 ## Despliegue
 
@@ -543,7 +543,7 @@ static class FakeCatalog {
 
 : {tbl-colwidths="[20,80]"}
 
-# Ejercicio {background-color="#ca6f1e"}
+# Ejercicio
 
 ## Ejercicio 1: biblioteca en microservicios (I)
 

@@ -3,15 +3,15 @@ title: "Arquitecturas dirigidas por eventos"
 subtitle: "Tema 3.3 · Desarrollo de Aplicaciones Distribuidas"
 institute: "ETSII · Universidad Rey Juan Carlos"
 lang: es
+# Trae su propia diapositiva de contenidos: sin indice automatico.
+show-index: false
 format:
   revealjs:
-    theme: [default, estilo.scss]
     slide-number: true
-    hash-type: number
-    transition: fade
     code-line-numbers: false
     code-overflow: wrap
-    footer: "DAD · Tema 3.3 · Arquitecturas dirigidas por eventos"
+    # reveal.js ignora `code-overflow`: esto es lo que de verdad parte las lineas.
+    include-in-header: ../../../_slides/codigo-envuelto.html
 ---
 
 ## Contenidos
@@ -31,7 +31,7 @@ format:
 **Código de los ejemplos**: carpeta [`parte_3/tema_3.3_eventos`](https://github.com/codeurjc/dad/tree/main/parte_3/tema_3.3_eventos) del repositorio de la asignatura.
 :::
 
-# ¿Por qué eventos? {background-color="#1f4e79"}
+# ¿Por qué eventos?
 
 ## El problema del acoplamiento
 
@@ -54,7 +54,7 @@ Una **arquitectura dirigida por eventos** (*Event-Driven Architecture*, EDA) inv
 En el tema 3.1 vimos colas de mensajes con RabbitMQ. Ahora las usamos para **diseñar** sistemas alrededor de eventos.
 :::
 
-# Conceptos {background-color="#1f4e79"}
+# Conceptos
 
 ## Comandos, eventos y consultas
 
@@ -121,7 +121,7 @@ Martin Fowler distingue cuatro cosas que solemos llamar "dirigido por eventos":
 :::
 :::
 
-# Eventos dentro de una aplicación {background-color="#148f77"}
+# Eventos dentro de una aplicación
 
 ## Eventos en memoria con Spring
 
@@ -178,7 +178,7 @@ curl localhost:8080/log
 Los eventos en memoria **se pierden** si el proceso se cae antes de procesarlos. Para comunicar servicios necesitamos un **broker** que los guarde.
 :::
 
-# Publicación/suscripción entre servicios {background-color="#ca6f1e"}
+# Publicación/suscripción entre servicios
 
 ## Exchanges de RabbitMQ (repaso)
 
@@ -307,7 +307,7 @@ curl -X POST localhost:8080/orders/{orderId}/cancel
 **Experimento**: para `inventario`, crea varios pedidos y vuelve a arrancarlo. ¿Qué pasa con los eventos? Mira la cola en la consola de RabbitMQ.
 :::
 
-# Garantías de entrega {background-color="#7d3c98"}
+# Garantías de entrega
 
 ## ¿Cuántas veces llega un mensaje?
 
@@ -361,7 +361,7 @@ public synchronized boolean reserve(String orderId, String productId, int quanti
 "Pedido cancelado" llegando antes que "pedido confirmado" no es una situación exótica: **pasa**.
 :::
 
-# Consistencia y el patrón *outbox* {background-color="#b03a2e"}
+# Consistencia y el patrón *outbox*
 
 ## El problema de la doble escritura
 
@@ -432,7 +432,7 @@ public boolean handle(String messageId, OrderPlaced event) {
 
 ![](images/outbox-secuencia.svg){fig-align="center" width="80%"}
 
-# Sagas {background-color="#1565c0"}
+# Sagas
 
 ## Transacciones que cruzan servicios
 
@@ -463,7 +463,7 @@ public boolean handle(String messageId, OrderPlaced event) {
 Ordena los pasos para que los **difíciles de compensar** vayan al final: es más fácil liberar una reserva de stock que devolver un pago o "des-enviar" un paquete.
 :::
 
-# *Event sourcing* y CQRS {background-color="#e65100"}
+# *Event sourcing* y CQRS
 
 ## *Event sourcing*
 
@@ -558,7 +558,7 @@ curl localhost:8080/accounts/{id}/balance?atVersion=2  # viaje en el tiempo
 curl localhost:8080/accounts/richest?n=3            # proyección
 ```
 
-# Más allá {background-color="#555"}
+# Más allá
 
 ## Evolución de los eventos
 
@@ -640,7 +640,7 @@ Ambos sirven para EDA. Kafka permite que un consumidor nuevo procese **toda la h
 
 : {tbl-colwidths="[22,78]"}
 
-# Ejercicio {background-color="#ca6f1e"}
+# Ejercicio
 
 ## Ejercicio 1: saga coreografiada (I)
 

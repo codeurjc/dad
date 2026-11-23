@@ -3,15 +3,15 @@ title: "Kubernetes"
 subtitle: "Tema 4.4 · Desarrollo de Aplicaciones Distribuidas"
 institute: "ETSII · Universidad Rey Juan Carlos"
 lang: es
+# Trae su propia diapositiva de contenidos: sin indice automatico.
+show-index: false
 format:
   revealjs:
-    theme: [default, estilo.scss]
     slide-number: true
-    hash-type: number
-    transition: fade
     code-line-numbers: false
     code-overflow: wrap
-    footer: "DAD · Tema 4.4 · Kubernetes"
+    # reveal.js ignora `code-overflow`: esto es lo que de verdad parte las lineas.
+    include-in-header: ../../../_slides/codigo-envuelto.html
 ---
 
 ## Contenidos
@@ -29,7 +29,7 @@ format:
 **Código de los ejemplos**: carpeta [`parte_4/tema_4.4_kubernetes`](https://github.com/codeurjc/dad/tree/main/parte_4/tema_4.4_kubernetes). Para probarlos basta un clúster local: [kind](https://kind.sigs.k8s.io/), [minikube](https://minikube.sigs.k8s.io/) o el de Docker Desktop.
 :::
 
-# De Compose a Kubernetes {background-color="#1f4e79"}
+# De Compose a Kubernetes
 
 ## Lo que Docker Compose no resuelve
 
@@ -59,7 +59,7 @@ Eso lo hace un **orquestador de contenedores**. El estándar *de facto*: **Kuber
 Kubernetes no construye imágenes ni sustituye a Docker: **ejecuta** las imágenes que generamos con `docker build` (tema 4.2).
 :::
 
-# Arquitectura {background-color="#7d3c98"}
+# Arquitectura
 
 ## Plano de control y nodos
 
@@ -84,7 +84,7 @@ Kubernetes no construye imágenes ni sustituye a Docker: **ejecuta** las imágen
 Este modelo hace que los ficheros YAML se puedan guardar en Git y aplicar automáticamente: **infraestructura como código**.
 :::
 
-# Objetos básicos {background-color="#ca6f1e"}
+# Objetos básicos
 
 ## Los objetos más usados
 
@@ -263,7 +263,7 @@ Estados que hay que saber interpretar:
 * `CrashLoopBackOff`: el contenedor arranca y termina una y otra vez (ver `logs --previous`)
 * `OOMKilled`: superó su límite de memoria
 
-# Sondas y recursos {background-color="#1e8449"}
+# Sondas y recursos
 
 ## Sondas (*probes*)
 
@@ -325,7 +325,7 @@ resources:
 * Sin *requests*, el scheduler no sabe dónde cabe el pod y el autoescalado no puede calcular el % de uso
 * Un pod con `requests == limits` tiene la máxima prioridad (QoS *Guaranteed*); sin nada, es el primero en ser expulsado
 
-# Aplicaciones con estado {background-color="#555"}
+# Aplicaciones con estado
 
 ## StatefulSet y volúmenes persistentes
 
@@ -441,7 +441,7 @@ spec:
 :::
 :::
 
-# Escalado y actualizaciones {background-color="#b03a2e"}
+# Escalado y actualizaciones
 
 ## Escalado automático
 
@@ -545,7 +545,7 @@ calculo   Deployment/calculo   cpu: 71%/60%   1         3         3
 * Tras parar la carga, el HPA espera la ventana de estabilización (2 min) y vuelve al mínimo
 * Mientras se hace un *rolling update*, un bucle de `curl` contra el Service no ve ningún error
 
-# Kustomize y despliegue continuo {background-color="#1f4e79"}
+# Kustomize y despliegue continuo
 
 ## Kustomize: un YAML por entorno
 
@@ -606,7 +606,7 @@ docker build -t codeurjc/k8s-ejem1:v1 k8s-ejem1 && kind load docker-image codeur
 kubectl apply -f k8s-ejem1/k8s/
 ```
 
-# Ejercicio {background-color="#ca6f1e"}
+# Ejercicio
 
 ## Ejercicio 1: colas en Kubernetes (I)
 

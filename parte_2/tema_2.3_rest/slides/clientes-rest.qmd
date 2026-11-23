@@ -1,0 +1,209 @@
+---
+title: "Tema 2.3.3: Clientes REST en el servidor"
+subtitle: "Desarrollo Web · Tecnologías de servidor web"
+author:
+  - "Micael Gallego, Francisco Gortázar, Michel Maes, Óscar Soto e Iván Chicano"
+date: "2025-01-01"
+date-format: "MM-YYYY"
+---
+
+## Licencia {.nota-licencia visibility="uncounted"}
+
+©2025  Micael Gallego, Francisco Gortázar, Michel Maes, Óscar Soto, Iván Chicano Algunos derechos reservados Este documento se distribuye bajo la licencia “Atribución-CompartirIgual 4.0 Internacional”  de Creative Comons Disponible en [https://creativecommons.org/licenses/by-sa/4.0/deed.es](https://creativecommons.org/licenses/by-sa/4.0/deed.es)
+
+## Clientes REST en el servidor
+
+- Ya hemos visto cómo hacer peticiones a un servicio REST desde el **navegador** con **fetch**
+- Un **servidor web** también se puede convertir en **cliente de APIs REST** de otros servicios:
+  - Ejemplo: Redes sociales, información meteorológica, libros, fotos, vídeos...
+
+---
+
+- **Clientes REST Java**
+  - Java HttpClient
+  - Jersey Client
+  - Apache HttpClient
+  - **RestClient de Spring**
+  - Retrofit 
+  - Feign
+
+![](images/10000000000004060000016863C10A34.png){width=27%}
+
+![](images/10000001000000CA0000006E1E1C32F2.png){width=21%}
+
+![](images/10000001000000FA000000FA2EC121A0.png){width=29%}
+
+---
+
+- **RestClient de Spring**
+  - Para hacer peticiones REST en **Spring** se usa un objeto de la clase **RestClient**
+  - Se indica la **URL** y la **clase** de los objetos que devolverá la consulta
+
+[https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient](https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient)
+
+---
+
+- **RestClient de Spring**
+
+RestClient restClient = RestClient.create();
+
+String response = restClient.get()
+
+    .uri("https://api.example.com/data")
+
+    .retrieve()
+
+    .body(String.class);
+
+System.out.println(response);
+
+[https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient](https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-restclient)
+
+---
+
+**rest\_ejem10**
+
+- **RestClient de Spring**
+  - Para procesar la respuesta se indica la clase o registro que estructura los datos
+
+```json
+{
+  "kind": "books#volumes",
+  "totalItems": 579,
+  "items": [
+    {
+      "kind": "books#volume",
+      "volumeInfo": {
+        "title": "Java a Tope: J2me...",
+        "publisher": "Sergio Gálvez Rojas",
+        ... 
+    },
+    {...},
+    {...} 
+   ]
+   ... 
+}
+```
+
+```
+record BooksResponse(
+	List<Book> items
+){}
+
+record Book(
+	VolumeInfo volumeInfo
+){}
+
+record VolumeInfo(
+	String title
+){}
+```
+
+---
+
+**rest\_ejem10**
+
+- **RestClient de Spring**
+  - Petición a la API de GoogleBooks para extraer los libros
+
+Clase para “capturar” la respuesta
+
+RestClient restClient = RestClient.create();
+
+BooksResponse data = restClient.get()
+
+  .uri("https://www.googleapis.com/books/v1/volumes?q=intitle:" + title)
+
+  .retrieve()
+
+  .body(BooksResponse.class);
+
+List\<String\> bookTitles = new ArrayList\<\>();
+
+for (Book book : data.items()) {
+
+  bookTitles.add(book.volumeInfo().title());
+
+}
+
+return bookTitles;
+
+[http://127.0.0.1:8080/booktitles?title=Java](http://127.0.0.1:8080/booktitles?title=Java)
+
+---
+
+**rest\_ejem11**
+
+- **RestClient: Cliente REST Spring**
+  - Es posible acceder a la respuesta directamente **sin definir clases**
+  - Para ello se usa la librería **Jackson** de procesamiento de **JSON** para Java
+  - **Jackson** también se usa para convertir (mapear) el **JSON** a objetos (vistos del ejemplo anterior)
+
+[https://github.com/FasterXML/jackson](https://github.com/FasterXML/jackson) 
+
+[https://www.baeldung.com/jackson](https://www.baeldung.com/jackson) 
+
+---
+
+**rest\_ejem11**
+
+- **RestClient: Cliente REST Spring**
+
+RestClient restClient = RestClient.create();
+
+ObjectNode data = restClient.get()
+
+  .uri("https://www.googleapis.com/books/v1/volumes?q=intitle:" + title)
+
+  .retrieve()
+
+  .body(ObjectNode.class);
+
+List\<String\> bookTitles = new ArrayList\<\>();
+
+ArrayNode items = (ArrayNode) data.get("items");
+
+for (int i = 0; i \< items.size(); i++) {
+
+  JsonNode item = items.get(i);
+
+  String bookTitle = item.get("volumeInfo").get("title").asText();
+
+  bookTitles.add(bookTitle);
+
+}
+
+return bookTitles;
+
+---
+
+**rest\_ejem11**
+
+- **RestClient: Cliente REST Spring**
+
+RestClient restClient = RestClient.create();
+
+ObjectNode data = restClient.get()
+
+  .uri("https://www.googleapis.com/books/v1/volumes?q=intitle:" + title)
+
+  .retrieve()
+
+  .body(ObjectNode.class);
+
+List\<String\> bookTitles = new ArrayList\<\>();
+
+ArrayNode items = (ArrayNode) data.get("items");
+
+for (int i = 0; i \< items.size(); i++) {
+
+  JsonNode item = items.get(i);
+
+  String bookTitle = item.get("volumeInfo").get("title").asText();
+
+  bookTitles.add(bookTitle);
+
+}
+
+return bookTitles;
+

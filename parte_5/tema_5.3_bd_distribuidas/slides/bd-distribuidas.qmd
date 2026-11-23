@@ -1,0 +1,339 @@
+---
+title: "Tema 5.3: Bases de datos distribuidas"
+subtitle: "Desarrollo de Aplicaciones Distribuidas · Tema 4"
+author:
+  - "Francisco Gortázar"
+  - "Michel Maes"
+  - "Óscar Soto"
+  - "Micael Gallego"
+---
+
+## Licencia {.nota-licencia visibility="uncounted"}
+
+©2023  Micael Gallego, Francisco Gortázar, Michel Maes, Óscar Soto Algunos derechos reservados Este documento se distribuye bajo la licencia “Atribución-CompartirIgual 4.0 Internacional”  de Creative Comons Disponible en [https://creativecommons.org/licenses/by-sa/4.0/deed.es](https://creativecommons.org/licenses/by-sa/4.0/deed.es)
+
+# El problema de la consistencia
+
+## El problema de la consistencia
+
+- Para que las bases de datos relacionales puedan llevar a cabo transacciones de forma fiable, deben cumplir las propiedades ACID
+  - Atomicidad (Atomicity)
+    - Como resultado de la transacción o bien se han ejecutado en su totalidad todas sus instrucciones o no se ejecuta ninguna instrucción en absoluto
+  - Consistencia (Consistency) o integridad
+    - La transacción llevará a la base de datos de un estado válido a otro estado también válido
+  - Aislamiento (Isolation)
+    - La ejecución concurrente de transacciones que afectan a los mismos datos se lleva a cabo como si se hubieran ejecutado de forma serializada: una a continuación de otra
+  - Persistencia (Durability)
+    - Una vez que la transacción finaliza con éxito los resultados perduran incluso aunque falle el servidor: han sido escritos de forma que puedan ser recuperados
+
+---
+
+- ACID es perfectamente viable en el contexto de un único servidor de base de datos
+- ¿Qué pasa si necesitamos elasticidad en la base de datos?
+  - Surge el problema de la consistencia de los datos
+  - Existen diferentes modelos de consistencia en sistemas distribuidos
+    - Un modelo de consistencia es un contrato entre el programador y el sistema que establece las garantías mínimas que el programador puede esperar
+
+---
+
+- Ejemplo 1
+  - Contexto:
+    - Tenemos una base de datos replicada con dos nodos A y B
+    - El dato **x** es replicado tanto a A como a B
+  - Escenario:
+    - La aplicación P actualiza **x** en A
+    - Tras un tiempo t la aplicación Q lee **x** de B
+  - Problema:
+    - ¿Qué valor de **x** debería ver B?
+    - Lo determinará el modelo de consistencia	
+
+# Modelos de consistencia
+
+## Modelos de consistencia
+
+- Un modelo de consistencia es un contrato entre los procesos y la base de datos
+- La base de datos se comportará correctamente si los procesos siguen ciertas reglas
+- Los modelos de consistencia pueden clasificarse en más o menos débiles
+- Un modelo de consistencia es más fuerte que otro si impone las restricciones de este último y algunas más
+- Vamos a estudiar algunos de estos modelos de consistencia
+
+---
+
+- Convenciones:
+  - W(x)a =\> el valor **a** se escribe en **x**
+  - R(y)b =\> se lee **y**, devolviendo **b**
+  - El tiempo fluye de izquierda a derecha
+- Un proceso puede realizar varias de estas operaciones
+- Sus operaciones se pueden intercalar con las de otros procesos
+  - P1: R(x)1 W(y)2
+  - P2: W(y)3 R(y)**?**
+
+---
+
+- Los diferentes modelos de consistencia se pueden clasificar en dos grandes grupos:
+  - Consistencia basada en los datos
+  - Consistencia basada en el cliente
+
+## Consistencia basada en los datos
+
+- Consistencia estricta
+  - Es el más fuerte de todos
+  - Si un proceso va a leer un dato, se debe garantizar que lee el valor escrito por la última operación de escritura sobre dicho dato
+  - Considera que las escrituras son “instantáneas”
+  - En un entorno en el que los datos están distribuidos esto es imposible de alcanzar
+    - Tras una escritura hay que replicar el dato en todos los demás nodos
+    - Esta replicación lleva un tiempo mayor que cero
+    - Una lectura podría leer un dato desactualizado
+  - Para conseguirlo se necesita que de forma centralizada se **ordenen** las operaciones
+
+---
+
+- Consistencia secuencial
+  - Dos procesos realizan una serie de operaciones sobre los datos 
+  - La consistencia secuencial garantiza que las operaciones de un proceso respetarán el orden en el que fueron ejecutadas por dicho proceso, aunque puedan intercalarse con operaciones de otros procesos
+  - Modelo más débil que el estricto
+  - No garantiza leer la escritura más reciente para un dato dado
+  - La garantía se limita a que las operaciones de un proceso se aplicarán en el orden en que las lanzó dicho proceso
+  - Ejemplos válidos:
+    - P1P2Q1Q2Q3
+    - P1Q1Q2P2Q3
+  - Ejemplo inválido (no se respeta el orden de las operaciones de Q): 
+    - P1Q2P2Q1Q3
+
+---
+
+- Consistencia causal
+  - Aquellas escrituras que están causalmente relacionadas deben ser vistas por todos los procesos en el mismo orden
+    - Causalmente relacionadas: una escritura W' que sigue a una lectura R que devuelve un valor escrito por otra escritura W
+    - W(x)5→R(x)5→W'(x)3
+    - W' está causalmente relacionada con W
+    - Depende del valor leído por R(x), que es el mismo que escribió W(x)
+
+---
+
+- Consistencia causal
+  - Ejemplo
+    - P1: W(x)1           W(x)3
+    - P2:     R(x)1  W(x)2
+    - P3:     R(x)1         R(x)3  R(x)2
+    - P4:     R(x)1         R(x)2 R(x)3
+  - Nadie debería poder leer 2 (escrito por W(x)2) antes que 1 (escrito por W(x)1) porque está relaciados causalmente y deben verse siempre en este orden: primero W(x)1 luego W(x)2
+
+---
+
+- Consistencia causal
+  - Ejemplo
+    - P1: W(x)1           
+    - P2:     R(x)1  W(x)2
+    - P3:         R(x)2         R(x)1
+    - P4:         R(x)1         R(x)2
+  - P3 está viendo el valor 2 antes que el 1, es decir, ha visto la operación W(x)2 antes que la W(x)1: se ha incumplido el modelo causal
+
+---
+
+- Consistencia FIFO
+  - Las escrituras de un mismo proceso se reciben en orden
+  - Escrituras de diferentes procesos se pueden recibir en cualquier orden
+    - P1: W(x)1
+    - P2:     R(x)1    W(x)2
+    - P3:          R(x)2  R(x)1
+    - P4:          R(x)1  R(x)2
+
+---
+
+- Consistencia débil (weak consistency)
+  - Se utilizan herramientas de sincronización
+  - Acceso a variables sincronizadas son secuencialmente consistentes
+  - Cualquier acceso a una variable sincronizada requiere que se completen todas las escrituras anteriores
+
+## Modelos de consistencia
+
+- Los diferentes modelos de consistencia se pueden clasificar en dos grandes grupos:
+  - Consistencia basada en los datos
+  - **Consistencia basada en el cliente**
+
+## Consistencia basada en el cliente
+
+- Base de datos distribuida
+- Cada nodo se etiqueta con L1, L2, ...
+- Estudiamos la secuencia de operaciones aplicadas en cada nodo
+- Asumimos un proceso realizando operaciones sobre diferentes nodos
+- ¿Cómo ve el estado de los datos ese proceso?
+
+---
+
+- Consistencia eventual
+  - Pocas actualizaciones, muchas lecturas
+  - En ausencia de actualizaciones todas las réplicas convergen hacia una vista idéntica de los datos
+    - Las escrituras se propagan a las réplicas
+    - No hay conflictos de escritura-escritura
+    - Si el usuario siempre accede a la misma réplica no hay problemas
+    - Si el usuario accede a diferentes réplicas podría ver un estado t+1 en una réplica y un estado t en otra (inconsistencia)
+    - Eventualmente todas las réplicas habrán aplicado todas las escrituras
+
+---
+
+- Lecturas monotónicas
+  - Si un proceso lee el valor de un dato x, cualquier lectura posterior de dicho valor debe devolver el mismo valor o un valor más reciente
+  - L1: WS(x1)                      R(x1)
+  - L2:                WS(x1;x2)                 R(x2)
+  - L2 escribe el valor de x1, y actualiza con x2
+  - La lectura de un proceso de L1 devuelve la escritura x1
+  - La lectura de un proceso de L2 devuelve una escritura más reciente
+  - Se cumple la propiedad
+
+---
+
+- Lecturas monotónicas
+  - Si un proceso lee el valor de un dato x, cualquier lectura posterior de dicho valor debe devolver el mismo valor o un valor más reciente
+  - El siguiente ejemplo no sería válido
+  - L1: WS(x1)                      R(x1)
+  - L2:                WS(x2)                 R(x2)  WS(x1;x2)
+  - En el instante t2 se escribe x2 en L2
+  - Pero en L1 se está devolviendo x1
+  - Un cliente que pasara de L2 a L1 vería un valor maś antiguo
+
+---
+
+- Escrituras monotónicas
+  - Una operación de escritura realizada por un proceso sobre x debe completarse antes de que cualquier otra operación de escritura sobre x se lleve a cabo por el mismo proceso
+  - Ejemplo:
+  - L1: W(x1)                      
+  - L2:                W(x1)         W(x2)
+  - En L2 se aplica W(x1) antes de actualizar a x2
+
+---
+
+- Escrituras monotónicas
+  - Una operación de escritura realizada por un proceso sobre x debe completarse antes de que cualquier otra operación de escritura sobre x se lleve a cabo por el mismo proceso
+  - Ejemplo inválido:
+  - L1: W(x1)                      
+  - L2:                           W(x2)
+  - L2 aplica x2 sin haber aplicado x1
+
+---
+
+- Lecturas siguen a las escrituras
+  - Una operación de escritura realizada por un proceso sobre x será vista por una operación de lectura sobre x por el mismo proceso
+  - Ejemplo:
+  - L1: W(x1)                      
+  - L2:              WS(x1;x2)            R(x2)
+
+---
+
+- Lecturas siguen a las escrituras
+  - Una operación de escritura realizada por un proceso sobre x será vista por una operación de lectura sobre x por el mismo proceso
+  - Ejemplo inválido:
+  - L1: W(x1)                      
+  - L2:              WS(x2)            R(x2)
+  - Se lee x2 de L2 sin haber aplicado primero x1
+
+---
+
+- Escrituras siguen a las lecturas
+  - Una operación de escritura sobre x realizada después de una lectura de x tendrá lugar sobre el mismo valor leído o uno más reciente
+  - Ejemplo:
+  - L1: WS(x1)                      R(x1)
+  - L2:              WS(x1;x2)              W(x2)
+  - Se lee x2 de L2 sin haber aplicado primero x1
+
+---
+
+- Escrituras siguen a las lecturas
+  - Una operación de escritura sobre x realizada después de una lectura de x tendrá lugar sobre el mismo valor leído o uno más reciente
+  - Ejemplo:
+  - L1: WS(x1)                      R(x1)
+  - L2:              WS(x2)                   W(x2)
+  - Se lee x2 de L2 sin haber aplicado primero x1
+
+# Teorema del CAP
+
+## Teorema del CAP
+
+- El Teorema del CAP establece que **es** **imposible** tener a la vez:
+  - **Consistencia** (Consistency): las lecturas devuelven la escritura más reciente siempre
+  - **Disponibilidad** (Availability): toda petición es respondida en un tiempo razonable (tenga éxito o no) sin que salten timeouts
+  - **Tolerancia a la partición** (Partition tolerance): el sistema sigue funcionando aunque se pierdan mensajes o haya nodos que se desconecten
+
+## El problema de la consistencia
+
+- Ejemplo
+  - Contexto:
+    - Tenemos una base de datos replicada con dos nodos A y B
+    - El dato **x** es replicado tanto a A como a B
+  - Escenario:
+    - La aplicación P actualiza **x** en A
+    - Tras un tiempo t la aplicación Q lee **x** de B
+  - Problema:
+    - ¿Qué valor de **x** debería ver B?
+    - Lo determinará el modelo de consistencia	
+
+## Teorema del CAP
+
+- Ejemplo
+  - Asumiendo el contexto anterior
+  - Para que B vea el dato escrito por A
+    - Toda escritura debe realizarse en todos los nodos (consistencia) para ser dada por válida
+    - Toda lectura debe consultar todos los nodos por si hay alguna escritura pendiente de replicar
+    - Si un nodo se desconecta las escrituras no terminan nunca
+      - No hay mensaje de error: no hay disponibilidad
+      - No hay tolerancia a la partición porque el sistema se queda bloqueado
+    - Este es el modelo de consistencia estricta
+      - El modelo de consistencia estricta establece que si P lee el dato x, se le proporcionará la escritura más reciente de ese dato en cualquiera de los nodos
+
+---
+
+- La red no es fiable...
+  - Del CAP, debemos soportar la “P” (tolerancia a la partición)
+  - No podemos tener C, A y P simultáneamente, por tanto sólo nos queda elegir entre C y A
+
+---
+
+- Los diferentes modelos de consistencia nos proporcionan C, A y P en diferente grado
+  - Modelo de consistencia estricta
+    - El modelo de consistencia estricta establece que si P lee el dato **x**, se le proporcionará la escritura más reciente de ese dato en cualquiera de los nodos
+    - Escrituras se replican en todos los nodos
+    - Las lecturas requieren leer de todos los nodos por si su copia estuviera desactualizada
+  - Modelo de consistencia eventual
+    - Las escrituras se replican de forma asíncrona
+    - Eventualmente todos los nodos tendrán el dato replicado
+
+---
+
+- Hay implementaciones para el resto de modelos
+  - Consistencia secuencial
+  - Consistencia causal
+  - Lecturas monotónicas
+  - Escrituras monotónicas
+  - Lecturas siguen a las escrituras
+  - Escrituras siguen a las lecturas
+
+# Topología primario/secundario en bases de datos relacionales
+
+## Topología primario/secundario
+
+- Basadas en sistema de ficheros
+  - Uno o varios servidores comparten un array de discos
+  - Las operaciones en un disco se replican en otro
+  - Alta garantía de que no se pierden datos si falla el servidor
+  - No aptas para la nube
+- Primario/secundario con logs
+  - El primario escribe las operaciones que realiza sobre la base de datos en un fichero de log
+  - El secundario reproduce esas operaciones leyendo dicho fichero
+  - Se puede perder una pequeña ventana temporal de datos si falla el primario (es asíncrono)
+
+---
+
+- Primario/secundario asíncrono sin log
+  - El primario envía las operaciones a los secundarios de forma asíncrona, que las aplican
+  - Si el primario falla, puede haber pérdidas de operaciones que no se han enviado
+  - Los secundarios pueden servir resultados inconsistentes con el estado del primario (lecturas del secundario entre que el primario envía y el secundario recibe)
+
+---
+
+- Múltiples primarios asíncronos
+  - Varios primarios que funcionan de forma independiente
+  - Periódicamente se comunican para detectar transacciones con conflictos
+  - Los conflictos se pueden resolver manualmente o mediante reglas
+  - Se pierde consistencia
+

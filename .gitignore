@@ -45,3 +45,6 @@ parte_5/ejem4-haproxy/mydomain.csr
 **/slides/*.html
 **/slides/*_files/
 **/.quarto/
+
+/.quarto/
+**/*.quarto_ipynb

@@ -1,0 +1,45 @@
+# Transparencias de la asignatura. Cada tema las tiene en su carpeta
+# `slides/`; esta configuracion es comun a todas y les da el estilo de
+# codeurjc (tema, logo, extension y ajuste), que vive en `_slides/`.
+#
+#   quarto render                                   # todas
+#   quarto render parte_2/tema_2.6_despliegue/slides/despliegue.qmd
+project:
+  type: default
+  render:
+    - "parte_*/*/slides/*.qmd"
+
+# Extension propia (_extensions/gortazar/title-slides). `title-slides` repone
+# el titulo en las diapositivas que empiezan con `---`, que son las que
+# continuan la anterior. `show-index` pone una diapositiva de indice antes de
+# cada seccion `#`, con la actual en negrita; los mazos que ya traen su
+# propia diapositiva de contenidos lo desactivan en su cabecera.
+filters:
+  - title-slides
+title-slides: true
+show-index: true
+
+format:
+  revealjs:
+    theme:
+      - default
+      - _slides/dad.scss
+    slide-number: true
+    width: 1050
+    height: 700
+    incremental: false
+    highlight-style: github
+    logo: _slides/code-urjc.png
+    history: false
+    embed-resources: false
+    link-external-newwindow: true
+    # El tamano de cada imagen lo pone el mazo. `auto-stretch` lo pisa y, con
+    # el contenido envuelto para el ajuste automatico, la imagen desaparece.
+    auto-stretch: false
+    # Al exportar a PDF, una diapositiva por pagina.
+    pdf-max-pages-per-slide: 1
+    pdf-separate-fragments: false
+    # Encaja el contenido que se sale por abajo; ver _slides/ajuste.html.
+    include-after-body: _slides/ajuste.html
+
+lang: es
