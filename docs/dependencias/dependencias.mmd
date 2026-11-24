@@ -1,0 +1,501 @@
+flowchart LR
+    m0["<b>Tema 1.1 · introduccion.qmd</b><br/>salientes: 4 · entrantes: 12"]
+    m1["<b>Tema 1.2 · patrones.qmd</b><br/>salientes: 6 · entrantes: 8"]
+    m2["<b>Tema 1.3 · ddd.qmd</b><br/>salientes: 15 · entrantes: 6"]
+    m3["<b>Tema 1.4 · microservicios.qmd</b><br/>salientes: 24 · entrantes: 15"]
+    m4["<b>Tema 1.5 · fundamentos.qmd</b><br/>salientes: 7 · entrantes: 2"]
+    m5["<b>Tema 2.1 · spring.qmd</b><br/>salientes: 3 · entrantes: 28"]
+    m6["<b>Tema 2.2 · web.qmd</b><br/>salientes: 4 · entrantes: 11"]
+    m7["<b>Tema 2.3.1 · rest.qmd</b><br/>salientes: 2 · entrantes: 40"]
+    m8["<b>Tema 2.3.2 · json.qmd</b><br/>salientes: 11 · entrantes: 1"]
+    m9["<b>Tema 2.3.3 · clientes-rest.qmd</b><br/>salientes: 2 · entrantes: 1"]
+    m10["<b>Tema 2.4 · bd.qmd</b><br/>salientes: 3 · entrantes: 10"]
+    m11["<b>Tema 2.5 · bd-spring.qmd</b><br/>salientes: 27 · entrantes: 16"]
+    m12["<b>Tema 2.6 · despliegue.qmd</b><br/>salientes: 6 · entrantes: 0"]
+    m13["<b>Tema 2.7 · seguridad.qmd</b><br/>salientes: 11 · entrantes: 2"]
+    m14["<b>Tema 2.8 · pruebas-carga.qmd</b><br/>salientes: 10 · entrantes: 9"]
+    m15["<b>Tema 3.2 · mensajes.qmd</b><br/>salientes: 12 · entrantes: 5"]
+    m16["<b>Tema 3.3 · eventos.qmd</b><br/>salientes: 18 · entrantes: 10"]
+    m17["<b>Tema 4.1 · introduccion.qmd</b><br/>salientes: 7 · entrantes: 7"]
+    m18["<b>Tema 4.2 · docker.qmd</b><br/>salientes: 8 · entrantes: 13"]
+    m19["<b>Tema 4.3 · imagenes-docker.qmd</b><br/>salientes: 8 · entrantes: 0"]
+    m20["<b>Tema 4.4 · compose.qmd</b><br/>salientes: 3 · entrantes: 3"]
+    m21["<b>Tema 4.4 · kubernetes.qmd</b><br/>salientes: 10 · entrantes: 5"]
+    m22["<b>Tema 5.1 · pruebas-carga.qmd</b><br/>salientes: 4 · entrantes: 1"]
+    m23["<b>Tema 5.2 · arquitecturas.qmd</b><br/>salientes: 8 · entrantes: 9"]
+    m24["<b>Tema 5.3 · bd-distribuidas.qmd</b><br/>salientes: 2 · entrantes: 2"]
+    m25["<b>Tema 5.5 · balanceo.qmd</b><br/>salientes: 7 · entrantes: 7"]
+    m26["<b>Tema 5.8 · observabilidad.qmd</b><br/>salientes: 1 · entrantes: 0"]
+    m0 -->|"Proxy · diap. 31"| m1
+    m0 -->|"Caché · diap. 31"| m23
+    m0 -->|"REST · diap. 34"| m7
+    m0 -->|"JSON · diap. 34"| m7
+    m1 -->|"Escalabilidad · diap. 39"| m0
+    m1 -->|"Colas de mensajes · diap. 54"| m15
+    m1 -->|"Publish/subscribe · diap. 54"| m16
+    m1 -->|"Tolerancia a fallos · diap. 56"| m0
+    m1 -->|"Escalado horizontal · diap. 62"| m25
+    m1 -->|"Entrega y despliegue continuo · diap. 76"| m3
+    m2 -->|"CRUD · diap. 10"| m7
+    m2 -->|"SaaS · diap. 10"| m17
+    m2 -->|"Transacción · diap. 26"| m11
+    m2 -->|"Consistencia eventual · diap. 26"| m16
+    m2 -->|"JPA · diap. 27"| m11
+    m2 -->|"API REST · diap. 27"| m7
+    m2 -->|"Spring / Spring Data · diap. 31"| m5
+    m2 -->|"Anotaciones JPA y mapping objeto-… · diap. 32"| m11
+    m2 -->|"@Service y @Transactional · diap. 33"| m5
+    m2 -->|"H2 · diap. 38"| m11
+    m2 -->|"HTTP y curl · diap. 38"| m7
+    m2 -->|"Microservicios · diap. 44"| m1
+    m2 -->|"Broker de mensajes · diap. 45"| m15
+    m2 -->|"Maven y Spring Boot · diap. 48"| m5
+    m2 -->|"Inyección de dependencias · diap. 51"| m6
+    m3 -->|"HTTP · diap. 5"| m7
+    m3 -->|"Transacción · diap. 7"| m11
+    m3 -->|"Consistencia eventual · diap. 7"| m16
+    m3 -->|"Bounded context · diap. 8"| m2
+    m3 -->|"Esquema de BD, JOIN y tipos de BD · diap. 13"| m10
+    m3 -->|"H2 · diap. 14"| m11
+    m3 -->|"REST · diap. 14"| m7
+    m3 -->|"Spring · diap. 14"| m5
+    m3 -->|"Códigos de estado HTTP · diap. 14"| m7
+    m3 -->|"Anotaciones JPA · diap. 15"| m11
+    m3 -->|"JSON y Jackson · diap. 15"| m7
+    m3 -->|"Saga y compensación · diap. 16"| m16
+    m3 -->|"ACID · diap. 16"| m24
+    m3 -->|"Broker de mensajes · diap. 18"| m15
+    m3 -->|"Autenticación JWT / OAuth2 · diap. 20"| m13
+    m3 -->|"Dependencias Maven / starters de… · diap. 22"| m5
+    m3 -->|"Publicar un puerto · diap. 22"| m18
+    m3 -->|"Balanceador de carga · diap. 23"| m23
+    m3 -->|"Docker Compose · diap. 23"| m20
+    m3 -->|"Imagen · diap. 24"| m18
+    m3 -->|"ConfigMaps y Secrets de Kubernetes · diap. 24"| m21
+    m3 -->|"Caché · diap. 27"| m23
+    m3 -->|"Operación idempotente · diap. 31"| m16
+    m3 -->|"Rolling update, blue/green, canary · diap. 36"| m21
+    m4 -->|"ACID · diap. 16"| m24
+    m4 -->|"Transacción · diap. 16"| m11
+    m4 -->|"etcd · diap. 18"| m21
+    m4 -->|"Hash consistente · diap. 24"| m25
+    m4 -->|"Kubernetes · diap. 26"| m3
+    m4 -->|"Control plane de Kubernetes · diap. 31"| m21
+    m4 -->|"Maven · diap. 33"| m5
+    m5 -->|"Bases de datos relacionales y NoS… · diap. 3"| m10
+    m5 -->|"Servicios REST · diap. 4"| m7
+    m5 -->|"XML · diap. 13"| m7
+    m6 -->|"Protocolo HTTP / petición HTTP · diap. 4"| m7
+    m6 -->|"Proyecto padre Maven · diap. 11"| m5
+    m6 -->|"@ControllerAdvice y @ModelAttribu… · diap. 33"| m11
+    m6 -->|"Java EE · diap. 84"| m5
+    m7 -->|"HTML · diap. 4"| m6
+    m7 -->|"@Autowired · diap. 55"| m6
+    m8 -->|"API REST · diap. 2"| m7
+    m8 -->|"JSON · diap. 2"| m7
+    m8 -->|"Capas de una aplicación · diap. 3"| m5
+    m8 -->|"Modelo del dominio / entidad · diap. 4"| m2
+    m8 -->|"Repositorio · diap. 4"| m2
+    m8 -->|"Relaciones entre entidades · diap. 5"| m11
+    m8 -->|"Anotaciones REST de Spring MVC · diap. 8"| m7
+    m8 -->|"Plugin de Maven · diap. 17"| m5
+    m8 -->|"@Autowired · diap. 19"| m6
+    m8 -->|"Anotaciones JPA · diap. 21"| m11
+    m8 -->|"Relación muchos a muchos · diap. 21"| m11
+    m9 -->|"API REST / servicio REST · diap. 2"| m7
+    m9 -->|"JSON · diap. 8"| m7
+    m10 -->|"Escalabilidad · diap. 5"| m0
+    m10 -->|"Escalabilidad horizontal / cluste… · diap. 19"| m0
+    m10 -->|"Colas de mensajes · diap. 22"| m15
+    m11 -->|"Maven y pom.xml · diap. 3"| m5
+    m11 -->|"Spring Boot · diap. 3"| m5
+    m11 -->|"Controlador REST · diap. 3"| m6
+    m11 -->|"Cabecera Location / URI del recur… · diap. 3"| m7
+    m11 -->|"Base de datos relacional / no rel… · diap. 4"| m10
+    m11 -->|"Esquema de la base de datos · diap. 4"| m10
+    m11 -->|"Inyección de dependencias / @Auto… · diap. 7"| m6
+    m11 -->|"Componente de Spring · diap. 7"| m6
+    m11 -->|"Controlador · diap. 8"| m6
+    m11 -->|"API REST · diap. 10"| m7
+    m11 -->|"Métodos HTTP · diap. 15"| m7
+    m11 -->|"Recurso REST · diap. 17"| m7
+    m11 -->|"Códigos de estado HTTP · diap. 24"| m7
+    m11 -->|"Java EE · diap. 33"| m5
+    m11 -->|"SQL DDL · diap. 39"| m10
+    m11 -->|"JSON · diap. 39"| m7
+    m11 -->|"@JsonIgnore / serialización JSON… · diap. 69"| m7
+    m11 -->|"SQL SELECT · diap. 80"| m10
+    m11 -->|"Plugin de Maven / procesamiento d… · diap. 80"| m5
+    m11 -->|"Parámetros en la URL y @RequestPa… · diap. 88"| m6
+    m11 -->|"JOIN · diap. 93"| m10
+    m11 -->|"Spring MVC · diap. 110"| m5
+    m11 -->|"Serializador JSON personalizado · diap. 115"| m7
+    m11 -->|"Docker · diap. 122"| m18
+    m11 -->|"Driver de base de datos · diap. 125"| m10
+    m11 -->|"Escalabilidad y replicación · diap. 148"| m0
+    m11 -->|"Postman · diap. 151"| m7
+    m12 -->|"Maven / Gradle · diap. 2"| m5
+    m12 -->|"Proveedor cloud · diap. 4"| m17
+    m12 -->|"Plugin de Maven · diap. 6"| m5
+    m12 -->|"Fases de Maven y carpeta target · diap. 7"| m5
+    m12 -->|"Endpoint REST de apagado remoto · diap. 8"| m7
+    m12 -->|"Imagen Docker · diap. 13"| m18
+    m13 -->|"Monolito · diap. 4"| m1
+    m13 -->|"Falacias de la computación distri… · diap. 4"| m0
+    m13 -->|"Gateway · diap. 4"| m3
+    m13 -->|"TLS / HTTPS · diap. 5"| m25
+    m13 -->|"Sticky sessions · diap. 10"| m23
+    m13 -->|"Docker Compose · diap. 22"| m20
+    m13 -->|"@Configuration y @Bean · diap. 23"| m6
+    m13 -->|"RestClient de Spring · diap. 29"| m9
+    m13 -->|"Kubernetes · diap. 32"| m3
+    m13 -->|"Inyección SQL y consultas paramet… · diap. 33"| m10
+    m13 -->|"DTO · diap. 33"| m8
+    m14 -->|"HTTP · diap. 4"| m7
+    m14 -->|"Códigos de estado HTTP · diap. 4"| m7
+    m14 -->|"Métodos HTTP · diap. 17"| m7
+    m14 -->|"TLS/SSL y certificados · diap. 25"| m25
+    m14 -->|"Spring · diap. 32"| m5
+    m14 -->|"API REST · diap. 32"| m7
+    m14 -->|"CRUD · diap. 32"| m7
+    m14 -->|"JSON · diap. 36"| m7
+    m14 -->|"Balanceador de carga · diap. 46"| m23
+    m14 -->|"JWT · diap. 49"| m13
+    m15 -->|"REST · diap. 2"| m7
+    m15 -->|"Canal de mensajes / topic · diap. 3"| m16
+    m15 -->|"Publicación/Suscripción · diap. 5"| m16
+    m15 -->|"Publicación/respuestas asíncronas · diap. 5"| m16
+    m15 -->|"Escalabilidad · diap. 10"| m0
+    m15 -->|"Latencia · diap. 10"| m14
+    m15 -->|"Consumidores competidores · diap. 10"| m16
+    m15 -->|"Idempotencia · diap. 12"| m3
+    m15 -->|"Productor/consumidor de mensajes · diap. 14"| m16
+    m15 -->|"JSON, XML y Protocol Buffers · diap. 22"| m7
+    m15 -->|"Docker · diap. 24"| m18
+    m15 -->|"Spring Boot · diap. 25"| m5
+    m16 -->|"REST · diap. 4"| m7
+    m16 -->|"Latencia · diap. 5"| m14
+    m16 -->|"RabbitMQ / colas de mensajes · diap. 5"| m15
+    m16 -->|"Eventos de dominio / DDD · diap. 7"| m2
+    m16 -->|"JSON · diap. 8"| m7
+    m16 -->|"Transacción, commit y rollback · diap. 12"| m11
+    m16 -->|"Spring · diap. 12"| m5
+    m16 -->|"Monolito · diap. 12"| m1
+    m16 -->|"Bounded context · diap. 12"| m2
+    m16 -->|"@Bean y configuración Spring AMQP · diap. 18"| m5
+    m16 -->|"Escalado horizontal · diap. 21"| m25
+    m16 -->|"Docker Compose · diap. 22"| m20
+    m16 -->|"Maven · diap. 22"| m5
+    m16 -->|"Transacción ACID · diap. 35"| m11
+    m16 -->|"Agregado · diap. 40"| m2
+    m16 -->|"Proyecciones CQRS · diap. 40"| m3
+    m16 -->|"CRUD · diap. 43"| m7
+    m16 -->|"Throughput · diap. 47"| m1
+    m17 -->|"API REST · diap. 27"| m7
+    m17 -->|"Escalabilidad · diap. 28"| m0
+    m17 -->|"Balanceador de carga · diap. 35"| m23
+    m17 -->|"Imagen de contenedor / repositori… · diap. 57"| m18
+    m17 -->|"Imagen de contenedor / repositori… · diap. 57"| m18
+    m17 -->|"Microservicios · diap. 59"| m1
+    m17 -->|"Kubernetes · diap. 62"| m3
+    m18 -->|"Virtualización ligera · diap. 9"| m17
+    m18 -->|"Host · diap. 9"| m17
+    m18 -->|"Máquina virtual · diap. 16"| m17
+    m18 -->|"Sistema operativo huésped · diap. 17"| m17
+    m18 -->|"Hipervisor · diap. 18"| m17
+    m18 -->|"API REST · diap. 30"| m7
+    m18 -->|"Maven · diap. 78"| m5
+    m18 -->|"SQL · diap. 79"| m10
+    m19 -->|"Imagen Docker · diap. 2"| m18
+    m19 -->|"Contenedor · diap. 2"| m3
+    m19 -->|"Mapeo/binding de puertos al host · diap. 3"| m18
+    m19 -->|"Spring / Spring Boot · diap. 5"| m5
+    m19 -->|"Maven · diap. 8"| m5
+    m19 -->|"Repositorio de imágenes · diap. 13"| m18
+    m19 -->|"Opción -p de docker run · diap. 15"| m18
+    m19 -->|"JAR con capas · diap. 35"| m5
+    m20 -->|"Contenedor / imagen Docker · diap. 5"| m18
+    m20 -->|"Configuración de Spring por varia… · diap. 23"| m5
+    m20 -->|"Repositorio · diap. 46"| m18
+    m21 -->|"Clúster de Kubernetes · diap. 2"| m3
+    m21 -->|"Balanceo de carga / balanceador · diap. 4"| m23
+    m21 -->|"Operador de Kubernetes · diap. 5"| m3
+    m21 -->|"Aplicación sin estado / con estado · diap. 11"| m11
+    m21 -->|"JPA · diap. 22"| m11
+    m21 -->|"TLS / terminación TLS · diap. 23"| m25
+    m21 -->|"TLS / terminación TLS · diap. 23"| m25
+    m21 -->|"Elasticidad · diap. 25"| m0
+    m21 -->|"Pipeline CI/CD · diap. 31"| m3
+    m21 -->|"Afinidad de sesión · diap. 36"| m23
+    m22 -->|"Regresión · diap. 2"| m14
+    m22 -->|"Escenario de prueba e informe de… · diap. 2"| m14
+    m22 -->|"Latencia · diap. 3"| m14
+    m22 -->|"P99 · diap. 8"| m14
+    m23 -->|"Elasticidad / autoescalado · diap. 7"| m0
+    m23 -->|"Sharding · diap. 11"| m4
+    m23 -->|"Métricas · diap. 12"| m3
+    m23 -->|"JMeter · diap. 14"| m14
+    m23 -->|"Tolerancia a fallos · diap. 16"| m0
+    m23 -->|"Ley de Little · diap. 20"| m22
+    m23 -->|"Proxy · diap. 43"| m1
+    m23 -->|"Disponibilidad · diap. 68"| m1
+    m24 -->|"Elasticidad · diap. 5"| m0
+    m24 -->|"Base de datos replicada / réplica… · diap. 6"| m4
+    m25 -->|"HAProxy · diap. 5"| m23
+    m25 -->|"Service mesh · diap. 7"| m3
+    m25 -->|"Sesión HTTP · diap. 17"| m6
+    m25 -->|"Percentil de latencia · diap. 35"| m14
+    m25 -->|"Kubernetes y HPA · diap. 37"| m3
+    m25 -->|"Pod · diap. 39"| m21
+    m25 -->|"Réplicas de lectura · diap. 39"| m3
+    m26 -->|"Percentiles p95/p99 · diap. 14"| m14
+    style m0 fill:#8e1414,stroke:#8e1414,color:#ffffff
+    style m1 fill:#284ca3,stroke:#284ca3,color:#ffffff
+    style m2 fill:#4e7f0a,stroke:#4e7f0a,color:#ffffff
+    style m3 fill:#8e147f,stroke:#8e147f,color:#ffffff
+    style m4 fill:#28a38e,stroke:#28a38e,color:#ffffff
+    style m5 fill:#7f490a,stroke:#7f490a,color:#ffffff
+    style m6 fill:#32148e,stroke:#32148e,color:#ffffff
+    style m7 fill:#2ea328,stroke:#2ea328,color:#ffffff
+    style m8 fill:#7f0a31,stroke:#7f0a31,color:#ffffff
+    style m9 fill:#14618e,stroke:#14618e,color:#ffffff
+    style m10 fill:#99a328,stroke:#99a328,color:#ffffff
+    style m11 fill:#660a7f,stroke:#660a7f,color:#ffffff
+    style m12 fill:#148e51,stroke:#148e51,color:#ffffff
+    style m13 fill:#a34228,stroke:#a34228,color:#ffffff
+    style m14 fill:#0a147f,stroke:#0a147f,color:#ffffff
+    style m15 fill:#428e14,stroke:#428e14,color:#ffffff
+    style m16 fill:#a3287a,stroke:#a3287a,color:#ffffff
+    style m17 fill:#0a7a7f,stroke:#0a7a7f,color:#ffffff
+    style m18 fill:#8e6f14,stroke:#8e6f14,color:#ffffff
+    style m19 fill:#6028a3,stroke:#6028a3,color:#ffffff
+    style m20 fill:#0a7f1d,stroke:#0a7f1d,color:#ffffff
+    style m21 fill:#8e1424,stroke:#8e1424,color:#ffffff
+    style m22 fill:#285ca3,stroke:#285ca3,color:#ffffff
+    style m23 fill:#5d7f0a,stroke:#5d7f0a,color:#ffffff
+    style m24 fill:#8e148e,stroke:#8e148e,color:#ffffff
+    style m25 fill:#28a37f,stroke:#28a37f,color:#ffffff
+    style m26 fill:#7f3a0a,stroke:#7f3a0a,color:#ffffff
+    linkStyle 0 stroke:#8e1414,color:#8e1414
+    linkStyle 1 stroke:#8e1414,color:#8e1414
+    linkStyle 2 stroke:#8e1414,color:#8e1414
+    linkStyle 3 stroke:#8e1414,color:#8e1414
+    linkStyle 4 stroke:#284ca3,color:#284ca3
+    linkStyle 5 stroke:#284ca3,color:#284ca3
+    linkStyle 6 stroke:#284ca3,color:#284ca3
+    linkStyle 7 stroke:#284ca3,color:#284ca3
+    linkStyle 8 stroke:#284ca3,color:#284ca3
+    linkStyle 9 stroke:#284ca3,color:#284ca3
+    linkStyle 10 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 11 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 12 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 13 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 14 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 15 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 16 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 17 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 18 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 19 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 20 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 21 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 22 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 23 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 24 stroke:#4e7f0a,color:#4e7f0a
+    linkStyle 25 stroke:#8e147f,color:#8e147f
+    linkStyle 26 stroke:#8e147f,color:#8e147f
+    linkStyle 27 stroke:#8e147f,color:#8e147f
+    linkStyle 28 stroke:#8e147f,color:#8e147f
+    linkStyle 29 stroke:#8e147f,color:#8e147f
+    linkStyle 30 stroke:#8e147f,color:#8e147f
+    linkStyle 31 stroke:#8e147f,color:#8e147f
+    linkStyle 32 stroke:#8e147f,color:#8e147f
+    linkStyle 33 stroke:#8e147f,color:#8e147f
+    linkStyle 34 stroke:#8e147f,color:#8e147f
+    linkStyle 35 stroke:#8e147f,color:#8e147f
+    linkStyle 36 stroke:#8e147f,color:#8e147f
+    linkStyle 37 stroke:#8e147f,color:#8e147f
+    linkStyle 38 stroke:#8e147f,color:#8e147f
+    linkStyle 39 stroke:#8e147f,color:#8e147f
+    linkStyle 40 stroke:#8e147f,color:#8e147f
+    linkStyle 41 stroke:#8e147f,color:#8e147f
+    linkStyle 42 stroke:#8e147f,color:#8e147f
+    linkStyle 43 stroke:#8e147f,color:#8e147f
+    linkStyle 44 stroke:#8e147f,color:#8e147f
+    linkStyle 45 stroke:#8e147f,color:#8e147f
+    linkStyle 46 stroke:#8e147f,color:#8e147f
+    linkStyle 47 stroke:#8e147f,color:#8e147f
+    linkStyle 48 stroke:#8e147f,color:#8e147f
+    linkStyle 49 stroke:#28a38e,color:#28a38e
+    linkStyle 50 stroke:#28a38e,color:#28a38e
+    linkStyle 51 stroke:#28a38e,color:#28a38e
+    linkStyle 52 stroke:#28a38e,color:#28a38e
+    linkStyle 53 stroke:#28a38e,color:#28a38e
+    linkStyle 54 stroke:#28a38e,color:#28a38e
+    linkStyle 55 stroke:#28a38e,color:#28a38e
+    linkStyle 56 stroke:#7f490a,color:#7f490a
+    linkStyle 57 stroke:#7f490a,color:#7f490a
+    linkStyle 58 stroke:#7f490a,color:#7f490a
+    linkStyle 59 stroke:#32148e,color:#32148e
+    linkStyle 60 stroke:#32148e,color:#32148e
+    linkStyle 61 stroke:#32148e,color:#32148e
+    linkStyle 62 stroke:#32148e,color:#32148e
+    linkStyle 63 stroke:#2ea328,color:#2ea328
+    linkStyle 64 stroke:#2ea328,color:#2ea328
+    linkStyle 65 stroke:#7f0a31,color:#7f0a31
+    linkStyle 66 stroke:#7f0a31,color:#7f0a31
+    linkStyle 67 stroke:#7f0a31,color:#7f0a31
+    linkStyle 68 stroke:#7f0a31,color:#7f0a31
+    linkStyle 69 stroke:#7f0a31,color:#7f0a31
+    linkStyle 70 stroke:#7f0a31,color:#7f0a31
+    linkStyle 71 stroke:#7f0a31,color:#7f0a31
+    linkStyle 72 stroke:#7f0a31,color:#7f0a31
+    linkStyle 73 stroke:#7f0a31,color:#7f0a31
+    linkStyle 74 stroke:#7f0a31,color:#7f0a31
+    linkStyle 75 stroke:#7f0a31,color:#7f0a31
+    linkStyle 76 stroke:#14618e,color:#14618e
+    linkStyle 77 stroke:#14618e,color:#14618e
+    linkStyle 78 stroke:#99a328,color:#99a328
+    linkStyle 79 stroke:#99a328,color:#99a328
+    linkStyle 80 stroke:#99a328,color:#99a328
+    linkStyle 81 stroke:#660a7f,color:#660a7f
+    linkStyle 82 stroke:#660a7f,color:#660a7f
+    linkStyle 83 stroke:#660a7f,color:#660a7f
+    linkStyle 84 stroke:#660a7f,color:#660a7f
+    linkStyle 85 stroke:#660a7f,color:#660a7f
+    linkStyle 86 stroke:#660a7f,color:#660a7f
+    linkStyle 87 stroke:#660a7f,color:#660a7f
+    linkStyle 88 stroke:#660a7f,color:#660a7f
+    linkStyle 89 stroke:#660a7f,color:#660a7f
+    linkStyle 90 stroke:#660a7f,color:#660a7f
+    linkStyle 91 stroke:#660a7f,color:#660a7f
+    linkStyle 92 stroke:#660a7f,color:#660a7f
+    linkStyle 93 stroke:#660a7f,color:#660a7f
+    linkStyle 94 stroke:#660a7f,color:#660a7f
+    linkStyle 95 stroke:#660a7f,color:#660a7f
+    linkStyle 96 stroke:#660a7f,color:#660a7f
+    linkStyle 97 stroke:#660a7f,color:#660a7f
+    linkStyle 98 stroke:#660a7f,color:#660a7f
+    linkStyle 99 stroke:#660a7f,color:#660a7f
+    linkStyle 100 stroke:#660a7f,color:#660a7f
+    linkStyle 101 stroke:#660a7f,color:#660a7f
+    linkStyle 102 stroke:#660a7f,color:#660a7f
+    linkStyle 103 stroke:#660a7f,color:#660a7f
+    linkStyle 104 stroke:#660a7f,color:#660a7f
+    linkStyle 105 stroke:#660a7f,color:#660a7f
+    linkStyle 106 stroke:#660a7f,color:#660a7f
+    linkStyle 107 stroke:#660a7f,color:#660a7f
+    linkStyle 108 stroke:#148e51,color:#148e51
+    linkStyle 109 stroke:#148e51,color:#148e51
+    linkStyle 110 stroke:#148e51,color:#148e51
+    linkStyle 111 stroke:#148e51,color:#148e51
+    linkStyle 112 stroke:#148e51,color:#148e51
+    linkStyle 113 stroke:#148e51,color:#148e51
+    linkStyle 114 stroke:#a34228,color:#a34228
+    linkStyle 115 stroke:#a34228,color:#a34228
+    linkStyle 116 stroke:#a34228,color:#a34228
+    linkStyle 117 stroke:#a34228,color:#a34228
+    linkStyle 118 stroke:#a34228,color:#a34228
+    linkStyle 119 stroke:#a34228,color:#a34228
+    linkStyle 120 stroke:#a34228,color:#a34228
+    linkStyle 121 stroke:#a34228,color:#a34228
+    linkStyle 122 stroke:#a34228,color:#a34228
+    linkStyle 123 stroke:#a34228,color:#a34228
+    linkStyle 124 stroke:#a34228,color:#a34228
+    linkStyle 125 stroke:#0a147f,color:#0a147f
+    linkStyle 126 stroke:#0a147f,color:#0a147f
+    linkStyle 127 stroke:#0a147f,color:#0a147f
+    linkStyle 128 stroke:#0a147f,color:#0a147f
+    linkStyle 129 stroke:#0a147f,color:#0a147f
+    linkStyle 130 stroke:#0a147f,color:#0a147f
+    linkStyle 131 stroke:#0a147f,color:#0a147f
+    linkStyle 132 stroke:#0a147f,color:#0a147f
+    linkStyle 133 stroke:#0a147f,color:#0a147f
+    linkStyle 134 stroke:#0a147f,color:#0a147f
+    linkStyle 135 stroke:#428e14,color:#428e14
+    linkStyle 136 stroke:#428e14,color:#428e14
+    linkStyle 137 stroke:#428e14,color:#428e14
+    linkStyle 138 stroke:#428e14,color:#428e14
+    linkStyle 139 stroke:#428e14,color:#428e14
+    linkStyle 140 stroke:#428e14,color:#428e14
+    linkStyle 141 stroke:#428e14,color:#428e14
+    linkStyle 142 stroke:#428e14,color:#428e14
+    linkStyle 143 stroke:#428e14,color:#428e14
+    linkStyle 144 stroke:#428e14,color:#428e14
+    linkStyle 145 stroke:#428e14,color:#428e14
+    linkStyle 146 stroke:#428e14,color:#428e14
+    linkStyle 147 stroke:#a3287a,color:#a3287a
+    linkStyle 148 stroke:#a3287a,color:#a3287a
+    linkStyle 149 stroke:#a3287a,color:#a3287a
+    linkStyle 150 stroke:#a3287a,color:#a3287a
+    linkStyle 151 stroke:#a3287a,color:#a3287a
+    linkStyle 152 stroke:#a3287a,color:#a3287a
+    linkStyle 153 stroke:#a3287a,color:#a3287a
+    linkStyle 154 stroke:#a3287a,color:#a3287a
+    linkStyle 155 stroke:#a3287a,color:#a3287a
+    linkStyle 156 stroke:#a3287a,color:#a3287a
+    linkStyle 157 stroke:#a3287a,color:#a3287a
+    linkStyle 158 stroke:#a3287a,color:#a3287a
+    linkStyle 159 stroke:#a3287a,color:#a3287a
+    linkStyle 160 stroke:#a3287a,color:#a3287a
+    linkStyle 161 stroke:#a3287a,color:#a3287a
+    linkStyle 162 stroke:#a3287a,color:#a3287a
+    linkStyle 163 stroke:#a3287a,color:#a3287a
+    linkStyle 164 stroke:#a3287a,color:#a3287a
+    linkStyle 165 stroke:#0a7a7f,color:#0a7a7f
+    linkStyle 166 stroke:#0a7a7f,color:#0a7a7f
+    linkStyle 167 stroke:#0a7a7f,color:#0a7a7f
+    linkStyle 168 stroke:#0a7a7f,color:#0a7a7f
+    linkStyle 169 stroke:#0a7a7f,color:#0a7a7f
+    linkStyle 170 stroke:#0a7a7f,color:#0a7a7f
+    linkStyle 171 stroke:#0a7a7f,color:#0a7a7f
+    linkStyle 172 stroke:#8e6f14,color:#8e6f14
+    linkStyle 173 stroke:#8e6f14,color:#8e6f14
+    linkStyle 174 stroke:#8e6f14,color:#8e6f14
+    linkStyle 175 stroke:#8e6f14,color:#8e6f14
+    linkStyle 176 stroke:#8e6f14,color:#8e6f14
+    linkStyle 177 stroke:#8e6f14,color:#8e6f14
+    linkStyle 178 stroke:#8e6f14,color:#8e6f14
+    linkStyle 179 stroke:#8e6f14,color:#8e6f14
+    linkStyle 180 stroke:#6028a3,color:#6028a3
+    linkStyle 181 stroke:#6028a3,color:#6028a3
+    linkStyle 182 stroke:#6028a3,color:#6028a3
+    linkStyle 183 stroke:#6028a3,color:#6028a3
+    linkStyle 184 stroke:#6028a3,color:#6028a3
+    linkStyle 185 stroke:#6028a3,color:#6028a3
+    linkStyle 186 stroke:#6028a3,color:#6028a3
+    linkStyle 187 stroke:#6028a3,color:#6028a3
+    linkStyle 188 stroke:#0a7f1d,color:#0a7f1d
+    linkStyle 189 stroke:#0a7f1d,color:#0a7f1d
+    linkStyle 190 stroke:#0a7f1d,color:#0a7f1d
+    linkStyle 191 stroke:#8e1424,color:#8e1424
+    linkStyle 192 stroke:#8e1424,color:#8e1424
+    linkStyle 193 stroke:#8e1424,color:#8e1424
+    linkStyle 194 stroke:#8e1424,color:#8e1424
+    linkStyle 195 stroke:#8e1424,color:#8e1424
+    linkStyle 196 stroke:#8e1424,color:#8e1424
+    linkStyle 197 stroke:#8e1424,color:#8e1424
+    linkStyle 198 stroke:#8e1424,color:#8e1424
+    linkStyle 199 stroke:#8e1424,color:#8e1424
+    linkStyle 200 stroke:#8e1424,color:#8e1424
+    linkStyle 201 stroke:#285ca3,color:#285ca3
+    linkStyle 202 stroke:#285ca3,color:#285ca3
+    linkStyle 203 stroke:#285ca3,color:#285ca3
+    linkStyle 204 stroke:#285ca3,color:#285ca3
+    linkStyle 205 stroke:#5d7f0a,color:#5d7f0a
+    linkStyle 206 stroke:#5d7f0a,color:#5d7f0a
+    linkStyle 207 stroke:#5d7f0a,color:#5d7f0a
+    linkStyle 208 stroke:#5d7f0a,color:#5d7f0a
+    linkStyle 209 stroke:#5d7f0a,color:#5d7f0a
+    linkStyle 210 stroke:#5d7f0a,color:#5d7f0a
+    linkStyle 211 stroke:#5d7f0a,color:#5d7f0a
+    linkStyle 212 stroke:#5d7f0a,color:#5d7f0a
+    linkStyle 213 stroke:#8e148e,color:#8e148e
+    linkStyle 214 stroke:#8e148e,color:#8e148e
+    linkStyle 215 stroke:#28a37f,color:#28a37f
+    linkStyle 216 stroke:#28a37f,color:#28a37f
+    linkStyle 217 stroke:#28a37f,color:#28a37f
+    linkStyle 218 stroke:#28a37f,color:#28a37f
+    linkStyle 219 stroke:#28a37f,color:#28a37f
+    linkStyle 220 stroke:#28a37f,color:#28a37f
+    linkStyle 221 stroke:#28a37f,color:#28a37f
+    linkStyle 222 stroke:#7f3a0a,color:#7f3a0a

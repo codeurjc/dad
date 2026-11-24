@@ -51,10 +51,12 @@ pkgs.mkShell {
     jdk
     (maven.override { jdk_headless = jdk; })
 
-    # Transparencias: quarto (con su pandoc), y mermaid-cli para regenerar
-    # los diagramas .mmd del tema de Kubernetes
+    # Transparencias: quarto (con su pandoc), y mermaid-cli y graphviz para
+    # regenerar los diagramas .mmd del tema de Kubernetes y el diagrama de
+    # dependencias entre transparencias (docs/dependencias)
     quarto             # el de arriba, con pandoc 3.8.3
     mermaid-cli
+    graphviz
 
     # Contenedores y despliegue (temas 4 y 5)
     docker-client
