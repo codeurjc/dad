@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,8 +27,15 @@ class SmokeTest {
 	/** Servicio de libros falso, en memoria. */
 	static class FakeLibros implements LibrosClient {
 
-		final Map<String, Integer> copies = new HashMap<>(Map.of("A", 5, "B", 1));
+		final Map<String, Integer> copies = new HashMap<>();
 		boolean down;
+
+		/** El contexto de Spring se comparte entre tests: cada uno empieza de cero. */
+		void reset() {
+			copies.clear();
+			copies.putAll(Map.of("A", 5, "B", 1));
+			down = false;
+		}
 
 		@Override
 		public BookInfo checkout(String isbn) {
@@ -66,6 +74,11 @@ class SmokeTest {
 
 	@Autowired
 	private FakeLibros libros;
+
+	@BeforeEach
+	void reiniciarLibros() {
+		libros.reset();
+	}
 
 	@Test
 	void unSocioNoPuedeTenerMasDeTresPrestamos() {

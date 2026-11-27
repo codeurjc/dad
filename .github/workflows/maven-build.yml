@@ -99,6 +99,41 @@ jobs:
           # veredicto lo da la matriz. Un fallo aqui no corta el flujo.
           echo "Proyectos sin resolver: $fallos" >> "$GITHUB_STEP_SUMMARY"
 
+      # go-offline no descarga lo que surefire resuelve al lanzar los tests: su
+      # provider (surefire-junit-platform) y junit-platform-launcher. Sin esto,
+      # los 86 jobs de build lo piden a Maven Central a la vez y alguno recibe
+      # HTTP 429. Las versiones salen de un proyecto por cada version de Spring
+      # Boot que haya en el repositorio, para no tener que actualizarlas a mano.
+      - name: Resolve the surefire test provider
+        env:
+          PROJECTS: ${{ needs.discover.outputs.projects }}
+        run: |
+          set -uo pipefail
+          declare -A visto
+
+          evaluar() {
+            mvn -B -ntp -q -f "$1/pom.xml" help:evaluate -Dexpression="$2" -DforceStdout 2>/dev/null
+          }
+
+          while read -r p; do
+            boot=$(sed -n '/<artifactId>spring-boot-starter-parent<\/artifactId>/{n;s/.*<version>\(.*\)<\/version>.*/\1/p;q}' "$p/pom.xml")
+            [ -z "$boot" ] && continue
+            [ -n "${visto[$boot]:-}" ] && continue
+            visto[$boot]=1
+
+            surefire=$(evaluar "$p" maven-surefire-plugin.version)
+            junit=$(evaluar "$p" junit-jupiter.version)
+            echo "Spring Boot $boot ($p): surefire $surefire, JUnit $junit"
+
+            # Con JUnit 6 el launcher lleva la misma version que Jupiter.
+            for a in "org.apache.maven.surefire:surefire-junit-platform:$surefire" \
+                     "org.junit.platform:junit-platform-launcher:$junit"; do
+              mvn -B -ntp -Dmaven.wagon.http.retryHandler.count=5 \
+                dependency:get -Dartifact="$a" \
+                || echo "::warning title=Cache warming::No se pudo resolver $a"
+            done
+          done < <(printf '%s' "$PROJECTS" | jq -r '.[]')
+
   build:
     name: Build - ${{ matrix.project }}
     needs: [discover, warm-cache]
