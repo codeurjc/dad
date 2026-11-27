@@ -1,0 +1,19 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: colas-dev
+
+resources:
+  - namespace.yaml
+  - ../../base
+
+# En desarrollo, credenciales fijas (no importa que estén en el repositorio)
+secretGenerator:
+  - name: rabbitmq-credenciales
+    literals:
+      - usuario=dad
+      - password=dad-dev
+
+replicas:
+  - name: consumer
+    count: 1

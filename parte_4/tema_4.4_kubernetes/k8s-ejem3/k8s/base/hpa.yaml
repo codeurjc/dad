@@ -1,0 +1,23 @@
+# Autoescalado horizontal: entre 2 y 10 réplicas para mantener la CPU media en el 60 % de lo pedido.
+# Necesita metrics-server en el clúster (minikube addons enable metrics-server).
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: calculo
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: calculo
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 120   # no reducir réplicas por un bajón momentáneo

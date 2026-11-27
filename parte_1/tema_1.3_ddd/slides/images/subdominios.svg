@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="Helvetica, Arial, sans-serif">
+  <rect x="10" y="10" width="880" height="420" rx="24" fill="#f7f9fb" stroke="#99a" stroke-width="2"/>
+  <text x="30" y="44" font-size="22" font-weight="bold" fill="#334">Dominio: tienda online de libros</text>
+  <!-- core -->
+  <circle cx="300" cy="235" r="150" fill="#f9d6c4" stroke="#c0392b" stroke-width="3"/>
+  <text x="300" y="150" text-anchor="middle" font-size="22" font-weight="bold" fill="#c0392b">Core</text>
+  <text x="300" y="175" text-anchor="middle" font-size="14" fill="#7b241c">nos diferencia: invertir aquí</text>
+  <g font-size="17" text-anchor="middle" fill="#222">
+    <text x="300" y="225">Recomendaciones</text>
+    <text x="300" y="255">Precios dinámicos</text>
+    <text x="300" y="285">Gestión de pedidos</text>
+  </g>
+  <!-- supporting -->
+  <circle cx="610" cy="160" r="100" fill="#fbeec1" stroke="#b9770e" stroke-width="3"/>
+  <text x="610" y="110" text-anchor="middle" font-size="20" font-weight="bold" fill="#b9770e">Supporting</text>
+  <text x="610" y="132" text-anchor="middle" font-size="13" fill="#7e5109">necesario, desarrollo propio</text>
+  <g font-size="16" text-anchor="middle" fill="#222"><text x="610" y="168">Catálogo</text><text x="610" y="194">Logística</text></g>
+  <!-- generic -->
+  <circle cx="720" cy="330" r="85" fill="#dfe9f3" stroke="#1f4e79" stroke-width="3"/>
+  <text x="720" y="290" text-anchor="middle" font-size="20" font-weight="bold" fill="#1f4e79">Generic</text>
+  <text x="720" y="310" text-anchor="middle" font-size="13" fill="#1b2631">comprar o externalizar</text>
+  <g font-size="16" text-anchor="middle" fill="#222"><text x="720" y="340">Pagos</text><text x="720" y="364">Identidad</text><text x="720" y="388">Facturación</text></g>
+</svg>

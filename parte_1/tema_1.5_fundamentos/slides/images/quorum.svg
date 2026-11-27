@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" font-family="Helvetica, Arial, sans-serif">
+  <style>.t{font-size:15px;font-weight:bold;text-anchor:middle}.c{font-family:monospace;font-size:13px;text-anchor:middle}.h{font-size:17px;font-weight:bold}</style>
+  <text x="240" y="30" class="h" text-anchor="middle" fill="#1e8449">N=3, W=2, R=2 → W+R &gt; N</text>
+  <g>
+    <rect x="40" y="60" width="120" height="70" rx="10" fill="#d5f5e3" stroke="#1e8449" stroke-width="3"/><text x="100" y="90" class="t">r1</text><text x="100" y="112" class="c">v2 ✔</text>
+    <rect x="180" y="60" width="120" height="70" rx="10" fill="#d5f5e3" stroke="#1e8449" stroke-width="3"/><text x="240" y="90" class="t">r2</text><text x="240" y="112" class="c">v2 ✔</text>
+    <rect x="320" y="60" width="120" height="70" rx="10" fill="#f2f3f4" stroke="#999" stroke-width="2"/><text x="380" y="90" class="t">r3</text><text x="380" y="112" class="c">v1</text>
+  </g>
+  <rect x="30" y="50" width="280" height="90" rx="14" fill="none" stroke="#1e8449" stroke-width="2" stroke-dasharray="7 5"/><text x="170" y="160" class="c" fill="#1e8449">escritura confirmada por W=2</text>
+  <rect x="170" y="45" width="280" height="100" rx="14" fill="none" stroke="#1f4e79" stroke-width="2" stroke-dasharray="3 4"/><text x="330" y="180" class="c" fill="#1f4e79">lectura de R=2: r2 tiene v2</text>
+  <text x="240" y="215" font-size="13" text-anchor="middle">Cualquier par de réplicas leído incluye</text><text x="240" y="233" font-size="13" text-anchor="middle">al menos una con la última versión</text>
+  <line x1="500" y1="20" x2="500" y2="250" stroke="#ccc" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="750" y="30" class="h" text-anchor="middle" fill="#c0392b">N=3, W=1, R=1 → W+R ≤ N</text>
+  <g>
+    <rect x="550" y="60" width="120" height="70" rx="10" fill="#d5f5e3" stroke="#1e8449" stroke-width="3"/><text x="610" y="90" class="t">r1</text><text x="610" y="112" class="c">v2 ✔</text>
+    <rect x="690" y="60" width="120" height="70" rx="10" fill="#f2f3f4" stroke="#999" stroke-width="2"/><text x="750" y="90" class="t">r2</text><text x="750" y="112" class="c">v1</text>
+    <rect x="830" y="60" width="120" height="70" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="3"/><text x="890" y="90" class="t">r3</text><text x="890" y="112" class="c">v1 ✘</text>
+  </g>
+  <text x="610" y="160" class="c" fill="#1e8449">escribe W=1</text><text x="890" y="160" class="c" fill="#c0392b">lee R=1 → v1 (obsoleto)</text>
+  <text x="750" y="215" font-size="13" text-anchor="middle">Más rápido y disponible, pero se pueden</text><text x="750" y="233" font-size="13" text-anchor="middle">leer datos antiguos (consistencia eventual)</text>
+  <text x="500" y="300" font-size="14" text-anchor="middle" fill="#333">Con W=2, R=2 y 2 réplicas caídas no hay quórum: error (C antes que A). Con W=1, R=1 se responde igual (A antes que C).</text>
+</svg>

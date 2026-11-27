@@ -1,0 +1,538 @@
+/*-- scss:defaults --*/
+
+@import "logo";
+
+// Colores sacados del master `codeurjc_final` de los .odp originales, no
+// muestreados del PDF: rojo de titulo #c9211e, barra superior #cb0017,
+// cuerpo #333333 y vineta de primer nivel #669933.
+$urjc-red:        #c9211e;
+$urjc-red-bar:    #cb0017;
+$urjc-body:       #333333;
+$urjc-green:      #669933;
+$urjc-grey:       #808080;
+$urjc-link:       #1a6fb5;
+
+// Corbel y Consolas son las fuentes incrustadas en los PDF originales. No
+// existen en Linux ni como fuente web, asi que van primero por si la maquina
+// las tiene y detras los sustitutos libres mas parecidos.
+$font-family-sans-serif: Corbel, "Lato", "Source Sans 3", "Noto Sans", sans-serif !default;
+$font-family-monospace:  Consolas, "Cascadia Mono", "JetBrains Mono", "Source Code Pro", monospace !default;
+
+$body-color:      $urjc-body;
+$body-bg:         #ffffff;
+$link-color:      $urjc-link;
+$presentation-heading-color: $urjc-red;
+$presentation-heading-font:  $font-family-sans-serif;
+$presentation-heading-font-weight: 700;
+$presentation-font-size-root: 32px;
+$code-block-font-size: 0.62em;
+
+/*-- scss:rules --*/
+
+// Barra roja superior, presente en todas las diapositivas del original.
+.reveal::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 14px;
+  background: $urjc-red-bar;
+  z-index: 40;
+}
+
+// La fuente hay que imponerla en reglas: declarada solo como variable con
+// !default, el tema de Quarto gana y reveal cae a una serif.
+// Corbel y Consolas son las del original (fuentes de Microsoft); Lato y
+// JetBrains Mono son los sustitutos, y ambos estan instalados en el equipo,
+// asi que el mazo no depende de la red para verse bien en clase.
+.reveal,
+.reveal p,
+.reveal li,
+.reveal h1, .reveal h2, .reveal h3, .reveal h4,
+.reveal .slides section {
+  font-family: $font-family-sans-serif !important;
+}
+
+.reveal code,
+.reveal pre code {
+  font-family: $font-family-monospace !important;
+}
+
+.reveal .slides section {
+  text-align: left;
+}
+
+.reveal h2 {
+  font-size: 1.45em;
+  font-weight: 700;
+  color: $urjc-red;
+  margin: 0.2em 0 0.5em 0;
+  text-transform: none;
+}
+
+// Logo arriba a la derecha en las diapositivas de contenido. Quarto le pone
+// una altura menor con mas especificidad, de ahi el !important.
+.reveal .slide-logo {
+  position: fixed;
+  top: 24px !important;
+  right: 24px !important;
+  height: 64px !important;
+  max-height: 64px !important;
+  bottom: auto !important;
+  z-index: 41;
+}
+
+// Vinetas: punto verde en el primer nivel, raya en el segundo, como el ODP.
+.reveal .slides ul {
+  list-style: none;
+  margin-left: 0.4em;
+}
+
+.reveal .slides ul > li {
+  position: relative;
+  padding-left: 1em;
+  margin-bottom: 0.35em;
+}
+
+.reveal .slides ul > li::before {
+  content: "\25CF";
+  color: $urjc-green;
+  position: absolute;
+  left: 0;
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+.reveal .slides ul ul > li::before {
+  content: "\2013";
+  color: $urjc-body;
+  font-size: 1em;
+  line-height: 1.2;
+}
+
+// Tercer nivel: punto pequeno, como en el master del .odp, que alterna
+// punto, raya y punto.
+.reveal .slides ul ul ul > li::before {
+  content: "\25CF";
+  color: $urjc-body;
+  font-size: 0.62em;
+  line-height: 1.9;
+}
+
+.reveal .slides ul ul {
+  font-size: 0.88em;
+  margin-top: 0.25em;
+}
+
+.reveal .slides ul ul ul {
+  font-size: 0.95em;
+}
+
+// Una lista que empieza por el segundo o el tercer nivel, porque el marco
+// del original se partio en dos con una figura en medio. Markdown no sabe
+// expresarlo, asi que el conversor la envuelve en `.desde-nivel-N` y aqui se
+// le da la sangria, el tamano y la vineta que le tocan.
+.reveal .slides .desde-nivel-2 > ul {
+  margin-left: 1.5em;
+  font-size: 0.88em;
+}
+
+.reveal .slides .desde-nivel-2 > ul > li::before {
+  content: "\2013";
+  color: $urjc-body;
+  font-size: 1em;
+  line-height: 1.2;
+}
+
+.reveal .slides .desde-nivel-2 > ul ul > li::before {
+  content: "\25CF";
+  font-size: 0.62em;
+  line-height: 1.9;
+}
+
+.reveal .slides .desde-nivel-3 > ul,
+.reveal .slides .desde-nivel-4 > ul {
+  margin-left: 3em;
+  font-size: 0.84em;
+}
+
+.reveal .slides .desde-nivel-3 > ul > li::before,
+.reveal .slides .desde-nivel-4 > ul > li::before {
+  content: "\25CF";
+  color: $urjc-body;
+  font-size: 0.62em;
+  line-height: 1.9;
+}
+
+// Codigo: Consolas sobre gris muy claro, sin el marco oscuro de reveal.
+.reveal pre {
+  box-shadow: none;
+  width: 100%;
+  margin: 0.4em 0;
+}
+
+// reveal le pone al listado un `max-height` con `overflow: auto`: en pantalla
+// se puede desplazar, pero al imprimir se corta por la mitad y lo de abajo no
+// existe. Sin tope, el listado mide lo que mide y el ajuste de
+// `assets/ajuste.html` encoge la diapositiva entera hasta que cabe.
+.reveal pre code,
+.reveal pre.sourceCode code {
+  background: #f6f6f6;
+  border-left: 4px solid $urjc-green;
+  padding: 0.5em 0.7em;
+  max-height: none;
+  overflow: visible;
+}
+
+.reveal code {
+  font-family: $font-family-monospace;
+}
+
+// Numero de diapositiva, gris y abajo a la derecha como en el original.
+// reveal lo coloca arriba por defecto, asi que hay que anular su `top`.
+.reveal .slide-number {
+  background: transparent;
+  color: $urjc-grey;
+  font-size: 0.5em;
+  top: auto !important;
+  right: 20px !important;
+  bottom: 12px !important;
+  left: auto !important;
+}
+
+// En la portada no va ni numero ni logo pequeno: ahi el logo va centrado y
+// grande. reveal marca la diapositiva activa con .present, asi que :has()
+// permite saber desde CSS que la portada es la que esta a la vista.
+//
+// Solo en pantalla. Al imprimir, reveal deja la portada marcada como la
+// diapositiva activa de todo el documento, asi que esta regla escondia el
+// numero en las 73 paginas del PDF, no solo en la primera.
+@media screen {
+  body:has(#title-slide.present) .slide-number,
+  body:has(#title-slide.present) .slide-logo {
+    display: none !important;
+  }
+}
+
+// --- Portada -------------------------------------------------------------
+// Replica la diapositiva 1: logo centrado, titulos en rojo, fecha arriba a
+// la derecha y banda negra inferior con el logo de la URJC y los autores.
+
+// La portada se maqueta dentro de la propia diapositiva: reveal aplica un
+// transform a .slides, asi que position:fixed ahi dentro no escapa al
+// viewport y se comporta como absolute. Se usa absolute a proposito.
+//
+// Y aqui NO se puede poner `position: relative`, aunque sea lo primero que
+// uno escribe para anclar los hijos absolutos: reveal apila las diapositivas
+// en absoluto dentro de .slides, y la portada en relativa se queda en el
+// flujo. Entonces todas las demas arrancan desplazadas su altura entera y el
+// contenido se va una pantalla por debajo del borde: diapositivas en blanco
+// con el titulo asomando abajo. Como reveal ya la posiciona en absoluto, la
+// portada hace de ancla igual sin tocarle el position.
+.reveal #title-slide {
+  height: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding-top: 0.4em;
+}
+
+// Logo grande y centrado. Va embebido como data URI para que no dependa de
+// la ruta relativa del CSS, que cambia segun donde caiga cada mazo.
+.reveal #title-slide::before {
+  content: "";
+  display: block;
+  width: 270px;
+  height: 162px;
+  margin: 0 auto 0.3em auto;
+  background: $logo-datauri center/contain no-repeat;
+}
+
+.reveal #title-slide h1.title {
+  color: $urjc-red;
+  font-weight: 700;
+  font-size: 1.55em;
+  margin: 0.25em 0;
+}
+
+.reveal #title-slide p.subtitle {
+  color: $urjc-red;
+  font-size: 0.82em;
+  font-weight: 400;
+  margin: 0.2em 0 0.6em 0;
+}
+
+// La fecha va arriba a la derecha, no bajo los autores.
+.reveal #title-slide p.date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  font-weight: 700;
+  color: $urjc-body;
+  font-size: 0.6em;
+  z-index: 42;
+}
+
+// Banda negra inferior con los autores, como en el .odp. Los margenes
+// negativos cancelan el padding lateral que reveal da a la diapositiva,
+// para que la banda llegue a los dos bordes.
+.reveal #title-slide .quarto-title-authors {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  // Sobresale por abajo a proposito: asi llega al borde de la pantalla, como
+  // en el original. Al imprimir se anula, porque ahi lo de fuera se recorta.
+  bottom: -38px;
+  background: #000000;
+  color: #ffffff;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.8em;
+  font-size: 0.46em;
+  z-index: 42;
+}
+
+// Los mazos escritos directamente en Quarto no llevan `author`: sin autores,
+// la banda se queda en un rectangulo negro vacio, asi que no se pinta.
+.reveal #title-slide .quarto-title-authors:not(:has(.quarto-title-author)) {
+  display: none;
+}
+
+.reveal #title-slide .quarto-title-author,
+.reveal #title-slide .quarto-title-author-name {
+  color: #ffffff;
+  font-weight: 700;
+  margin: 0;
+}
+
+// --- Exportacion a PDF ----------------------------------------------------
+// Al exportar (`?print-pdf`) reveal mete cada diapositiva en un `.pdf-page`
+// del alto exacto de la pagina. Un par de pixeles de mas -una sombra, la
+// ultima linea de un parrafo- empujan a una pagina nueva, asi que se recorta.
+// `relative` es necesario: sin el, el numero de diapositiva que reveal mete
+// dentro de cada pagina se ancla a un antepasado lejano y acaba fuera del
+// papel.
+.pdf-page {
+  overflow: hidden;
+  position: relative;
+}
+
+// El logo va fijo al viewport, y lo fijo solo se imprime una vez: en el PDF
+// solo salia en la primera pagina. Aqui se repinta en cada una, salvo en la
+// portada, que lleva el suyo grande y centrado.
+.pdf-page::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 104px;
+  height: 64px;
+  background: $logo-datauri center/contain no-repeat;
+  z-index: 41;
+}
+
+// En la portada no va: lleva el suyo, grande y centrado. Y tampoco el numero
+// de diapositiva, igual que en el original.
+.pdf-page:has(#title-slide)::after,
+.pdf-page:has(#title-slide) .slide-number {
+  display: none !important;
+}
+
+// El logo fijo se imprime en todas las paginas, encima del que acabamos de
+// poner. Al imprimir manda el de la pagina.
+@media print {
+  .reveal .slide-logo {
+    display: none !important;
+  }
+
+  // Para imprimir, reveal centra cada diapositiva a mano: le calcula un
+  // `top` a partir de la altura de su contenido. A la portada le sale 245 px
+  // y, como el tema le da height:100%, se desborda por abajo y la banda de
+  // autores -que va anclada a su borde inferior- cae fuera del papel. Sacada
+  // del posicionamiento, la banda se ancla a la pagina y vuelve a su sitio.
+  .reveal #title-slide {
+    position: static !important;
+    height: auto !important;
+    padding-top: 56px !important;   // deja sitio a la barra roja y a la fecha
+  }
+
+  // La banda sobresale por abajo en pantalla para llegar al borde; en papel
+  // eso es recorte, asi que se pega al pie de la pagina.
+  .reveal #title-slide .quarto-title-authors {
+    bottom: 0;
+  }
+
+  // La fecha va bajo la barra roja, no debajo de ella.
+  .reveal #title-slide p.date {
+    top: 26px;
+    right: 8px;
+  }
+}
+
+// --- Secciones e indices (extension title-slides) -------------------------
+
+// Diapositiva de seccion: el `#` que separa bloques. Quarto la marca con
+// .title-slide.level1 y la deja alineada a la izquierda porque el tema pone
+// text-align:left en todas; aqui se centra, que es lo que se espera de una
+// separadora.
+.reveal .slides section.level1 {
+  text-align: center;
+}
+
+.reveal .slides section.level1 h1 {
+  color: $urjc-red;
+  font-weight: 700;
+  font-size: 1.9em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+// Diapositiva de indice: el apartado en el que estamos, en negrita, como en
+// los originales hechos a mano.
+.reveal .slides section.title-slides-index h2 {
+  margin-bottom: 0.6em;
+}
+
+.reveal .slides .title-slides-index-current {
+  color: $urjc-body;
+}
+
+// --- Utilidades usadas por la conversion ---------------------------------
+
+// Diapositivas de dos columnas: texto a la izquierda, imagenes a la derecha.
+.reveal .columns { align-items: center; }
+
+// El tamano de cada imagen lo pone el conversor, en porcentaje de lo que
+// tiene al lado, copiando la caja del original. Aqui solo queda el tope para
+// que nada se salga por los lados; del alto se encarga el ajuste automatico.
+.reveal .slides img {
+  max-width: 100%;
+  height: auto;
+  // Red de seguridad para las capturas muy altas: el ancho sale del
+  // original, pero la diapositiva es mas apaisada que la de Impress y una
+  // captura vertical se sale igualmente. `contain` evita que al topar con
+  // el alto se deforme.
+  max-height: 560px;
+  object-fit: contain;
+}
+
+.reveal .nota-licencia {
+  font-size: 0.6em;
+  text-align: right;
+  color: $urjc-body;
+}
+
+// Etiqueta del proyecto de ejemplo al que se refiere la diapositiva. En el
+// original es un "ejem1" en negrita suelto bajo el logo, que se pierde; aqui
+// va como marca, anclada a la esquina y fuera del flujo, para que se vea de
+// un vistazo de que proyecto se esta hablando.
+.reveal .slides .etiqueta-ejemplo {
+  // Flotando a la derecha del contenido, no en absoluto: asi el texto la
+  // rodea en vez de quedar debajo, y no hay que reservarle sitio a mano.
+  float: right;
+  margin: 0 0 0.3em 0.8em;
+  padding: 0.15em 0.75em;
+  border: 2px solid $urjc-green;
+  border-radius: 999px;
+  background: #f2f7ec;
+  color: #41661f;
+  font-size: 0.46em;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+  z-index: 39;
+}
+
+// En una sola linea: el rotulo y el nombre del proyecto, uno detras de otro.
+.reveal .slides .etiqueta-ejemplo p {
+  display: inline;
+  margin: 0;
+  font-family: $font-family-monospace;
+}
+
+// Delante lleva un pequeno rotulo, para que se entienda que es el nombre de
+// un proyecto del repositorio y no una palabra mas de la diapositiva.
+.reveal .slides .etiqueta-ejemplo::before {
+  content: "ejemplo ";
+  color: $urjc-grey;
+  font-weight: 400;
+}
+
+// Nota al pie de un listado: era un globo verde con una flecha señalando una
+// linea. La flecha se ha convertido en el resaltado de esa linea y el texto
+// baja aqui, donde se lee sin tapar el codigo.
+.reveal .slides .nota-codigo {
+  margin: 0.35em 0 0 0;
+  padding: 0.2em 0.7em;
+  border-left: 4px solid $urjc-green;
+  background: #f2f7ec;
+  font-size: 0.82em;
+}
+
+.reveal .slides .nota-codigo p {
+  margin: 0.12em 0;
+}
+
+// Enlaces al repositorio de ejemplos, al pie de la diapositiva.
+.reveal .enlace-repo {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  font-size: 0.46em;
+}
+
+.reveal .enlace-repo p {
+  margin: 0;
+  display: inline;
+}
+
+.reveal .enlace-repo a,
+.reveal .enlace-repo a:visited {
+  color: $urjc-link;
+  text-decoration: none;
+}
+
+.reveal .enlace-repo a code {
+  color: inherit;
+  background: none;
+}
+
+.reveal .enlace-repo::before {
+  content: "\1F4C1\00a0";
+}
+
+// --- Recuadros de los mazos escritos directamente en Quarto ----------------
+// Los temas nuevos (DDD, microservicios, seguridad, eventos, Kubernetes...)
+// no salen de un .odp: marcan con estas clases el codigo de ejemplo, el
+// ejercicio y los avisos. Con la paleta de codeurjc: verde para lo que se
+// puede probar, gris para el ejercicio y rojo para lo que hay que vigilar.
+.reveal .small { font-size: 0.75em; }
+.reveal .tiny  { font-size: 0.6em; }
+
+.reveal .slides .ejemplo,
+.reveal .slides .ejercicio,
+.reveal .slides .aviso {
+  margin: 0.5em 0 0 0;
+  padding: 0.25em 0.8em;
+  font-size: 0.72em;
+  border-left: 5px solid $urjc-green;
+  background: #f2f7ec;
+}
+
+.reveal .slides .ejercicio {
+  border-left-color: $urjc-grey;
+  background: #f3f3f3;
+}
+
+.reveal .slides .aviso {
+  border-left-color: $urjc-red;
+  background: #fbeceb;
+}
+
+.reveal .slides .ejemplo p,
+.reveal .slides .ejercicio p,
+.reveal .slides .aviso p {
+  margin: 0.15em 0;
+}

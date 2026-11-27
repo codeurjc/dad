@@ -1,0 +1,8 @@
+flowchart TB
+    UI["<b>Presentación / Interfaz</b><br/>controladores REST, vistas"]
+    APP["<b>Aplicación</b><br/>casos de uso, transacciones"]
+    DOM["<b>Dominio</b><br/>entidades, VOs, agregados, eventos"]
+    INF["<b>Infraestructura</b><br/>BD, mensajería, APIs externas"]
+    UI --> APP --> DOM
+    INF -. implementa interfaces de .-> DOM
+    style DOM fill:#fef5e7,stroke:#ca6f1e,stroke-width:3px

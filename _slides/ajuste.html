@@ -1,0 +1,161 @@
+<script>
+// Encaja en la diapositiva el contenido que se sale por abajo.
+//
+// Por que hace falta: en el original cada caja de texto tiene su tamano y su
+// posicion, y el autor encogio a mano lo que no cabia. Al pasar a Quarto el
+// contenido vuelve a ser un flujo, asi que unas 138 de las 1.156 diapositivas
+// se salen por abajo. En lugar de recortar texto o de dejarlo cortado, se
+// reduce esa diapositiva lo justo para que quepa.
+//
+// Como: se envuelve el cuerpo de la diapositiva (todo menos el titulo y el
+// enlace al repositorio, que va anclado al pie) y se le aplica un `zoom`.
+(function () {
+  var MINIMO = 0.35;  // tope: por debajo de un tercio ya no se lee de lejos
+
+  function envolver(seccion) {
+    // La portada no: esta maquetada a mano (logo centrado, fecha en la
+    // esquina, banda de autores al pie anclada al borde) y encogerla
+    // descoloca la banda, que es absoluta.
+    if (seccion.id === 'title-slide') return null;
+    var cuerpo = seccion.querySelector(':scope > .cuerpo-ajustado');
+    if (cuerpo) return cuerpo;
+    var hijos = [];
+    for (var i = 0; i < seccion.children.length; i++) {
+      var h = seccion.children[i];
+      // El titulo manda en la maqueta (en la plantilla Sidelab es la banda
+      // negra) y el enlace al repositorio va anclado al pie: ninguno de los
+      // dos entra en el escalado.
+      if (h.tagName === 'H2' || h.classList.contains('enlace-repo')) continue;
+      hijos.push(h);
+    }
+    if (!hijos.length) return null;
+    cuerpo = document.createElement('div');
+    cuerpo.className = 'cuerpo-ajustado';
+    hijos[0].parentNode.insertBefore(cuerpo, hijos[0]);
+    for (var j = 0; j < hijos.length; j++) cuerpo.appendChild(hijos[j]);
+    return cuerpo;
+  }
+
+  // Hasta donde llega la diapositiva. Al imprimir, reveal mete cada una en
+  // un `.pdf-page` que es quien tiene el alto de la pagina; la propia
+  // <section> mide cero y daria un hueco absurdo.
+  function fondo(seccion) {
+    var pagina = seccion.closest ? seccion.closest('.pdf-page') : null;
+    return (pagina || seccion).getBoundingClientRect().bottom;
+  }
+
+  function ajustar(seccion) {
+    if (!seccion) return;
+    var cuerpo = envolver(seccion);
+    if (!cuerpo) return;
+
+    cuerpo.style.zoom = '';
+
+    var escala = 1;
+    // Tres pasadas: al ensanchar el cuerpo el texto se reparte en menos
+    // lineas, asi que la primera estimacion se queda corta y las siguientes
+    // afinan. Mas pasadas no cambian el resultado de forma apreciable.
+    for (var paso = 0; paso < 3; paso++) {
+      var hueco = fondo(seccion) - cuerpo.getBoundingClientRect().top;
+      var alto = cuerpo.getBoundingClientRect().height;
+      if (alto <= hueco + 1) break;
+      escala = Math.max(escala * (hueco / alto), MINIMO);
+      // `zoom` y no `transform: scale()`: escala la maqueta en vez de solo
+      // el pintado, asi que el texto se reparte como si la diapositiva fuera
+      // mas grande y no hay que compensar el ancho. Y, sobre todo, se
+      // imprime: con transform, Chromium dejaba en blanco alguna imagen
+      // alta al exportar a PDF.
+      cuerpo.style.zoom = escala;
+      if (escala === MINIMO) break;
+    }
+
+    // Una imagen que todavia no ha cargado mide cero de alto: si se mide la
+    // diapositiva antes de que llegue, parece que cabe y luego se sale. Hay
+    // que volver a medir cuando cada imagen este dentro.
+    var fotos = cuerpo.querySelectorAll('img');
+    for (var k = 0; k < fotos.length; k++) {
+      if (fotos[k].complete) continue;
+      fotos[k].addEventListener('load', function () { ajustar(seccion); },
+                                { once: true });
+    }
+  }
+
+  function ajustarActual() {
+    if (!window.Reveal || !Reveal.getCurrentSlide) return;
+    ajustar(Reveal.getCurrentSlide());
+  }
+
+  // En pantalla solo hace falta medir la diapositiva que se ve: las demas
+  // estan ocultas y no se pueden medir. Al imprimir (`?print-pdf`) es al
+  // reves: reveal las maqueta todas a la vez y ninguna cambia nunca, asi que
+  // hay que recorrerlas. Sin esto, cada diapositiva que no cabe se parte en
+  // dos paginas del PDF en lugar de encogerse.
+  function imprimiendo() {
+    return /print-pdf/.test(window.location.search) ||
+      document.body.classList.contains('print-pdf');
+  }
+
+  function ajustarTodas() {
+    // Descendientes, no hijos directos: al imprimir, reveal envuelve cada
+    // diapositiva en un `.pdf-page` y deja de ser hija de `.slides`.
+    var secciones = document.querySelectorAll('.reveal .slides section.slide, '
+      + '.reveal .slides section.title-slides-index');
+    for (var i = 0; i < secciones.length; i++) ajustar(secciones[i]);
+  }
+
+  // Resalta las lineas que marca `data-lineas` en un listado y atenua el
+  // resto, con las mismas clases que usa Quarto -y por tanto su CSS-, pero
+  // sin depender de su plugin, que al imprimir no deja rastro del atributo.
+  function resaltarCodigo() {
+    var bloques = document.querySelectorAll('[data-lineas]');
+    for (var b = 0; b < bloques.length; b++) {
+      var caja = bloques[b];
+      var code = caja.matches('code') ? caja : caja.querySelector('code');
+      if (!code || code.classList.contains('has-line-highlights')) continue;
+      var marcadas = {};
+      var trozos = (caja.getAttribute('data-lineas') || '').split(',');
+      for (var t = 0; t < trozos.length; t++) {
+        var rango = trozos[t].trim().split('-');
+        var desde = parseInt(rango[0], 10);
+        var hasta = parseInt(rango.length > 1 ? rango[1] : rango[0], 10);
+        if (isNaN(desde) || isNaN(hasta)) continue;
+        for (var i = desde; i <= hasta; i++) marcadas[i] = true;
+      }
+      code.classList.add('has-line-highlights');
+      var n = 0;
+      for (var h = 0; h < code.children.length; h++) {
+        var hijo = code.children[h];
+        if (hijo.tagName !== 'SPAN') continue;
+        n += 1;
+        if (marcadas[n]) hijo.classList.add('highlight-line');
+      }
+    }
+  }
+
+  function arrancar() {
+    resaltarCodigo();
+    if (imprimiendo()) {
+      // reveal reordena el documento para imprimir despues de estar listo,
+      // asi que la primera pasada se hace tarde a proposito, y se repite al
+      // terminar de cargar las imagenes.
+      setTimeout(ajustarTodas, 1200);
+      window.addEventListener('load', function () { setTimeout(ajustarTodas, 600); });
+      return;
+    }
+    ajustarActual();
+    Reveal.on('slidechanged', function (e) { ajustar(e.currentSlide); });
+    Reveal.on('resize', ajustarActual);
+    window.addEventListener('resize', ajustarActual);
+  }
+
+  if (window.Reveal && Reveal.isReady && Reveal.isReady()) arrancar();
+  else document.addEventListener('DOMContentLoaded', function () {
+    var espera = setInterval(function () {
+      if (window.Reveal && Reveal.isReady && Reveal.isReady()) {
+        clearInterval(espera);
+        arrancar();
+      }
+    }, 120);
+  });
+})();
+</script>

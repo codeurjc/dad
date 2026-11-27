@@ -1,0 +1,28 @@
+# Desarrollo: pocas réplicas y su propio namespace
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: calculo-dev
+
+resources:
+  - namespace.yaml
+  - ../../base
+
+patches:
+  - target:
+      kind: HorizontalPodAutoscaler
+      name: calculo
+    patch: |-
+      - op: replace
+        path: /spec/minReplicas
+        value: 1
+      - op: replace
+        path: /spec/maxReplicas
+        value: 3
+  - target:
+      kind: PodDisruptionBudget
+      name: calculo
+    patch: |-
+      - op: replace
+        path: /spec/minAvailable
+        value: 0

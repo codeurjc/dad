@@ -1,0 +1,15 @@
+# Dos microservicios, cada uno con su base de datos (H2 en memoria, para simplificar)
+#   docker compose up --build
+#   curl localhost:8081/products
+#   curl -X POST localhost:8082/orders -H 'Content-Type: application/json' -d '{"productId":1,"quantity":2}'
+services:
+  catalogo:
+    build: ./catalogo
+    ports:
+      - "8081:8081"
+  pedidos:
+    build: ./pedidos
+    ports:
+      - "8082:8082"
+    environment:
+      - CATALOGO_URL=http://catalogo:8081

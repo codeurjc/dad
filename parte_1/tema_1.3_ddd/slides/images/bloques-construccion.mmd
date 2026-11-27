@@ -1,0 +1,14 @@
+flowchart LR
+    AS[Servicio de<br/>aplicación] -->|usa| R[Repositorio]
+    AS -->|invoca| AG
+    R -->|guarda / recupera| AG
+    subgraph AG [Agregado]
+        direction TB
+        RA[Entidad raíz] --> E[Entidades]
+        RA --> VO[Value objects]
+        E --> VO
+    end
+    AG -->|emite| EV[Eventos de dominio]
+    DS[Servicio de dominio] -->|coordina| AG
+    F[Factoría] -->|crea| AG
+    style AG fill:#fef9e7,stroke:#b7950b

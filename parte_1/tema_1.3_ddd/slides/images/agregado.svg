@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 475" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#888"/></marker>
+  </defs>
+  <!-- frontera -->
+  <rect x="200" y="40" width="460" height="400" rx="40" fill="#fef9e7" stroke="#b7950b" stroke-width="3" stroke-dasharray="12 7"/>
+  <text x="430" y="72" text-anchor="middle" font-size="20" font-weight="bold" fill="#9a7d0a">Agregado Pedido (frontera de consistencia)</text>
+  <!-- raíz -->
+  <rect x="320" y="100" width="220" height="110" rx="10" fill="#fff" stroke="#b7950b" stroke-width="3"/>
+  <text x="430" y="128" text-anchor="middle" font-size="18" font-weight="bold">«raíz» Order</text>
+  <g font-family="monospace" font-size="13" fill="#444"><text x="335" y="152">id: OrderId</text><text x="335" y="171">customerId: CustomerId</text><text x="335" y="190">status: OrderStatus</text></g>
+  <!-- líneas -->
+  <g font-size="15">
+    <rect x="235" y="300" width="125" height="70" rx="8" fill="#fff" stroke="#999" stroke-width="2"/><text x="297" y="330" text-anchor="middle">Money total</text><text x="297" y="352" text-anchor="middle" font-size="12" fill="#666">value object</text>
+    <rect x="368" y="300" width="125" height="70" rx="8" fill="#fff" stroke="#999" stroke-width="2"/><text x="430" y="330" text-anchor="middle">OrderLine</text><text x="430" y="352" text-anchor="middle" font-size="12" fill="#666">p-1 × 2</text>
+    <rect x="501" y="300" width="125" height="70" rx="8" fill="#fff" stroke="#999" stroke-width="2"/><text x="563" y="330" text-anchor="middle">OrderLine</text><text x="563" y="352" text-anchor="middle" font-size="12" fill="#666">p-7 × 1</text>
+  </g>
+  <g stroke="#333" stroke-width="2" marker-end="url(#ar)"><line x1="400" y1="210" x2="305" y2="296"/><line x1="430" y1="210" x2="430" y2="296"/><line x1="460" y1="210" x2="555" y2="296"/></g>
+  <text x="430" y="462" text-anchor="middle" font-size="14" fill="#7d6608">Invariantes: ≤ 10 líneas · total ≤ 5000 € · solo se edita en DRAFT</text>
+  <!-- cliente externo -->
+  <rect x="20" y="110" width="140" height="90" rx="10" fill="#fff" stroke="#333" stroke-width="2"/>
+  <text x="90" y="145" text-anchor="middle" font-size="16" font-weight="bold">Servicio de</text><text x="90" y="167" text-anchor="middle" font-size="16" font-weight="bold">aplicación</text>
+  <line x1="160" y1="155" x2="316" y2="155" stroke="#1e8449" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="238" y="138" text-anchor="middle" font-size="13" fill="#1e8449">✔ order.addProduct()</text>
+  <path d="M140,225 C140,400 330,425 420,376" stroke="#c0392b" stroke-width="3" fill="none" stroke-dasharray="6 5" marker-end="url(#ar)"/>
+  <text x="20" y="290" font-size="13" fill="#c0392b">✘ order.getLines()</text><text x="20" y="307" font-size="13" fill="#c0392b">   .get(0).setQty(5)</text>
+  <!-- otros agregados -->
+  <rect x="760" y="80" width="200" height="90" rx="20" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2.5" stroke-dasharray="8 5"/>
+  <text x="860" y="120" text-anchor="middle" font-size="17" font-weight="bold" fill="#1f4e79">Agregado</text><text x="860" y="143" text-anchor="middle" font-size="17" font-weight="bold" fill="#1f4e79">Customer</text>
+  <rect x="760" y="300" width="200" height="90" rx="20" fill="#eafaf1" stroke="#1e8449" stroke-width="2.5" stroke-dasharray="8 5"/>
+  <text x="860" y="340" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e8449">Agregado</text><text x="860" y="363" text-anchor="middle" font-size="17" font-weight="bold" fill="#1e8449">Product</text>
+  <g stroke="#888" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#ar2)" fill="none"><line x1="540" y1="160" x2="756" y2="125"/><line x1="626" y1="335" x2="756" y2="345"/></g>
+  <text x="700" y="130" text-anchor="middle" font-size="13" fill="#666">por id</text><text x="690" y="325" text-anchor="middle" font-size="13" fill="#666">por id</text>
+</svg>

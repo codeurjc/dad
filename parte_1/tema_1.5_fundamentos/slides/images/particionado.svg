@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" font-family="Helvetica, Arial, sans-serif">
+  <style>.h{font-size:17px;font-weight:bold}.t{font-size:14px;font-weight:bold;text-anchor:middle}.c{font-family:monospace;font-size:12px;text-anchor:middle}.n{font-size:13px}</style>
+  <text x="20" y="28" class="h" fill="#1f4e79">Por rangos de clave</text>
+  <g><rect x="20" y="45" width="140" height="70" rx="8" fill="#d6eaf8" stroke="#1f4e79"/><text x="90" y="72" class="t">nodo 1</text><text x="90" y="95" class="c">A — H</text>
+  <rect x="170" y="45" width="140" height="70" rx="8" fill="#d6eaf8" stroke="#1f4e79"/><text x="240" y="72" class="t">nodo 2</text><text x="240" y="95" class="c">I — P</text>
+  <rect x="320" y="45" width="140" height="70" rx="8" fill="#d6eaf8" stroke="#1f4e79"/><text x="390" y="72" class="t">nodo 3</text><text x="390" y="95" class="c">Q — Z</text></g>
+  <g class="n"><text x="20" y="145" fill="#1e8449">✔ consultas por rango eficientes</text><text x="20" y="167" fill="#1e8449">  ("usuarios de la A a la C")</text><text x="20" y="192" fill="#c0392b">✘ puntos calientes: si la clave es una</text><text x="20" y="210" fill="#c0392b">  fecha, todo lo de hoy va al mismo nodo</text><text x="20" y="235" fill="#555">HBase, Bigtable, MongoDB (rangos)</text></g>
+  <line x1="490" y1="20" x2="490" y2="255" stroke="#ddd" stroke-width="2"/>
+  <text x="520" y="28" class="h" fill="#ca6f1e">Por hash de la clave</text>
+  <g><rect x="520" y="45" width="140" height="70" rx="8" fill="#fdebd0" stroke="#ca6f1e"/><text x="590" y="72" class="t">nodo 1</text><text x="590" y="95" class="c">hash % 3 = 0</text>
+  <rect x="670" y="45" width="140" height="70" rx="8" fill="#fdebd0" stroke="#ca6f1e"/><text x="740" y="72" class="t">nodo 2</text><text x="740" y="95" class="c">hash % 3 = 1</text>
+  <rect x="820" y="45" width="140" height="70" rx="8" fill="#fdebd0" stroke="#ca6f1e"/><text x="890" y="72" class="t">nodo 3</text><text x="890" y="95" class="c">hash % 3 = 2</text></g>
+  <g class="n"><text x="520" y="145" fill="#1e8449">✔ reparto uniforme de la carga</text><text x="520" y="170" fill="#c0392b">✘ las consultas por rango van a todos</text><text x="520" y="195" fill="#c0392b">✘ con "% N", añadir un nodo mueve casi</text><text x="520" y="213" fill="#c0392b">  todo → hash consistente (tema 5.5)</text><text x="520" y="238" fill="#555">Cassandra, DynamoDB, Redis Cluster</text></g>
+  <text x="500" y="285" font-size="13.5" text-anchor="middle" fill="#333">Particionado (sharding) para escalar escrituras y datos; replicación de cada partición para tolerar fallos</text>
+</svg>

@@ -1,0 +1,8 @@
+# Configuración que NO es secreta. Se inyecta como variables de entorno.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hola-config
+data:
+  APP_MENSAJE: "Hola desde Kubernetes"
+  APP_VERSION: "v1"

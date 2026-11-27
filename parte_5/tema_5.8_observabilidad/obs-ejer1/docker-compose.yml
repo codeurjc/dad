@@ -1,0 +1,31 @@
+# Ejercicio: pedidos -> pagos, con tráfico mixto VISA/AMEX.
+#   docker compose up --build
+#   Grafana: http://localhost:3000 (Explore -> Tempo / Prometheus)
+#   Arreglo: PAGOS_FIX_CONTENTION=true docker compose up -d pagos
+services:
+  lgtm:
+    image: grafana/otel-lgtm:latest
+    ports:
+      - "3000:3000"
+      - "4318:4318"
+  pedidos:
+    build: ./pedidos
+    ports:
+      - "8080:8080"
+    environment:
+      - PAGOS_URL=http://pagos:8081
+      - MANAGEMENT_OPENTELEMETRY_TRACING_EXPORT_OTLP_ENDPOINT=http://lgtm:4318/v1/traces
+      - MANAGEMENT_OTLP_METRICS_EXPORT_URL=http://lgtm:4318/v1/metrics
+    depends_on: [lgtm, pagos]
+  pagos:
+    build: ./pagos
+    environment:
+      - PAGOS_FIX_CONTENTION=${PAGOS_FIX_CONTENTION:-false}
+      - MANAGEMENT_OPENTELEMETRY_TRACING_EXPORT_OTLP_ENDPOINT=http://lgtm:4318/v1/traces
+      - MANAGEMENT_OTLP_METRICS_EXPORT_URL=http://lgtm:4318/v1/metrics
+    depends_on: [lgtm]
+  carga:
+    image: busybox:1.36
+    # 4 clientes en paralelo; 1 de cada 10 pagos es AMEX
+    command: ["/bin/sh", "-c", "for c in 1 2 3 4; do (while true; do if [ $$((RANDOM % 10)) -eq 0 ]; then t=amex; else t=visa; fi; wget -q -O- --header 'Content-Type: application/json' --post-data \"{\\\"card\\\":\\\"$$t\\\",\\\"amount\\\":$$((RANDOM % 300 + 1))}\" http://pedidos:8080/orders > /dev/null 2>&1; sleep 0.1; done) & done; wait"]
+    depends_on: [pedidos]

@@ -1,0 +1,10 @@
+flowchart TB
+    subgraph M [Monolito modular: ddd-ejem3]
+        direction LR
+        S1[Ventas] -- "evento en memoria<br/>(ApplicationEventPublisher)" --> L1[Logística]
+    end
+    subgraph D [Servicios independientes: tema 3]
+        direction LR
+        DB1[(BD Ventas)] --- S2[Servicio<br/>Ventas] -- "evento" --> B[[Broker<br/>RabbitMQ]] -- "evento" --> L2[Servicio<br/>Logística] --- DB2[(BD Logística)]
+    end
+    M ==>|extraer contextos| D

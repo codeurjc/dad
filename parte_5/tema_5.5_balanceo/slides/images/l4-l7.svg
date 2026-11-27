@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" font-family="Helvetica, Arial, sans-serif">
+  <style>.h{font-size:20px;font-weight:bold;text-anchor:middle}.c{font-family:monospace;font-size:14px}.n{font-size:14px}</style>
+  <!-- paquete -->
+  <text x="500" y="30" class="h" fill="#333">¿Qué puede "ver" el balanceador de una petición?</text>
+  <rect x="60" y="50" width="880" height="56" rx="6" fill="#f2f3f4" stroke="#999"/>
+  <rect x="60" y="50" width="250" height="56" rx="6" fill="#d6eaf8" stroke="#1f4e79"/>
+  <text x="185" y="74" text-anchor="middle" class="c">IP origen/destino</text><text x="185" y="94" text-anchor="middle" class="c">puerto TCP</text>
+  <rect x="310" y="50" width="630" height="56" fill="#fdebd0" stroke="#ca6f1e"/>
+  <text x="625" y="74" text-anchor="middle" class="c">GET /api/pedidos HTTP/1.1 · Host: tienda.com</text>
+  <text x="625" y="94" text-anchor="middle" class="c">Cookie: SERVERID=web2 · Authorization: Bearer …</text>
+  <!-- L4 -->
+  <rect x="60" y="140" width="420" height="240" rx="14" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2.5"/>
+  <text x="270" y="172" class="h" fill="#1f4e79">Capa 4 (transporte)</text>
+  <g class="n"><text x="80" y="205">• Reparte CONEXIONES TCP/UDP</text><text x="80" y="232">• Solo ve IPs y puertos</text><text x="80" y="259">• Muy rápido, cualquier protocolo</text><text x="80" y="286">  (bases de datos, MQTT, WebSockets…)</text><text x="80" y="313">• Afinidad solo por IP de origen</text><text x="80" y="340">• Permite SSL passthrough</text></g>
+  <text x="270" y="368" text-anchor="middle" font-size="13" fill="#555">HAProxy mode tcp · AWS NLB · Service de K8s</text>
+  <!-- L7 -->
+  <rect x="520" y="140" width="420" height="240" rx="14" fill="#fef5e7" stroke="#ca6f1e" stroke-width="2.5"/>
+  <text x="730" y="172" class="h" fill="#ca6f1e">Capa 7 (aplicación)</text>
+  <g class="n"><text x="540" y="205">• Reparte PETICIONES HTTP</text><text x="540" y="232">• Ve URL, cabeceras, cookies, cuerpo</text><text x="540" y="259">• Enruta por ruta o dominio (/api → A)</text><text x="540" y="286">• Sticky por cookie, reintentos, caché,</text><text x="540" y="313">  compresión, cabeceras X-Forwarded-*</text><text x="540" y="340">• Necesita descifrar TLS</text></g>
+  <text x="730" y="368" text-anchor="middle" font-size="13" fill="#555">HAProxy mode http · nginx · AWS ALB · Ingress</text>
+</svg>

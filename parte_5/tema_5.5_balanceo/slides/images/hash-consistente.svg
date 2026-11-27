@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" font-family="Helvetica, Arial, sans-serif">
+  <style>.n{font-size:14px}</style>
+  <circle cx="230" cy="200" r="150" fill="none" stroke="#999" stroke-width="3"/>
+  <g font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">
+    <circle cx="230" cy="50" r="18" fill="#1f4e79"/><text x="230" y="55">A</text>
+    <circle cx="360" cy="125" r="18" fill="#ca6f1e"/><text x="360" y="130">B</text>
+    <circle cx="360" cy="275" r="18" fill="#1e8449"/><text x="360" y="280">C</text>
+    <circle cx="230" cy="350" r="18" fill="#1f4e79"/><text x="230" y="355">A</text>
+    <circle cx="100" cy="275" r="18" fill="#ca6f1e"/><text x="100" y="280">B</text>
+    <circle cx="100" cy="125" r="18" fill="#1e8449"/><text x="100" y="130">C</text>
+  </g>
+  <g fill="#333"><circle cx="305" cy="70" r="6"/><circle cx="380" cy="200" r="6"/><circle cx="160" cy="333" r="6"/><circle cx="82" cy="200" r="6"/></g>
+  <g font-size="12" fill="#333"><text x="312" y="62">cliente 1 → B</text><text x="390" y="204">cliente 2 → C</text><text x="125" y="380">cliente 3 → B</text><text x="5" y="194">cliente 4 → C</text></g>
+  <text x="230" y="205" text-anchor="middle" font-size="15" fill="#555">anillo de hashes</text>
+  <text x="230" y="225" text-anchor="middle" font-size="12" fill="#777">(sentido horario)</text>
+  <g class="n">
+    <text x="470" y="80" font-size="18" font-weight="bold" fill="#333">Hash consistente</text>
+    <text x="470" y="115">• Servidores y clientes se colocan en el mismo anillo</text>
+    <text x="470" y="140">  según su hash (cada servidor en varios puntos: nodos virtuales)</text>
+    <text x="470" y="165">• Cada cliente va al siguiente servidor en el anillo</text>
+    <text x="470" y="200">• Si sale <tspan font-weight="bold" fill="#1e8449">C</tspan>, solo sus clientes se mueven (≈ 1/N)</text>
+    <text x="470" y="235">• Con <tspan font-family="monospace">hash(ip) % N</tspan>, al pasar de 3 a 2 servidores</text>
+    <text x="470" y="260">  cambian de servidor ≈ 2/3 de los clientes</text>
+    <text x="470" y="295">• Uso: afinidad sin cookies, cachés distribuidas,</text>
+    <text x="470" y="320">  particionado de datos (Cassandra, DynamoDB…)</text>
+  </g>
+</svg>

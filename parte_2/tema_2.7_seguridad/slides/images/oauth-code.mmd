@@ -1,0 +1,18 @@
+sequenceDiagram
+    autonumber
+    actor U as Usuario
+    participant C as Cliente (SPA / app)
+    participant AS as Servidor de autorización (Keycloak)
+    participant RS as Resource server (API)
+    U->>C: Pulsa "Entrar"
+    Note right of C: genera code_verifier aleatorio<br/>code_challenge = SHA256(verifier)
+    C->>AS: Redirige a /authorize?client_id&redirect_uri&scope&code_challenge
+    AS->>U: Pantalla de login (y consentimiento)
+    U->>AS: Usuario y contraseña (solo los ve Keycloak)
+    AS->>C: Redirige a redirect_uri?code=XYZ
+    C->>AS: POST /token (code + code_verifier)
+    Note over AS: comprueba que SHA256(verifier) == challenge
+    AS->>C: access_token (+ refresh_token, id_token)
+    C->>RS: GET /api/pedidos con Authorization: Bearer access_token
+    Note over RS: valida firma, iss, aud, exp y roles
+    RS->>C: 200 OK

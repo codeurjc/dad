@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: consumer
+  annotations:
+    # La página del consumidor abre un WebSocket: que cada navegador vaya siempre al mismo pod
+    nginx.ingress.kubernetes.io/affinity: cookie
+    nginx.ingress.kubernetes.io/session-cookie-name: consumer-pod
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: colas.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: consumer
+                port:
+                  number: 80

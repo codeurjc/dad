@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            # GET /api/catalogo/products/1  ->  GET http://catalogo:8081/products/1
+            - id: catalogo
+              uri: ${CATALOGO_URL:http://localhost:8081}
+              predicates:
+                - Path=/api/catalogo/**
+              filters:
+                - StripPrefix=2
+                - AddResponseHeader=X-Served-By, catalogo
+            # POST /api/pedidos/orders  ->  POST http://pedidos:8082/orders
+            - id: pedidos
+              uri: ${PEDIDOS_URL:http://localhost:8082}
+              predicates:
+                - Path=/api/pedidos/**
+              filters:
+                - StripPrefix=2
+                - AddResponseHeader=X-Served-By, pedidos
+
+server:
+  port: 8080

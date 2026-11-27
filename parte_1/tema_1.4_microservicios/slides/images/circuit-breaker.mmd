@@ -1,0 +1,9 @@
+stateDiagram-v2
+    direction LR
+    [*] --> CLOSED
+    CLOSED --> CLOSED: llamada OK o fallos < umbral
+    CLOSED --> OPEN: fallos ≥ umbral<br/>(p. ej. 50 % de las últimas 10)
+    OPEN --> OPEN: llamada rechazada<br/>al instante
+    OPEN --> HALF_OPEN: pasa el tiempo<br/>de espera (10 s)
+    HALF_OPEN --> CLOSED: llamada de prueba OK
+    HALF_OPEN --> OPEN: llamada de prueba falla

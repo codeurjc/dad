@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 1000 400" font-family="Helvetica, Arial, sans-serif">
+  <style>.m{font-family:Menlo,Consolas,monospace;font-size:15px}.h{font-size:17px;font-weight:bold}.n{font-size:14px;fill:#444}</style>
+  <text x="500" y="32" text-anchor="middle" class="m"><tspan fill="#c0392b">eyJhbGciOiJSUzI1NiIs...</tspan><tspan fill="#333">.</tspan><tspan fill="#7d3c98">eyJzdWIiOiI0ZjFl...</tspan><tspan fill="#333">.</tspan><tspan fill="#1f4e79">SflKxwRJSMeKKF2QT4fw...</tspan></text>
+  <text x="500" y="56" text-anchor="middle" class="n">Base64URL(header) . Base64URL(payload) . Base64URL(firma)  —  se envía en "Authorization: Bearer ..."</text>
+  <rect x="20" y="80" width="270" height="200" rx="8" fill="#fdedec" stroke="#c0392b" stroke-width="2"/>
+  <text x="155" y="108" text-anchor="middle" class="h" fill="#c0392b">Header</text>
+  <text x="40" y="145" class="m">{</text>
+  <text x="40" y="170" class="m">&#160;&#160;"alg": "RS256",</text>
+  <text x="40" y="195" class="m">&#160;&#160;"typ": "JWT",</text>
+  <text x="40" y="220" class="m">&#160;&#160;"kid": "k7Xq..."</text>
+  <text x="40" y="245" class="m">}</text>
+  <rect x="310" y="80" width="370" height="200" rx="8" fill="#f4ecf7" stroke="#7d3c98" stroke-width="2"/>
+  <text x="495" y="108" text-anchor="middle" class="h" fill="#7d3c98">Payload (claims)</text>
+  <text x="330" y="138" class="m">"iss": "http://.../realms/dad",</text>
+  <text x="330" y="160" class="m">"sub": "4f1e...",</text>
+  <text x="330" y="182" class="m">"aud": "tienda",</text>
+  <text x="330" y="204" class="m">"exp": 1795373778,</text>
+  <text x="330" y="226" class="m">"preferred_username": "ana",</text>
+  <text x="330" y="248" class="m">"realm_access": {"roles":["user"]}</text>
+  <text x="330" y="270" class="m">"scope": "openid profile"</text>
+  <rect x="700" y="80" width="280" height="200" rx="8" fill="#eaf2f8" stroke="#1f4e79" stroke-width="2"/>
+  <text x="840" y="108" text-anchor="middle" class="h" fill="#1f4e79">Firma</text>
+  <text x="720" y="145" class="m">RSA-SHA256(</text>
+  <text x="720" y="170" class="m">&#160;&#160;header + "." +</text>
+  <text x="720" y="195" class="m">&#160;&#160;payload,</text>
+  <text x="720" y="220" class="m">&#160;&#160;clave PRIVADA</text>
+  <text x="720" y="245" class="m">)</text>
+  <text x="155" y="305" text-anchor="middle" class="n">Algoritmo e id de la clave</text>
+  <text x="155" y="325" text-anchor="middle" class="n">(la clave pública está</text>
+  <text x="155" y="345" text-anchor="middle" class="n">publicada en el JWKS)</text>
+  <text x="495" y="305" text-anchor="middle" class="n" fill="#c0392b" font-weight="bold">⚠ NO está cifrado: cualquiera lo lee</text>
+  <text x="495" y="325" text-anchor="middle" class="n">Nunca datos sensibles. Se garantiza</text>
+  <text x="495" y="345" text-anchor="middle" class="n">que nadie lo ha modificado</text>
+  <text x="840" y="305" text-anchor="middle" class="n">Solo el servidor de autorización</text>
+  <text x="840" y="325" text-anchor="middle" class="n">firma; los servicios verifican</text>
+  <text x="840" y="345" text-anchor="middle" class="n">con la clave pública</text>
+  <text x="500" y="385" text-anchor="middle" class="n" font-weight="bold">iss: quién lo emitió · sub: de quién es · aud: para quién es · exp: cuándo caduca</text>
+</svg>

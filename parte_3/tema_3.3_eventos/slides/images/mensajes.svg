@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 330" font-family="Helvetica, Arial, sans-serif">
+  <style>.h{font-size:22px;font-weight:bold;text-anchor:middle}.b{font-size:15px;text-anchor:middle;fill:#333}.c{font-family:monospace;font-size:15px;text-anchor:middle}</style>
+  <!-- comando -->
+  <rect x="20" y="20" width="300" height="290" rx="16" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.5"/>
+  <text class="h" x="170" y="58" fill="#1565c0">Comando</text>
+  <text class="b" x="170" y="88">"Haz esto"</text>
+  <rect x="60" y="105" width="220" height="44" rx="6" fill="#81d4fa"/><text class="c" x="170" y="133">ReservarStock</text>
+  <text class="b" x="170" y="180">Imperativo</text>
+  <text class="b" x="170" y="205">Un destinatario concreto</text>
+  <text class="b" x="170" y="230">Puede ser rechazado</text>
+  <text class="b" x="170" y="255">El emisor espera que ocurra</text>
+  <!-- evento -->
+  <rect x="350" y="20" width="300" height="290" rx="16" fill="#fff3e0" stroke="#e65100" stroke-width="2.5"/>
+  <text class="h" x="500" y="58" fill="#e65100">Evento</text>
+  <text class="b" x="500" y="88">"Esto ha pasado"</text>
+  <rect x="390" y="105" width="220" height="44" rx="6" fill="#ffb74d"/><text class="c" x="500" y="133">StockReservado</text>
+  <text class="b" x="500" y="180">En pasado: es un hecho</text>
+  <text class="b" x="500" y="205">0, 1 o N interesados</text>
+  <text class="b" x="500" y="230">No se puede rechazar</text>
+  <text class="b" x="500" y="255">El emisor no espera nada</text>
+  <!-- consulta -->
+  <rect x="680" y="20" width="300" height="290" rx="16" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5"/>
+  <text class="h" x="830" y="58" fill="#2e7d32">Consulta</text>
+  <text class="b" x="830" y="88">"Dime esto"</text>
+  <rect x="720" y="105" width="220" height="44" rx="6" fill="#a5d6a7"/><text class="c" x="830" y="133">ObtenerStock</text>
+  <text class="b" x="830" y="180">Pregunta</text>
+  <text class="b" x="830" y="205">Un destinatario concreto</text>
+  <text class="b" x="830" y="230">No cambia el estado</text>
+  <text class="b" x="830" y="255">Espera una respuesta</text>
+</svg>

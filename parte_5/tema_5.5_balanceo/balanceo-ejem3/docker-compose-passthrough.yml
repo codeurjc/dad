@@ -1,0 +1,19 @@
+# SSL passthrough: el certificado lo tienen las instancias.
+#   docker compose -f docker-compose-passthrough.yml up --build
+#   curl -k https://localhost:8443/
+services:
+  web:
+    build: .
+    expose:
+      - "8443"
+    deploy:
+      replicas: 3
+  lb:
+    image: haproxy:3.1
+    ports:
+      - "8443:443"
+      - "8404:8404"
+    volumes:
+      - "./haproxy-passthrough.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro"
+    depends_on:
+      - web

@@ -1,0 +1,7 @@
+flowchart LR
+    A["🔔 Alerta<br/><b>métrica</b><br/>p95 de /orders > 500 ms"] --> B["📈 Panel<br/>¿desde cuándo?<br/>¿qué servicio?<br/>¿qué endpoint?"]
+    B --> C["🧵 Trazas lentas<br/>de ese periodo<br/>¿qué span tarda?"]
+    C --> D["📄 Logs<br/>filtrados por<br/>traceId"]
+    D --> E["🛠️ Causa<br/>y arreglo"]
+    style A fill:#fdecea,stroke:#c0392b
+    style E fill:#e8f5e9,stroke:#2e7d32

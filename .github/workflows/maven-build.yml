@@ -76,6 +76,11 @@ jobs:
           java-version: '25'
           distribution: 'temurin'
           cache: maven
+          # La clave incluye este workflow: si cambia lo que descarga warm-cache,
+          # hace falta una cache nueva, porque setup-java no sobrescribe una existente.
+          cache-dependency-path: |
+            **/pom.xml
+            .github/workflows/maven-build.yml
 
       - name: Resolve the dependencies of every project
         env:
@@ -99,6 +104,41 @@ jobs:
           # veredicto lo da la matriz. Un fallo aqui no corta el flujo.
           echo "Proyectos sin resolver: $fallos" >> "$GITHUB_STEP_SUMMARY"
 
+      # go-offline no descarga lo que surefire resuelve al lanzar los tests: su
+      # provider (surefire-junit-platform) y junit-platform-launcher. Sin esto,
+      # los 86 jobs de build lo piden a Maven Central a la vez y alguno recibe
+      # HTTP 429. Las versiones salen de un proyecto por cada version de Spring
+      # Boot que haya en el repositorio, para no tener que actualizarlas a mano.
+      - name: Resolve the surefire test provider
+        env:
+          PROJECTS: ${{ needs.discover.outputs.projects }}
+        run: |
+          set -uo pipefail
+          declare -A visto
+
+          evaluar() {
+            mvn -B -ntp -q -f "$1/pom.xml" help:evaluate -Dexpression="$2" -DforceStdout 2>/dev/null
+          }
+
+          while read -r p; do
+            boot=$(sed -n '/<artifactId>spring-boot-starter-parent<\/artifactId>/{n;s/.*<version>\(.*\)<\/version>.*/\1/p;q}' "$p/pom.xml")
+            [ -z "$boot" ] && continue
+            [ -n "${visto[$boot]:-}" ] && continue
+            visto[$boot]=1
+
+            surefire=$(evaluar "$p" maven-surefire-plugin.version)
+            junit=$(evaluar "$p" junit-jupiter.version)
+            echo "Spring Boot $boot ($p): surefire $surefire, JUnit $junit"
+
+            # Con JUnit 6 el launcher lleva la misma version que Jupiter.
+            for a in "org.apache.maven.surefire:surefire-junit-platform:$surefire" \
+                     "org.junit.platform:junit-platform-launcher:$junit"; do
+              mvn -B -ntp -Dmaven.wagon.http.retryHandler.count=5 \
+                dependency:get -Dartifact="$a" \
+                || echo "::warning title=Cache warming::No se pudo resolver $a"
+            done
+          done < <(printf '%s' "$PROJECTS" | jq -r '.[]')
+
   build:
     name: Build - ${{ matrix.project }}
     needs: [discover, warm-cache]
@@ -114,7 +154,7 @@ jobs:
         uses: actions/checkout@v7
 
       # Restaura la cache que dejo warm-cache: la clave que usa setup-java
-      # sale del hash de los ficheros de build (pom.xml y .mvn/extensions.xml),
+      # sale del hash de los pom.xml y de este workflow,
       # identico en los 86 jobs de la misma ejecucion, asi que aciertan y no
       # vuelven a guardarla.
       - name: Set up JDK 25
@@ -123,6 +163,11 @@ jobs:
           java-version: '25'
           distribution: 'temurin'
           cache: maven
+          # La clave incluye este workflow: si cambia lo que descarga warm-cache,
+          # hace falta una cache nueva, porque setup-java no sobrescribe una existente.
+          cache-dependency-path: |
+            **/pom.xml
+            .github/workflows/maven-build.yml
 
       - name: Build with Maven
         run: mvn -B -ntp -Dmaven.wagon.http.retryHandler.count=3 clean verify

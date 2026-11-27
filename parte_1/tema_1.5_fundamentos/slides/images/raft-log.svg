@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 340" font-family="Helvetica, Arial, sans-serif">
+  <style>.n{font-size:14px;font-weight:bold}.c{font-family:monospace;font-size:12px;text-anchor:middle}.i{font-size:11px;fill:#888;text-anchor:middle}</style>
+  <g class="i"><text x="215" y="30">1</text><text x="295" y="30">2</text><text x="375" y="30">3</text><text x="455" y="30">4</text><text x="535" y="30">5</text></g>
+  <text x="20" y="30" font-size="12" fill="#888">índice del log →</text>
+  <g id="rows">
+    <text x="20" y="66" class="n">líder (n0)</text>
+    <text x="20" y="116" class="n">n1</text><text x="20" y="166" class="n">n2</text><text x="20" y="216" class="n">n3</text><text x="20" y="266" class="n">n4</text>
+  </g>
+  <g>
+    <!-- term 1 blue, term 2 orange -->
+    <rect x="180" y="45" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/><text x="215" y="58" class="c">t1</text><text x="215" y="73" class="c">x=1</text>
+    <rect x="260" y="45" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/><text x="295" y="58" class="c">t1</text><text x="295" y="73" class="c">y=2</text>
+    <rect x="340" y="45" width="70" height="34" rx="5" fill="#fdebd0" stroke="#ca6f1e"/><text x="375" y="58" class="c">t2</text><text x="375" y="73" class="c">x=3</text>
+    <rect x="420" y="45" width="70" height="34" rx="5" fill="#fdebd0" stroke="#ca6f1e"/><text x="455" y="58" class="c">t2</text><text x="455" y="73" class="c">z=0</text>
+    <rect x="180" y="95" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/><rect x="260" y="95" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/><rect x="340" y="95" width="70" height="34" rx="5" fill="#fdebd0" stroke="#ca6f1e"/><rect x="420" y="95" width="70" height="34" rx="5" fill="#fdebd0" stroke="#ca6f1e"/>
+    <rect x="180" y="145" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/><rect x="260" y="145" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/><rect x="340" y="145" width="70" height="34" rx="5" fill="#fdebd0" stroke="#ca6f1e"/>
+    <rect x="180" y="195" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/><rect x="260" y="195" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/>
+    <rect x="180" y="245" width="70" height="34" rx="5" fill="#d6eaf8" stroke="#1f4e79"/>
+  </g>
+  <rect x="172" y="38" width="246" height="248" rx="8" fill="none" stroke="#1e8449" stroke-width="2.5" stroke-dasharray="8 5"/>
+  <text x="295" y="306" font-size="13" text-anchor="middle" fill="#1e8449" font-weight="bold">comprometidas: 1 a 3</text>
+  <text x="295" y="324" font-size="12" text-anchor="middle" fill="#1e8449">(cada una está en la mayoría: 3 de 5)</text>
+  <g font-size="13.5" fill="#333">
+    <text x="560" y="70">• El líder recibe las órdenes y las añade a su log</text>
+    <text x="560" y="98">• Las replica con AppendEntries (también son los latidos)</text>
+    <text x="560" y="126">• Una entrada está <tspan font-weight="bold">comprometida</tspan> cuando la tiene</text>
+    <text x="560" y="144">  la mayoría: ya nunca se perderá</text>
+    <text x="560" y="172">• Solo entonces se aplica a la máquina de estados</text>
+    <text x="560" y="200">  (la base de datos, el almacén clave-valor...)</text>
+    <text x="560" y="228">• Los seguidores atrasados se ponen al día</text>
+    <text x="560" y="256">• Un candidato con el log desactualizado no puede</text>
+    <text x="560" y="274">  ganar: los votantes comparan logs</text>
+  </g>
+</svg>

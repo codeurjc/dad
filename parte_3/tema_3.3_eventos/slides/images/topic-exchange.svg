@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1030 440" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <style>.k{font-family:monospace;font-size:13px;fill:#1f4e79}.q{font-family:monospace;font-size:13px}.t{font-size:16px;font-weight:bold;text-anchor:middle}</style>
+  <!-- productor -->
+  <rect x="20" y="180" width="150" height="70" rx="10" fill="#fff" stroke="#1f4e79" stroke-width="2.5"/>
+  <text class="t" x="95" y="212">pedidos</text><text x="95" y="234" font-size="12" text-anchor="middle" fill="#555">productor</text>
+  <g font-family="monospace" font-size="12"><rect x="25" y="120" width="140" height="22" rx="4" fill="#ffb74d"/><text x="95" y="136" text-anchor="middle">pedido.confirmado</text>
+  <rect x="25" y="290" width="140" height="22" rx="4" fill="#ffcc80"/><text x="95" y="306" text-anchor="middle">pedido.cancelado</text></g>
+  <!-- exchange -->
+  <polygon points="300,165 380,165 410,215 380,265 300,265 270,215" fill="#fdf2e9" stroke="#ca6f1e" stroke-width="3"/>
+  <text class="t" x="340" y="210" fill="#ca6f1e">pedidos</text><text x="340" y="230" font-size="12" text-anchor="middle" fill="#555">exchange topic</text>
+  <line x1="170" y1="215" x2="266" y2="215" stroke="#555" stroke-width="2.5" marker-end="url(#a)"/>
+  <!-- colas -->
+  <g>
+    <rect x="610" y="30" width="275" height="40" rx="4" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text class="q" x="620" y="55">inventario.pedido-confirmado</text>
+    <rect x="610" y="110" width="275" height="40" rx="4" fill="#eaf4fb" stroke="#1f4e79" stroke-width="2"/><text class="q" x="620" y="135">inventario.pedido-cancelado</text>
+    <rect x="610" y="210" width="275" height="40" rx="4" fill="#eafaf1" stroke="#1e8449" stroke-width="2"/><text class="q" x="620" y="235">notificaciones.pedido-confirmado</text>
+    <rect x="610" y="310" width="275" height="40" rx="4" fill="#f5eef8" stroke="#7d3c98" stroke-width="2"/><text class="q" x="620" y="335">notificaciones.auditoria</text>
+  </g>
+  <g stroke="#555" stroke-width="2" fill="none" marker-end="url(#a)">
+    <path d="M405,200 C480,120 520,55 606,50"/>
+    <path d="M410,210 C490,160 530,130 606,130"/>
+    <path d="M410,220 C500,225 540,230 606,230"/>
+    <path d="M405,232 C480,300 520,330 606,330"/>
+  </g>
+  <g class="k"><text x="470" y="42">pedido.confirmado</text><text x="470" y="122">pedido.cancelado</text><text x="470" y="222">pedido.confirmado</text><text x="490" y="322">pedido.#</text></g>
+  <!-- consumidores -->
+  <g font-size="14" font-weight="bold">
+    <rect x="920" y="30" width="100" height="120" rx="10" fill="#fff" stroke="#1f4e79" stroke-width="2.5"/><text x="970" y="95" text-anchor="middle">inventario</text>
+    <rect x="920" y="200" width="100" height="160" rx="10" fill="#fff" stroke="#1e8449" stroke-width="2.5"/><text x="970" y="275" text-anchor="middle">notifica-</text><text x="970" y="293" text-anchor="middle">ciones</text>
+  </g>
+  <g stroke="#999" stroke-width="2" marker-end="url(#a)"><line x1="885" y1="50" x2="916" y2="50"/><line x1="885" y1="130" x2="916" y2="130"/><line x1="885" y1="230" x2="916" y2="230"/><line x1="885" y1="330" x2="916" y2="330"/></g>
+  <text x="20" y="395" font-size="14" fill="#333">Clave de enrutado: palabras separadas por puntos. En el binding:</text>
+  <text x="20" y="418" font-size="14" fill="#333"><tspan font-family="monospace" font-weight="bold">*</tspan> = exactamente una palabra · <tspan font-family="monospace" font-weight="bold">#</tspan> = cero o más palabras · cada cola recibe su propia copia del mensaje</text>
+</svg>

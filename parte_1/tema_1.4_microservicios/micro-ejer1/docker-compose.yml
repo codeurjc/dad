@@ -1,0 +1,21 @@
+# Biblioteca: gateway + libros + préstamos. Solo el gateway es accesible desde fuera.
+#   docker compose up --build
+#   curl localhost:8080/api/libros/books
+#   curl -X POST localhost:8080/api/prestamos/loans -H 'Content-Type: application/json' \
+#        -d '{"isbn":"978-0321125217","memberId":"ana"}'
+#   curl "localhost:8080/api/prestamos/loans?memberId=ana"
+#   docker compose stop libros     -> los préstamos se siguen pudiendo consultar
+services:
+  gateway:
+    build: ./gateway
+    ports:
+      - "8080:8080"
+    environment:
+      - LIBROS_URL=http://libros:8081
+      - PRESTAMOS_URL=http://prestamos:8082
+  libros:
+    build: ./libros
+  prestamos:
+    build: ./prestamos
+    environment:
+      - LIBROS_URL=http://libros:8081

@@ -1,0 +1,15 @@
+flowchart LR
+    U((Usuario))
+    U -- "comandos<br/>POST" --> CS[AccountCommandService]
+    CS -- "load + replay" --> ES[(Event store<br/>append-only)]
+    CS -- "append(expectedVersion)" --> ES
+    ES -- "eventos" --> P1[Proyección<br/>resumen]
+    ES -- "eventos" --> P2[Proyección<br/>extracto]
+    ES -- "eventos" --> P3[Proyección<br/>ranking]
+    P1 --> R[(Modelos de lectura)]
+    P2 --> R
+    P3 --> R
+    U -- "consultas<br/>GET" --> R
+    style ES fill:#fff3e0,stroke:#e65100
+    style R fill:#e8f5e9,stroke:#2e7d32
+    style CS fill:#e3f2fd,stroke:#1565c0

@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: colas-prod
+
+resources:
+  - namespace.yaml
+  - ../../base
+
+# En producción, las credenciales salen de un fichero que NO está en el repositorio
+# (ver credenciales.env.example y .gitignore)
+secretGenerator:
+  - name: rabbitmq-credenciales
+    envs:
+      - credenciales.env
+
+replicas:
+  - name: consumer
+    count: 3
+
+patches:
+  - target:
+      kind: Ingress
+      name: consumer
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: colas.example.com
+  - target:
+      kind: StatefulSet
+      name: rabbitmq
+    patch: |-
+      - op: replace
+        path: /spec/volumeClaimTemplates/0/spec/resources/requests/storage
+        value: 10Gi

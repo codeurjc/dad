@@ -1,0 +1,8 @@
+stateDiagram-v2
+    direction LR
+    [*] --> Seguidor
+    Seguidor --> Candidato: no recibe latidos<br/>(timeout aleatorio 150-300 ms)
+    Candidato --> Candidato: empate: nuevo timeout,<br/>nuevo mandato
+    Candidato --> Lider: votos de la mayoría
+    Candidato --> Seguidor: aparece un líder<br/>o un mandato mayor
+    Lider --> Seguidor: ve un mandato mayor

@@ -1,0 +1,1452 @@
+{
+ "mazos": [
+  {
+   "tema": "1.1",
+   "fichero": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd"
+  },
+  {
+   "tema": "1.2",
+   "fichero": "parte_1/tema_1.2_patrones/slides/patrones.qmd"
+  },
+  {
+   "tema": "1.3",
+   "fichero": "parte_1/tema_1.3_ddd/slides/ddd.qmd"
+  },
+  {
+   "tema": "1.4",
+   "fichero": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd"
+  },
+  {
+   "tema": "1.5",
+   "fichero": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd"
+  },
+  {
+   "tema": "2.1",
+   "fichero": "parte_2/tema_2.1_spring/slides/spring.qmd"
+  },
+  {
+   "tema": "2.2",
+   "fichero": "parte_2/tema_2.2_web/slides/web.qmd"
+  },
+  {
+   "tema": "2.3.1",
+   "fichero": "parte_2/tema_2.3_rest/slides/rest.qmd"
+  },
+  {
+   "tema": "2.3.2",
+   "fichero": "parte_2/tema_2.3_rest/slides/json.qmd"
+  },
+  {
+   "tema": "2.3.3",
+   "fichero": "parte_2/tema_2.3_rest/slides/clientes-rest.qmd"
+  },
+  {
+   "tema": "2.4",
+   "fichero": "parte_2/tema_2.4_bd/slides/bd.qmd"
+  },
+  {
+   "tema": "2.5",
+   "fichero": "parte_2/tema_2.5_db/slides/bd-spring.qmd"
+  },
+  {
+   "tema": "2.6",
+   "fichero": "parte_2/tema_2.6_despliegue/slides/despliegue.qmd"
+  },
+  {
+   "tema": "2.7",
+   "fichero": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd"
+  },
+  {
+   "tema": "2.8",
+   "fichero": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd"
+  },
+  {
+   "tema": "3.2",
+   "fichero": "parte_3/tema_3.2_colas/slides/mensajes.qmd"
+  },
+  {
+   "tema": "3.3",
+   "fichero": "parte_3/tema_3.3_eventos/slides/eventos.qmd"
+  },
+  {
+   "tema": "4.1",
+   "fichero": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd"
+  },
+  {
+   "tema": "4.2",
+   "fichero": "parte_4/tema_4.2/slides/docker.qmd"
+  },
+  {
+   "tema": "4.3",
+   "fichero": "parte_4/tema_4.3/slides/imagenes-docker.qmd"
+  },
+  {
+   "tema": "4.4",
+   "fichero": "parte_4/tema_4.4_compose/slides/compose.qmd"
+  },
+  {
+   "tema": "4.4",
+   "fichero": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd"
+  },
+  {
+   "tema": "5.1",
+   "fichero": "parte_5/tema_5.1_pruebas_carga/slides/pruebas-carga.qmd"
+  },
+  {
+   "tema": "5.2",
+   "fichero": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd"
+  },
+  {
+   "tema": "5.3",
+   "fichero": "parte_5/tema_5.3_bd_distribuidas/slides/bd-distribuidas.qmd"
+  },
+  {
+   "tema": "5.5",
+   "fichero": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd"
+  },
+  {
+   "tema": "5.8",
+   "fichero": "parte_5/tema_5.8_observabilidad/slides/observabilidad.qmd"
+  }
+ ],
+ "enlaces": [
+  {
+   "origen": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "concepto": "Proxy",
+   "diapositiva": 31
+  },
+  {
+   "origen": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "Caché",
+   "diapositiva": 31
+  },
+  {
+   "origen": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "REST",
+   "diapositiva": 34
+  },
+  {
+   "origen": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "JSON",
+   "diapositiva": 34
+  },
+  {
+   "origen": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Escalabilidad",
+   "diapositiva": 39
+  },
+  {
+   "origen": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "destino": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "concepto": "Colas de mensajes",
+   "diapositiva": 54
+  },
+  {
+   "origen": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Publish/subscribe",
+   "diapositiva": 54
+  },
+  {
+   "origen": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Tolerancia a fallos",
+   "diapositiva": 56
+  },
+  {
+   "origen": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "destino": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "concepto": "Escalado horizontal",
+   "diapositiva": 62
+  },
+  {
+   "origen": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Entrega y despliegue continuo (CI/CD)",
+   "diapositiva": 76
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "CRUD",
+   "diapositiva": 10
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "concepto": "SaaS",
+   "diapositiva": 10
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Transacción",
+   "diapositiva": 26
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Consistencia eventual",
+   "diapositiva": 26
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "JPA",
+   "diapositiva": 27
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "API REST",
+   "diapositiva": 27
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Spring / Spring Data (@Repository)",
+   "diapositiva": 31
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Anotaciones JPA (@Entity, @Embeddable) y mapping objeto-relacional",
+   "diapositiva": 32
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "@Service y @Transactional (Spring)",
+   "diapositiva": 33
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "H2",
+   "diapositiva": 38
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "HTTP (métodos, cabecera Content-Type) y curl",
+   "diapositiva": 38
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "concepto": "Microservicios",
+   "diapositiva": 44
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "concepto": "Broker de mensajes (RabbitMQ)",
+   "diapositiva": 45
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Maven y Spring Boot",
+   "diapositiva": 48
+  },
+  {
+   "origen": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "Inyección de dependencias",
+   "diapositiva": 51
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "HTTP",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Transacción",
+   "diapositiva": 7
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Consistencia eventual",
+   "diapositiva": 7
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "concepto": "Bounded context",
+   "diapositiva": 8
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "Esquema de BD, JOIN y tipos de BD (SQL, documentos, grafos)",
+   "diapositiva": 13
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "H2",
+   "diapositiva": 14
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "REST",
+   "diapositiva": 14
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Spring (@Component, @Value, propiedades, RestClient)",
+   "diapositiva": 14
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Códigos de estado HTTP (404, 409, 503, 4xx/5xx)",
+   "diapositiva": 14
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Anotaciones JPA (@Entity, @Table, @Id, @GeneratedValue)",
+   "diapositiva": 15
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "JSON y Jackson (@JsonIgnoreProperties)",
+   "diapositiva": 15
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Saga y compensación",
+   "diapositiva": 16
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_5/tema_5.3_bd_distribuidas/slides/bd-distribuidas.qmd",
+   "concepto": "ACID",
+   "diapositiva": 16
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "concepto": "Broker de mensajes",
+   "diapositiva": 18
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "concepto": "Autenticación JWT / OAuth2",
+   "diapositiva": 20
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Dependencias Maven / starters de Spring Boot",
+   "diapositiva": 22
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Publicar un puerto (contenedores)",
+   "diapositiva": 22
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "Balanceador de carga",
+   "diapositiva": 23
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_4/tema_4.4_compose/slides/compose.qmd",
+   "concepto": "Docker Compose",
+   "diapositiva": 23
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Imagen (de contenedor)",
+   "diapositiva": 24
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "concepto": "ConfigMaps y Secrets de Kubernetes",
+   "diapositiva": 24
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "Caché",
+   "diapositiva": 27
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Operación idempotente",
+   "diapositiva": 31
+  },
+  {
+   "origen": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "destino": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "concepto": "Rolling update, blue/green, canary",
+   "diapositiva": 36
+  },
+  {
+   "origen": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "destino": "parte_5/tema_5.3_bd_distribuidas/slides/bd-distribuidas.qmd",
+   "concepto": "ACID",
+   "diapositiva": 16
+  },
+  {
+   "origen": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Transacción",
+   "diapositiva": 16
+  },
+  {
+   "origen": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "destino": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "concepto": "etcd",
+   "diapositiva": 18
+  },
+  {
+   "origen": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "destino": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "concepto": "Hash consistente",
+   "diapositiva": 24
+  },
+  {
+   "origen": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Kubernetes",
+   "diapositiva": 26
+  },
+  {
+   "origen": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "destino": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "concepto": "Control plane de Kubernetes",
+   "diapositiva": 31
+  },
+  {
+   "origen": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Maven",
+   "diapositiva": 33
+  },
+  {
+   "origen": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Servicios REST",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "Bases de datos relacionales (SQL) y NoSQL",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "XML",
+   "diapositiva": 13
+  },
+  {
+   "origen": "parte_2/tema_2.2_web/slides/web.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Protocolo HTTP / petición HTTP",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.2_web/slides/web.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Proyecto padre Maven (spring-boot-starter-parent)",
+   "diapositiva": 11
+  },
+  {
+   "origen": "parte_2/tema_2.2_web/slides/web.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "@ControllerAdvice y @ModelAttribute",
+   "diapositiva": 33
+  },
+  {
+   "origen": "parte_2/tema_2.2_web/slides/web.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Java EE",
+   "diapositiva": 84
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "HTML",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "@Autowired (inyección de dependencias)",
+   "diapositiva": 55
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "API REST",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "JSON",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Capas de una aplicación",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "concepto": "Modelo del dominio / entidad",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Relaciones entre entidades",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "concepto": "Repositorio (postRepository, findAll, findById, save)",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Anotaciones REST de Spring MVC (@RestController, @GetMapping, @RequestBody, ResponseEntity...)",
+   "diapositiva": 8
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Plugin de Maven (maven-compiler-plugin)",
+   "diapositiva": 17
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "@Autowired (inyección de dependencias)",
+   "diapositiva": 19
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Anotaciones JPA (@Entity, @Id, @GeneratedValue, @ManyToMany, mappedBy)",
+   "diapositiva": 21
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Relación muchos a muchos",
+   "diapositiva": 21
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/clientes-rest.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "API REST / servicio REST",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_2/tema_2.3_rest/slides/clientes-rest.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "JSON",
+   "diapositiva": 8
+  },
+  {
+   "origen": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Escalabilidad",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Escalabilidad horizontal / clusterización",
+   "diapositiva": 19
+  },
+  {
+   "origen": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "destino": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "concepto": "Colas de mensajes",
+   "diapositiva": 22
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "Base de datos relacional / no relacional (NoSQL)",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "Esquema de la base de datos",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "Inyección de dependencias / @Autowired",
+   "diapositiva": 7
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "Componente (bean) de Spring",
+   "diapositiva": 7
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "Controlador (@Controller)",
+   "diapositiva": 8
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Maven y pom.xml (dependencias, parent)",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Spring Boot (starters)",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "API REST",
+   "diapositiva": 10
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "Controlador REST (@RestController, @RequestMapping, @GetMapping...)",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Métodos HTTP (GET, POST, PUT, DELETE, PATCH)",
+   "diapositiva": 15
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Recurso REST",
+   "diapositiva": 17
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Códigos de estado HTTP (404, 201, 204)",
+   "diapositiva": 24
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Cabecera Location / URI del recurso creado",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Java EE",
+   "diapositiva": 33
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "SQL DDL (create table, alter table, constraint, varchar)",
+   "diapositiva": 39
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "JSON",
+   "diapositiva": 39
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "@JsonIgnore / serialización JSON con Jackson",
+   "diapositiva": 69
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "SQL SELECT (WHERE, GROUP BY, HAVING, ORDER BY, LIKE, DISTINCT)",
+   "diapositiva": 80
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "JOIN",
+   "diapositiva": 93
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "Parámetros en la URL (query string) y @RequestParam",
+   "diapositiva": 88
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Plugin de Maven / procesamiento de anotaciones (apt)",
+   "diapositiva": 80
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Spring MVC",
+   "diapositiva": 110
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Serializador JSON personalizado (Jackson, @JsonComponent)",
+   "diapositiva": 115
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Docker (docker run)",
+   "diapositiva": 122
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "Driver de base de datos",
+   "diapositiva": 125
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Escalabilidad y replicación",
+   "diapositiva": 148
+  },
+  {
+   "origen": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Postman",
+   "diapositiva": 151
+  },
+  {
+   "origen": "parte_2/tema_2.6_despliegue/slides/despliegue.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Maven / Gradle",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_2/tema_2.6_despliegue/slides/despliegue.qmd",
+   "destino": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Proveedor cloud",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.6_despliegue/slides/despliegue.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Plugin de Maven",
+   "diapositiva": 6
+  },
+  {
+   "origen": "parte_2/tema_2.6_despliegue/slides/despliegue.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Fases de Maven (install, package) y carpeta target",
+   "diapositiva": 7
+  },
+  {
+   "origen": "parte_2/tema_2.6_despliegue/slides/despliegue.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Endpoint REST de apagado remoto",
+   "diapositiva": 8
+  },
+  {
+   "origen": "parte_2/tema_2.6_despliegue/slides/despliegue.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Imagen Docker",
+   "diapositiva": 13
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "concepto": "Monolito",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Falacias de la computación distribuida",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Gateway",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "concepto": "TLS / HTTPS",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "Sticky sessions",
+   "diapositiva": 10
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_4/tema_4.4_compose/slides/compose.qmd",
+   "concepto": "Docker Compose",
+   "diapositiva": 22
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "@Configuration y @Bean",
+   "diapositiva": 23
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/clientes-rest.qmd",
+   "concepto": "RestClient de Spring",
+   "diapositiva": 29
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Kubernetes (Secrets)",
+   "diapositiva": 32
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "Inyección SQL y consultas parametrizadas",
+   "diapositiva": 33
+  },
+  {
+   "origen": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/json.qmd",
+   "concepto": "DTO",
+   "diapositiva": 33
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "HTTP (petición/respuesta)",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Códigos de estado HTTP (2xx, 200, 201, 302)",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "Métodos HTTP (GET, POST, PUT, DELETE)",
+   "diapositiva": 17
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "concepto": "TLS/SSL y certificados (autofirmados)",
+   "diapositiva": 25
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Spring",
+   "diapositiva": 32
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "API REST",
+   "diapositiva": 32
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "CRUD",
+   "diapositiva": 32
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "JSON",
+   "diapositiva": 36
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "Balanceador de carga (load balancer)",
+   "diapositiva": 46
+  },
+  {
+   "origen": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.7_seguridad/slides/seguridad.qmd",
+   "concepto": "JWT",
+   "diapositiva": 49
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "REST",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Publicación/Suscripción",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Publicación/respuestas asíncronas",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Escalabilidad",
+   "diapositiva": 10
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "Latencia",
+   "diapositiva": 10
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Consumidores competidores (competing consumers)",
+   "diapositiva": 10
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Canal de mensajes / topic",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Idempotencia",
+   "diapositiva": 12
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "JSON, XML y Protocol Buffers",
+   "diapositiva": 22
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Docker (docker run, publicación de puertos)",
+   "diapositiva": 24
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Spring Boot",
+   "diapositiva": 25
+  },
+  {
+   "origen": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "destino": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "concepto": "Productor/consumidor de mensajes",
+   "diapositiva": 14
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "REST (llamadas síncronas)",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "Latencia",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_3/tema_3.2_colas/slides/mensajes.qmd",
+   "concepto": "RabbitMQ / colas de mensajes",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "concepto": "Eventos de dominio / DDD",
+   "diapositiva": 7
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "JSON",
+   "diapositiva": 8
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Transacción, commit y rollback (@Transactional)",
+   "diapositiva": 12
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Spring (@Service, beans)",
+   "diapositiva": 12
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "concepto": "Monolito",
+   "diapositiva": 12
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "concepto": "Bounded context",
+   "diapositiva": 12
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "@Bean y configuración Spring AMQP (MessageConverter)",
+   "diapositiva": 18
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "concepto": "Escalado horizontal",
+   "diapositiva": 21
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_4/tema_4.4_compose/slides/compose.qmd",
+   "concepto": "Docker Compose",
+   "diapositiva": 22
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Maven (mvn spring-boot:run)",
+   "diapositiva": 22
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Transacción ACID",
+   "diapositiva": 35
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_1/tema_1.3_ddd/slides/ddd.qmd",
+   "concepto": "Agregado (DDD)",
+   "diapositiva": 40
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Proyecciones CQRS",
+   "diapositiva": 40
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "CRUD",
+   "diapositiva": 43
+  },
+  {
+   "origen": "parte_3/tema_3.3_eventos/slides/eventos.qmd",
+   "destino": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "concepto": "Throughput",
+   "diapositiva": 47
+  },
+  {
+   "origen": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "API REST",
+   "diapositiva": 27
+  },
+  {
+   "origen": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Escalabilidad",
+   "diapositiva": 28
+  },
+  {
+   "origen": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "Balanceador de carga",
+   "diapositiva": 35
+  },
+  {
+   "origen": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Imagen de contenedor / repositorio de imágenes",
+   "diapositiva": 57
+  },
+  {
+   "origen": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "concepto": "Microservicios",
+   "diapositiva": 59
+  },
+  {
+   "origen": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Kubernetes",
+   "diapositiva": 62
+  },
+  {
+   "origen": "parte_4/tema_4.2/slides/docker.qmd",
+   "destino": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Virtualización ligera",
+   "diapositiva": 9
+  },
+  {
+   "origen": "parte_4/tema_4.2/slides/docker.qmd",
+   "destino": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Host (sistema anfitrión)",
+   "diapositiva": 9
+  },
+  {
+   "origen": "parte_4/tema_4.2/slides/docker.qmd",
+   "destino": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Máquina virtual",
+   "diapositiva": 16
+  },
+  {
+   "origen": "parte_4/tema_4.2/slides/docker.qmd",
+   "destino": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Sistema operativo huésped (guest)",
+   "diapositiva": 17
+  },
+  {
+   "origen": "parte_4/tema_4.2/slides/docker.qmd",
+   "destino": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Hipervisor",
+   "diapositiva": 18
+  },
+  {
+   "origen": "parte_4/tema_4.2/slides/docker.qmd",
+   "destino": "parte_2/tema_2.3_rest/slides/rest.qmd",
+   "concepto": "API REST",
+   "diapositiva": 30
+  },
+  {
+   "origen": "parte_4/tema_4.2/slides/docker.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Maven",
+   "diapositiva": 78
+  },
+  {
+   "origen": "parte_4/tema_4.2/slides/docker.qmd",
+   "destino": "parte_2/tema_2.4_bd/slides/bd.qmd",
+   "concepto": "SQL",
+   "diapositiva": 79
+  },
+  {
+   "origen": "parte_4/tema_4.3/slides/imagenes-docker.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Imagen Docker",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_4/tema_4.3/slides/imagenes-docker.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Contenedor",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_4/tema_4.3/slides/imagenes-docker.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Mapeo/binding de puertos al host",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_4/tema_4.3/slides/imagenes-docker.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Spring / Spring Boot",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_4/tema_4.3/slides/imagenes-docker.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Maven",
+   "diapositiva": 8
+  },
+  {
+   "origen": "parte_4/tema_4.3/slides/imagenes-docker.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Repositorio de imágenes",
+   "diapositiva": 13
+  },
+  {
+   "origen": "parte_4/tema_4.3/slides/imagenes-docker.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Opción -p de docker run (publicar puerto)",
+   "diapositiva": 15
+  },
+  {
+   "origen": "parte_4/tema_4.3/slides/imagenes-docker.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "JAR con capas",
+   "diapositiva": 35
+  },
+  {
+   "origen": "parte_4/tema_4.4_compose/slides/compose.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Contenedor / imagen Docker",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_4/tema_4.4_compose/slides/compose.qmd",
+   "destino": "parte_2/tema_2.1_spring/slides/spring.qmd",
+   "concepto": "Configuración de Spring por variables (SPRING_DATASOURCE_*) y URL JDBC",
+   "diapositiva": 23
+  },
+  {
+   "origen": "parte_4/tema_4.4_compose/slides/compose.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Repositorio (de DockerHub)",
+   "diapositiva": 46
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Clúster de Kubernetes",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "Balanceo de carga / balanceador",
+   "diapositiva": 4
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Operador de Kubernetes",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "Aplicación sin estado / con estado",
+   "diapositiva": 11
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_2/tema_2.5_db/slides/bd-spring.qmd",
+   "concepto": "JPA",
+   "diapositiva": 22
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "concepto": "TLS / terminación TLS",
+   "diapositiva": 23
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Elasticidad",
+   "diapositiva": 25
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Pipeline CI/CD (despliegue continuo)",
+   "diapositiva": 31
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "Afinidad de sesión (sticky sessions)",
+   "diapositiva": 36
+  },
+  {
+   "origen": "parte_5/tema_5.1_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "Regresión (de rendimiento)",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_5/tema_5.1_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "Latencia",
+   "diapositiva": 3
+  },
+  {
+   "origen": "parte_5/tema_5.1_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "P99",
+   "diapositiva": 8
+  },
+  {
+   "origen": "parte_5/tema_5.1_pruebas_carga/slides/pruebas-carga.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "Escenario de prueba e informe de la herramienta (Artillery)",
+   "diapositiva": 2
+  },
+  {
+   "origen": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Elasticidad / autoescalado",
+   "diapositiva": 7
+  },
+  {
+   "origen": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "destino": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "concepto": "Sharding",
+   "diapositiva": 11
+  },
+  {
+   "origen": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Métricas",
+   "diapositiva": 12
+  },
+  {
+   "origen": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Tolerancia a fallos",
+   "diapositiva": 16
+  },
+  {
+   "origen": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "destino": "parte_5/tema_5.1_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "Ley de Little",
+   "diapositiva": 20
+  },
+  {
+   "origen": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "JMeter (pruebas de carga)",
+   "diapositiva": 14
+  },
+  {
+   "origen": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "destino": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "concepto": "Proxy",
+   "diapositiva": 43
+  },
+  {
+   "origen": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "destino": "parte_1/tema_1.2_patrones/slides/patrones.qmd",
+   "concepto": "Disponibilidad",
+   "diapositiva": 68
+  },
+  {
+   "origen": "parte_5/tema_5.3_bd_distribuidas/slides/bd-distribuidas.qmd",
+   "destino": "parte_1/tema_1.1_introduccion/slides/introduccion.qmd",
+   "concepto": "Elasticidad",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_5/tema_5.3_bd_distribuidas/slides/bd-distribuidas.qmd",
+   "destino": "parte_1/tema_1.5_fundamentos/slides/fundamentos.qmd",
+   "concepto": "Base de datos replicada / réplica / nodo",
+   "diapositiva": 6
+  },
+  {
+   "origen": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "destino": "parte_5/tema_5.2_arquitecturas/slides/arquitecturas.qmd",
+   "concepto": "HAProxy",
+   "diapositiva": 5
+  },
+  {
+   "origen": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Service mesh",
+   "diapositiva": 7
+  },
+  {
+   "origen": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "destino": "parte_2/tema_2.2_web/slides/web.qmd",
+   "concepto": "Sesión HTTP (HttpSession)",
+   "diapositiva": 17
+  },
+  {
+   "origen": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "Percentil de latencia (p95)",
+   "diapositiva": 35
+  },
+  {
+   "origen": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Kubernetes y HPA",
+   "diapositiva": 37
+  },
+  {
+   "origen": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "destino": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "concepto": "Pod",
+   "diapositiva": 39
+  },
+  {
+   "origen": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "destino": "parte_1/tema_1.4_microservicios/slides/microservicios.qmd",
+   "concepto": "Réplicas de lectura",
+   "diapositiva": 39
+  },
+  {
+   "origen": "parte_5/tema_5.8_observabilidad/slides/observabilidad.qmd",
+   "destino": "parte_2/tema_2.8_pruebas_carga/slides/pruebas-carga.qmd",
+   "concepto": "Percentiles p95/p99",
+   "diapositiva": 14
+  },
+  {
+   "origen": "parte_4/tema_4.1_introduccion/slides/introduccion.qmd",
+   "destino": "parte_4/tema_4.2/slides/docker.qmd",
+   "concepto": "Imagen de contenedor / repositorio de imágenes",
+   "diapositiva": 57
+  },
+  {
+   "origen": "parte_4/tema_4.4_kubernetes/slides/kubernetes.qmd",
+   "destino": "parte_5/tema_5.5_balanceo/slides/balanceo.qmd",
+   "concepto": "TLS / terminación TLS",
+   "diapositiva": 23
+  }
+ ]
+}
