@@ -5,13 +5,13 @@ institute: "ETSII · Universidad Rey Juan Carlos"
 lang: es
 # Trae su propia diapositiva de contenidos: sin indice automatico.
 show-index: false
+# Mazo escrito directamente en Quarto: parte las lineas largas de los
+# listados y no las numera (los convertidos de Impress, al reves).
+wrap-code: true
 format:
-  revealjs:
-    slide-number: true
+  codeurjc-revealjs:
     code-line-numbers: false
     code-overflow: wrap
-    # reveal.js ignora `code-overflow`: esto es lo que de verdad parte las lineas.
-    include-in-header: ../../../_slides/codigo-envuelto.html
 ---
 
 ## Contenidos

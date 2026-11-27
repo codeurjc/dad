@@ -1,0 +1,43 @@
+title: codeurjc
+author: Patxi Gortázar
+version: 1.1.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    revealjs:
+      theme:
+        - default
+        - codeurjc.scss
+      logo: code-urjc.png
+      slide-number: true
+      width: 1050
+      height: 700
+      incremental: false
+      highlight-style: github
+      history: false
+      link-external-newwindow: true
+      # El tamano de cada imagen lo pone el mazo. `auto-stretch` lo pisa y, con
+      # el contenido envuelto para el ajuste automatico, la imagen desaparece.
+      auto-stretch: false
+      # Al exportar a PDF, una diapositiva por pagina.
+      pdf-max-pages-per-slide: 1
+      pdf-separate-fragments: false
+      # Las lineas largas de los listados se parten (`wrap-code`, ver
+      # code-wrap.lua). Sin numeros de linea: el trozo partido se meteria bajo
+      # la columna de numeros y se comeria el principio.
+      code-line-numbers: false
+      code-overflow: wrap
+      wrap-code: true
+      # Encaja el contenido que se sale por abajo reduciendo esa diapositiva.
+      include-after-body: ajuste.html
+      # `license` pone tras la portada una diapositiva con la licencia, sacada
+      # de los campos `license` y `copyright` de la cabecera. `title-slides`
+      # repone el titulo en las diapositivas que empiezan con `---`;
+      # `show-index` pone un indice antes de cada seccion `#`.
+      filters:
+        - license.lua
+        - code-wrap.lua
+        - title-slides.lua
+      title-slides: true
+      show-index: true
+      lang: es

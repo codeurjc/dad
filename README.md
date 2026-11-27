@@ -90,7 +90,7 @@ Para obtener un PDF, una página por diapositiva: sirve el repositorio por HTTP 
 
 ### Estilo común
 
-Todas las presentaciones comparten la plantilla de codeurjc. La configuración común está en [`_quarto.yml`](_quarto.yml); el tema, los logotipos y el script que encaja el contenido que no cabe están en [`_slides/`](_slides), y la extensión que repite el título en las diapositivas de continuación y genera los índices de sección está en [`_extensions/gortazar/title-slides`](_extensions/gortazar/title-slides).
+Todas las presentaciones comparten la plantilla de codeurjc, que viene de la extensión [codeurjc/quarto-codeurjc](https://github.com/codeurjc/quarto-codeurjc) instalada en [`_extensions/codeurjc/`](_extensions/codeurjc): tema, logotipos, portada, diapositiva de licencia, índices de sección, título en las diapositivas de continuación y ajuste del contenido que no cabe. La configuración común está en [`_quarto.yml`](_quarto.yml). Para actualizar la extensión: `quarto add codeurjc/quarto-codeurjc`.
 
 En los `.qmd`:
 

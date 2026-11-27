@@ -1,6 +1,8 @@
 # Transparencias de la asignatura. Cada tema las tiene en su carpeta
-# `slides/`; esta configuracion es comun a todas y les da el estilo de
-# codeurjc (tema, logo, extension y ajuste), que vive en `_slides/`.
+# `slides/`; esta configuracion es comun a todas. El estilo de codeurjc
+# (tema, logo, portada, licencia, indices y ajuste automatico) viene de la
+# extension codeurjc/quarto-codeurjc, instalada en `_extensions/codeurjc/`.
+# Para actualizarla: quarto add codeurjc/quarto-codeurjc
 #
 #   quarto render                                   # todas
 #   quarto render parte_2/tema_2.6_despliegue/slides/despliegue.qmd
@@ -9,37 +11,20 @@ project:
   render:
     - "parte_*/*/slides/*.qmd"
 
-# Extension propia (_extensions/gortazar/title-slides). `title-slides` repone
-# el titulo en las diapositivas que empiezan con `---`, que son las que
-# continuan la anterior. `show-index` pone una diapositiva de indice antes de
-# cada seccion `#`, con la actual en negrita; los mazos que ya traen su
-# propia diapositiva de contenidos lo desactivan en su cabecera.
-filters:
-  - title-slides
-title-slides: true
-show-index: true
+# Los mazos convertidos de Impress no parten las lineas largas de codigo: su
+# contenido lo encaja el ajuste automatico, y mantienen la numeracion de
+# lineas. Los escritos directamente en Quarto lo cambian en su cabecera
+# (`wrap-code: true`).
+wrap-code: false
+
+# Diapositiva de licencia tras la portada para los mazos que no traen la suya
+# (los convertidos de Impress la llevan escrita). El ano sale de `date` o, si
+# no la hay, es el actual.
+license: "CC BY-SA"
+copyright:
+  holder: Micael Gallego, Francisco Gortázar, Michel Maes, Óscar Soto e Iván Chicano
 
 format:
-  revealjs:
-    theme:
-      - default
-      - _slides/dad.scss
-    slide-number: true
-    width: 1050
-    height: 700
-    incremental: false
-    highlight-style: github
-    logo: _slides/code-urjc.png
-    history: false
-    embed-resources: false
-    link-external-newwindow: true
-    # El tamano de cada imagen lo pone el mazo. `auto-stretch` lo pisa y, con
-    # el contenido envuelto para el ajuste automatico, la imagen desaparece.
-    auto-stretch: false
-    # Al exportar a PDF, una diapositiva por pagina.
-    pdf-max-pages-per-slide: 1
-    pdf-separate-fragments: false
-    # Encaja el contenido que se sale por abajo; ver _slides/ajuste.html.
-    include-after-body: _slides/ajuste.html
-
-lang: es
+  codeurjc-revealjs:
+    code-line-numbers: true
+    code-overflow: scroll
