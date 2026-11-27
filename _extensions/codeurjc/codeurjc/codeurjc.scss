@@ -418,10 +418,16 @@ $code-block-font-size: 0.62em;
   object-fit: contain;
 }
 
+// Diapositiva de licencia (la pone license.lua tras la portada, o la trae el
+// mazo). Como en el original, el titulo va del tamano normal y solo el texto
+// es pequeno: reducir la seccion entera encogia tambien el titulo.
 .reveal .nota-licencia {
-  font-size: 0.6em;
-  text-align: right;
   color: $urjc-body;
+}
+
+// Sin `>`: ajuste.html envuelve el cuerpo en un div.
+.reveal .nota-licencia p {
+  font-size: 0.6em;
 }
 
 // Etiqueta del proyecto de ejemplo al que se refiere la diapositiva. En el
