@@ -2,6 +2,7 @@
 #   ./generate-cert.sh
 #   docker compose -f docker-compose-terminacion.yml up --build
 #   curl -k https://localhost:8443/
+#   curl -kL http://localhost:8080/   (redirige a https://localhost:8443/)
 services:
   web:
     build: .
